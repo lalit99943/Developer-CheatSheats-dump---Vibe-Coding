@@ -1,0 +1,16 @@
+{
+  "short_name": "cheatsheats",
+  "name": "cheatsheats",
+  "description": "A developer cheat sheet application that helps you find code snippets and commands quickly. It uses a local database for your saved snippets and can search the web using Gemini for new ones.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0ea5e9",
+  "background_color": "#0f172a"
+}

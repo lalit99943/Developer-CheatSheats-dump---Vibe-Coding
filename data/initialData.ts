@@ -24,6 +24,7 @@ import { awsCheatSheets } from './cheatsheets/aws';
 import { npmCheatSheets } from './cheatsheets/npm';
 import { pipCheatSheets } from './cheatsheets/pip';
 import { mongoDbCheatSheets } from './cheatsheets/mongodb';
+import { redisCheatSheets } from './cheatsheets/redis';
 import { nodejsCheatSheets } from './cheatsheets/nodejs';
 import { securityCheatSheets } from './cheatsheets/security';
 import { algorithmsCheatSheets } from './cheatsheets/algorithms';
@@ -42,6 +43,8 @@ export const initialData: CheatSheet[] = [
   ...dockerfileCheatSheets,
   ...kubernetesCheatSheets,
   ...sqlCheatSheets,
+  ...mongoDbCheatSheets,
+  ...redisCheatSheets,
   ...shellCheatSheets,
   ...pythonCheatSheets,
   ...javascriptCheatSheets,
@@ -64,7 +67,6 @@ export const initialData: CheatSheet[] = [
   ...awsCheatSheets,
   ...npmCheatSheets,
   ...pipCheatSheets,
-  ...mongoDbCheatSheets,
   ...securityCheatSheets,
   ...algorithmsCheatSheets,
   ...dataStructuresCheatSheets,

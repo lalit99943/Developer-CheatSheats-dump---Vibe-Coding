@@ -5,7 +5,7 @@ import {
     AngularIcon, RegexIcon, CssIcon, ApiIcon, MavenIcon, SpringIcon, JavaIcon,
     BriefcaseIcon, BrainCircuitIcon, NetworkIcon, AwsIcon, NpmIcon, MongoDbIcon,
     NodeJsIcon, SecurityIcon, AlgorithmsIcon, DataStructuresIcon, ProtocolsIcon,
-    SystemArchitectureIcon, ServerIcon, JUnitIcon, OAuthIcon, CiCdMonitoringIcon
+    SystemArchitectureIcon, ServerIcon, JUnitIcon, OAuthIcon, CiCdMonitoringIcon, RedisIcon
 } from './IconComponents';
 
 interface SidebarProps {
@@ -45,6 +45,7 @@ const CategoryIcon: React.FC<{ category: string; className: string }> = memo(({ 
         case 'aws': return <AwsIcon className={className} />;
         case 'npm': return <NpmIcon className={className} />;
         case 'mongodb': return <MongoDbIcon className={className} />;
+        case 'redis': return <RedisIcon className={className} />;
         case 'node.js': return <NodeJsIcon className={className} />;
         case 'security': return <SecurityIcon className={className} />;
         case 'algorithms': return <AlgorithmsIcon className={className} />;
