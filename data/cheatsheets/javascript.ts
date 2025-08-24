@@ -1,0 +1,148 @@
+import { CheatSheet } from '../../types';
+
+export const javascriptCheatSheets: CheatSheet[] = [
+  {
+    id: 'js-1',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'let vs const vs var',
+    snippet: 'var globalVar = "Global"; // Function-scoped, can be re-declared\nlet blockVar = "Block";   // Block-scoped, can be reassigned\nconst constVar = "Constant"; // Block-scoped, cannot be reassigned',
+    description: '`let` and `const` were introduced in ES6 and are block-scoped, which is more predictable than `var`\'s function scope. Use `const` by default and `let` only when you need to reassign a variable.',
+    tags: ['javascript', 'es6', 'variables', 'let', 'const', 'scope'],
+  },
+  {
+    id: 'js-2',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Arrow Functions',
+    snippet: '// Traditional function\nfunction add(a, b) {\n  return a + b;\n}\n\n// Arrow function\nconst addArrow = (a, b) => a + b;',
+    description: 'A more concise syntax for writing function expressions. They also lexically bind the `this` value, which avoids common pitfalls of `this` in traditional functions.',
+    tags: ['javascript', 'es6', 'functions', 'arrow function', 'syntax'],
+  },
+  {
+    id: 'js-3',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Template Literals',
+    snippet: 'const name = "World";\nconst greeting = `Hello, ${name}!`;',
+    description: 'Allow for embedded expressions and multi-line strings. Use backticks (`) instead of single or double quotes.',
+    tags: ['javascript', 'es6', 'string', 'template literal'],
+  },
+  {
+    id: 'js-4',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Destructuring Assignment',
+    snippet: '// Object Destructuring\nconst person = { name: "Alice", age: 30 };\nconst { name, age } = person;\n\n// Array Destructuring\nconst [first, second] = ["one", "two"];',
+    description: 'A convenient way to extract data from arrays or objects into distinct variables.',
+    tags: ['javascript', 'es6', 'destructuring', 'object', 'array'],
+  },
+  {
+    id: 'js-5',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Spread and Rest Operators',
+    snippet: '// Spread Operator\nconst arr1 = [1, 2];\nconst arr2 = [...arr1, 3, 4]; // [1, 2, 3, 4]\n\n// Rest Operator\nfunction sum(...numbers) {\n  return numbers.reduce((acc, current) => acc + current, 0);\n}\nsum(1, 2, 3); // 6',
+    description: 'The `...` syntax is used as a spread operator to expand iterables into individual elements and as a rest operator to merge a sequence of elements into an array.',
+    tags: ['javascript', 'es6', 'spread operator', 'rest operator', 'array', 'function'],
+  },
+  {
+    id: 'js-6',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Promises and .then()/.catch()',
+    snippet: `fetch('https://api.example.com/data')\n  .then(response => response.json())\n  .then(data => console.log(data))\n  .catch(error => console.error('Error:', error));`,
+    description: 'A Promise represents the eventual completion (or failure) of an asynchronous operation and its resulting value. `.then()` handles success, and `.catch()` handles errors.',
+    tags: ['javascript', 'async', 'promise', 'fetch', 'es6'],
+  },
+  {
+    id: 'js-7',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Async/Await',
+    snippet: `async function fetchData() {\n  try {\n    const response = await fetch('https://api.example.com/data');\n    const data = await response.json();\n    console.log(data);\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}`,
+    description: 'Syntactic sugar on top of Promises that makes asynchronous code look and behave more like synchronous code, improving readability.',
+    tags: ['javascript', 'async', 'await', 'promise', 'es2017'],
+  },
+  {
+    id: 'js-8',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Array Method: .map()',
+    snippet: 'const numbers = [1, 2, 3];\nconst doubled = numbers.map(num => num * 2); // [2, 4, 6]',
+    description: 'Creates a new array by calling a provided function on every element in the original array. It does not modify the original array.',
+    tags: ['javascript', 'array', 'map', 'functional', 'es6'],
+  },
+  {
+    id: 'js-9',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Array Method: .filter()',
+    snippet: 'const numbers = [1, 2, 3, 4, 5];\nconst evens = numbers.filter(num => num % 2 === 0); // [2, 4]',
+    description: 'Creates a new array with all elements that pass the test implemented by the provided function.',
+    tags: ['javascript', 'array', 'filter', 'functional', 'es6'],
+  },
+  {
+    id: 'js-10',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Array Method: .reduce()',
+    snippet: 'const numbers = [1, 2, 3, 4, 5];\nconst sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0); // 15',
+    description: 'Executes a "reducer" function on each element of the array, resulting in a single output value.',
+    tags: ['javascript', 'array', 'reduce', 'functional', 'es6'],
+  },
+  {
+    id: 'js-11',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Modules: Import and Export',
+    snippet: `// lib.js\nexport const PI = 3.14;\nexport default function greet() { console.log("Hello"); }\n\n// main.js\nimport greet, { PI } from './lib.js';\nconsole.log(PI); // 3.14\ngreet(); // "Hello"`,
+    description: 'ES6 Modules allow you to break up your code into separate files. Use `export` to expose functions/variables and `import` to use them in other files.',
+    tags: ['javascript', 'es6', 'modules', 'import', 'export'],
+  },
+  {
+    id: 'js-12',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Optional Chaining (?.)',
+    snippet: 'const user = { profile: { name: "Alice" } };\nconst name = user?.profile?.name; // "Alice"\nconst city = user?.address?.city; // undefined (no error)',
+    description: 'Permits reading the value of a property located deep within a chain of connected objects without having to expressly validate that each reference in the chain is valid.',
+    tags: ['javascript', 'es2020', 'optional chaining', 'objects'],
+  },
+  {
+    id: 'js-13',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Nullish Coalescing Operator (??)',
+    snippet: `const name = null;\nconst defaultName = name ?? "Guest"; // "Guest"\n\nconst count = 0;\nconst defaultCount = count ?? 10; // 0 (unlike || which would be 10)`,
+    description: 'A logical operator that returns its right-hand side operand when its left-hand side operand is `null` or `undefined`, and otherwise returns its left-hand side operand. It is a safer alternative to `||` for providing default values.',
+    tags: ['javascript', 'es2020', 'nullish coalescing', 'operators'],
+  },
+  {
+    id: 'js-14',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Working with JSON',
+    snippet: `const myObj = { name: "John", age: 30 };\n\n// Convert object to JSON string\nconst jsonString = JSON.stringify(myObj);\n\n// Parse JSON string back to object\nconst parsedObj = JSON.parse(jsonString);`,
+    description: '`JSON.stringify()` converts a JavaScript object to a JSON string. `JSON.parse()` converts a JSON string to a JavaScript object. These are essential for working with APIs.',
+    tags: ['javascript', 'json', 'stringify', 'parse', 'api'],
+  },
+  {
+    id: 'js-15',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Promise.all',
+    snippet: `const promise1 = fetch('https://api.example.com/data1');
+const promise2 = fetch('https://api.example.com/data2');
+
+Promise.all([promise1, promise2])
+  .then(responses => Promise.all(responses.map(res => res.json())))
+  .then(dataArray => {
+    console.log('Data 1:', dataArray[0]);
+    console.log('Data 2:', dataArray[1]);
+  })
+  .catch(error => console.error('One of the promises failed:', error));`,
+    description: 'Takes an array of promises and returns a single promise that resolves when all of the input promises have resolved. It is useful for aggregating the results of multiple asynchronous operations.',
+    tags: ['javascript', 'async', 'promise', 'promise.all', 'es6', 'concurrent'],
+  },
+];

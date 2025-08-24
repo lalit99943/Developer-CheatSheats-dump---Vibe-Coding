@@ -1,0 +1,5 @@
+{
+  "name": "cheatsheats",
+  "description": "A developer cheat sheet application that helps you find code snippets and commands quickly. It uses a local database for your saved snippets and can search the web using Gemini for new ones.",
+  "requestFramePermissions": []
+}
