@@ -24,7 +24,8 @@ const CategoryIcon: React.FC<{ category: string; className: string }> = memo(({ 
         case 'dockerfile': return <DockerIcon className={className} />;
         case 'kubernetes': return <KubernetesIcon className={className} />;
         case 'sql': return <DatabaseIcon className={className} />;
-        case 'command line': return <TerminalIcon className={className} />;
+        case 'command line':
+        case 'linux cli': return <TerminalIcon className={className} />;
         case 'python': return <PythonIcon className={className} />;
         case 'pip': return <PythonIcon className={className} />;
         case 'javascript': return <JavaScriptIcon className={className} />;
@@ -55,7 +56,9 @@ const CategoryIcon: React.FC<{ category: string; className: string }> = memo(({ 
         case 'servers': return <ServerIcon className={className} />;
         case 'junit': return <JUnitIcon className={className} />;
         case 'oauth and sso': return <OAuthIcon className={className} />;
-        case 'ci/cd and monitoring': return <CiCdMonitoringIcon className={className} />;
+        case 'ci/cd and monitoring':
+        case 'jenkins':
+        case 'github actions': return <CiCdMonitoringIcon className={className} />;
         default: return <FolderIcon className={className} />;
     }
 });

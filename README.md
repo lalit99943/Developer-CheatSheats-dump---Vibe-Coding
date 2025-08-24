@@ -1,5 +1,3 @@
 npm i vite
-
-npm run build
-
+npm run build 
 Npm run preview

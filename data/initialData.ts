@@ -36,6 +36,9 @@ import { junitCheatSheets } from './cheatsheets/junit';
 import { oauthSsoCheatSheets } from './cheatsheets/oauthsso';
 import { cicdMonitoringCheatSheets } from './cheatsheets/cicdmonitoring';
 import { javaBasicsCheatSheets } from './cheatsheets/java-basics';
+import { jenkinsCheatSheets } from './cheatsheets/jenkins';
+import { linuxCheatSheets } from './cheatsheets/linux';
+import { githubActionsCheatSheets } from './cheatsheets/github-actions';
 
 export const initialData: CheatSheet[] = [
   ...gitCheatSheets,
@@ -46,6 +49,7 @@ export const initialData: CheatSheet[] = [
   ...mongoDbCheatSheets,
   ...redisCheatSheets,
   ...shellCheatSheets,
+  ...linuxCheatSheets,
   ...pythonCheatSheets,
   ...javascriptCheatSheets,
   ...nodejsCheatSheets,
@@ -59,6 +63,7 @@ export const initialData: CheatSheet[] = [
   ...springBootCheatSheets,
   ...java8CheatSheets,
   ...javaBasicsCheatSheets,
+  ...jenkinsCheatSheets,
   ...managementCheatSheets,
   ...aiCheatSheets,
   ...springAiCheatSheets,
@@ -75,4 +80,5 @@ export const initialData: CheatSheet[] = [
   ...junitCheatSheets,
   ...oauthSsoCheatSheets,
   ...cicdMonitoringCheatSheets,
+  ...githubActionsCheatSheets,
 ];

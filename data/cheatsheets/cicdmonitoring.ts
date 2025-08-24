@@ -21,43 +21,6 @@ Continuous Deployment: Extends delivery by automatically deploying every passed 
     tags: ['cicd', 'cd', 'continuous delivery', 'continuous deployment', 'devops', 'release'],
   },
   {
-    id: 'cicd-3',
-    category: 'CI/CD and Monitoring',
-    subCategory: 'yaml',
-    title: 'GitHub Actions: Basic Workflow',
-    snippet: `name: CI
-on: [push, pull_request]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run a one-line script
-        run: echo Hello, world!`,
-    description: 'A basic workflow file for GitHub Actions. This workflow is triggered on every push and pull request, runs on an Ubuntu virtual machine, checks out the code, and executes a simple script.',
-    tags: ['cicd', 'github actions', 'yaml', 'workflow', 'automation'],
-  },
-  {
-    id: 'cicd-4',
-    category: 'CI/CD and Monitoring',
-    subCategory: 'yaml',
-    title: 'GitHub Actions: Build and Test Node.js',
-    snippet: `jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test`,
-    description: 'A common job for a Node.js project. It uses the `setup-node` action, installs dependencies using `npm ci` for consistency, builds the project, and runs tests.',
-    tags: ['cicd', 'github actions', 'nodejs', 'npm', 'build', 'test'],
-  },
-  {
     id: 'cicd-5',
     category: 'CI/CD and Monitoring',
     subCategory: 'bash',
@@ -205,20 +168,5 @@ SLA (Service Level Agreement): A formal contract with users that includes conseq
     snippet: 'The practice of consolidating log data from different systems into a single, centralized location for easier analysis, searching, and monitoring. The ELK Stack (Elasticsearch, Logstash, Kibana) is a popular toolset for this.',
     description: 'In a distributed system, checking logs on individual servers is impractical. Log aggregation tools collect logs, parse them into a structured format (Logstash), store and index them (Elasticsearch), and provide a visualization and search interface (Kibana).',
     tags: ['monitoring', 'logs', 'logging', 'elk stack', 'elasticsearch', 'logstash', 'kibana', 'observability'],
-  },
-  {
-    id: 'cicd-18',
-    category: 'CI/CD and Monitoring',
-    subCategory: 'yaml',
-    title: 'GitHub Actions: Caching Dependencies',
-    snippet: `- name: Cache node modules
-  uses: actions/cache@v4
-  with:
-    path: ~/.npm
-    key: \${{ runner.os }}-node-\${{ hashFiles('**/package-lock.json') }}
-    restore-keys: |
-      \${{ runner.os }}-node-`,
-    description: 'Improves workflow execution time by caching dependencies or other files that are expensive to create. This example caches npm packages, using the `package-lock.json` file as the key to ensure the cache is only restored for the exact same set of dependencies.',
-    tags: ['cicd', 'github actions', 'cache', 'performance', 'optimization'],
   },
 ];
