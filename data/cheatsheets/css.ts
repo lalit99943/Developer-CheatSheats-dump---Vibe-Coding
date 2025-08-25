@@ -6,6 +6,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Flexbox: Container Setup',
+    type: 'code',
     snippet: `.container {
   display: flex;
   flex-direction: row; /* column | row-reverse | column-reverse */
@@ -19,6 +20,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Flexbox: Justify Content (Main Axis)',
+    type: 'code',
     snippet: `.container {
   justify-content: flex-start; /* flex-end | center | space-between | space-around | space-evenly */
 }`,
@@ -26,10 +28,48 @@ export const cssCheatSheets: CheatSheet[] = [
     tags: ['css', 'flexbox', 'layout', 'alignment', 'justify-content', 'main-axis'],
   },
   {
+    id: 'css-flexbox-justify-diagram',
+    category: 'CSS',
+    subCategory: 'svg',
+    title: 'Flexbox: justify-content',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .container { fill: none; stroke: #475569; stroke-width: 2; }
+        .item { fill: #3b82f6; rx: 3; }
+        .label { font-size: 12px; fill: #94a3b8; font-family: 'Fira Code', monospace; }
+    </style>
+    
+    <!-- flex-start -->
+    <text x="20" y="30" class="label">justify-content: flex-start;</text>
+    <rect x="20" y="40" width="460" height="40" class="container"/>
+    <rect x="25" y="45" width="50" height="30" class="item"/>
+    <rect x="80" y="45" width="50" height="30" class="item"/>
+    <rect x="135" y="45" width="50" height="30" class="item"/>
+    
+    <!-- center -->
+    <text x="20" y="105" class="label">justify-content: center;</text>
+    <rect x="20" y="115" width="460" height="40" class="container"/>
+    <rect x="167.5" y="120" width="50" height="30" class="item"/>
+    <rect x="222.5" y="120" width="50" height="30" class="item"/>
+    <rect x="277.5" y="120" width="50" height="30" class="item"/>
+
+    <!-- space-between -->
+    <text x="20" y="180" class="label">justify-content: space-between;</text>
+    <rect x="20" y="190" width="460" height="40" class="container"/>
+    <rect x="25" y="195" width="50" height="30" class="item"/>
+    <rect x="222.5" y="195" width="50" height="30" class="item"/>
+    <rect x="425" y="195" width="50" height="30" class="item"/>
+</svg>`,
+    description: 'A visual guide to common `justify-content` values in Flexbox. It shows how `flex-start` (default), `center`, and `space-between` affect the horizontal distribution of items within a flex container.',
+    tags: ['css', 'flexbox', 'layout', 'justify-content', 'alignment', 'diagram', 'svg'],
+  },
+  {
     id: 'css-3',
     category: 'CSS',
     subCategory: 'css',
     title: 'Flexbox: Align Items (Cross Axis)',
+    type: 'code',
     snippet: `.container {
   align-items: stretch; /* flex-start | flex-end | center | baseline */
 }`,
@@ -41,6 +81,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Flexbox: Item Sizing',
+    type: 'code',
     snippet: `.item {
   flex-grow: 1;   /* How much to grow relative to others */
   flex-shrink: 1; /* How much to shrink relative to others */
@@ -55,6 +96,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Flexbox: Item Ordering and Alignment',
+    type: 'code',
     snippet: `.item-1 {
   order: 2; /* Default is 0 */
 }
@@ -69,6 +111,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Grid: Container Setup',
+    type: 'code',
     snippet: `.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; /* Three equal-width columns */
@@ -83,6 +126,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Grid: Spanning Columns and Rows',
+    type: 'code',
     snippet: `.item-1 {
   grid-column: 1 / 3; /* Span from column line 1 to 3 */
 }
@@ -97,6 +141,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Grid: Naming Grid Areas',
+    type: 'code',
     snippet: `.container {
   display: grid;
   grid-template-areas:
@@ -116,6 +161,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'Grid: auto-fit and minmax()',
+    type: 'code',
     snippet: `.container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -129,6 +175,7 @@ export const cssCheatSheets: CheatSheet[] = [
     category: 'CSS',
     subCategory: 'css',
     title: 'CSS Custom Properties (Variables)',
+    type: 'code',
     snippet: `:root {
   --main-bg-color: brown;
   --main-text-color: #fff;

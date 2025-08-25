@@ -6,6 +6,7 @@ export const angularCheatSheets: CheatSheet[] = [
     category: 'Angular',
     subCategory: 'bash',
     title: 'Create New Application',
+    type: 'code',
     snippet: 'ng new my-app --standalone',
     description: 'Uses the Angular CLI to create a new workspace and an initial application. The `--standalone` flag generates a simpler, component-based project structure without modules.',
     tags: ['angular', 'cli', 'ng new', 'project setup', 'standalone'],
@@ -15,6 +16,7 @@ export const angularCheatSheets: CheatSheet[] = [
     category: 'Angular',
     subCategory: 'bash',
     title: 'Generate Components & Services',
+    type: 'code',
     snippet: 'ng generate component my-component\nng generate service my-service',
     description: 'Uses the Angular CLI to generate common application parts. Shortcuts: `ng g c` for component, `ng g s` for service.',
     tags: ['angular', 'cli', 'generate', 'component', 'service'],
@@ -24,6 +26,7 @@ export const angularCheatSheets: CheatSheet[] = [
     category: 'Angular',
     subCategory: 'typescript',
     title: 'Component Structure',
+    type: 'code',
     snippet: `import { Component } from '@angular/core';
 
 @Component({
@@ -44,6 +47,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'html',
     title: 'Data Binding: Interpolation',
+    type: 'code',
     snippet: '<h1>{{ pageTitle }}</h1>\n<p>The sum of 1 + 1 is {{ 1 + 1 }}.</p>',
     description: 'Renders a component property\'s value in the template. The expression inside the double curly braces is evaluated and converted to a string.',
     tags: ['angular', 'data binding', 'interpolation', 'template', 'view'],
@@ -53,6 +57,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'html',
     title: 'Data Binding: Property Binding',
+    type: 'code',
     snippet: '<img [src]="imageUrl" [alt]="imageAltText">\n<button [disabled]="isButtonDisabled">Click me</button>',
     description: 'Binds a component property to a property of a DOM element. Data flows one-way from the component to the template.',
     tags: ['angular', 'data binding', 'property binding', 'template', 'view'],
@@ -62,6 +67,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'html',
     title: 'Data Binding: Event Binding',
+    type: 'code',
     snippet: '<button (click)="onSave()">Save</button>\n<input (keyup.enter)="onEnter($event)">',
     description: 'Binds a DOM event to a method in the component. Data flows one-way from the template to the component. You can listen for specific keyboard events like `keyup.enter`.',
     tags: ['angular', 'data binding', 'event binding', 'template', 'events', 'click'],
@@ -71,6 +77,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'html',
     title: 'Data Binding: Two-Way Binding',
+    type: 'code',
     snippet: '<input [(ngModel)]="username">',
     description: 'Combines property and event binding into a single notation. Commonly used with forms. Requires importing `FormsModule` in the component.',
     tags: ['angular', 'data binding', 'two-way binding', 'ngmodel', 'forms'],
@@ -80,6 +87,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'html',
     title: 'Directive: *ngIf',
+    type: 'code',
     snippet: '<div *ngIf="userIsLoggedIn; else loggedOut">\n  Welcome, {{ username }}!\n</div>\n<ng-template #loggedOut>\n  Please log in.\n</ng-template>',
     description: 'Conditionally adds or removes an element from the DOM based on the truthiness of an expression. Can be paired with an `else` block using a template.',
     tags: ['angular', 'directive', 'ngif', 'conditional', 'template'],
@@ -89,6 +97,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'html',
     title: 'Directive: *ngFor',
+    type: 'code',
     snippet: '<ul>\n  <li *ngFor="let item of items; let i = index">\n    {{ i + 1 }}: {{ item.name }}\n  </li>\n</ul>',
     description: 'Renders a template for each item in a collection. You can get the index and other local variables from the loop.',
     tags: ['angular', 'directive', 'ngfor', 'loop', 'iteration', 'template'],
@@ -98,6 +107,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'typescript',
     title: 'Service and Dependency Injection',
+    type: 'code',
     snippet: `@Injectable({
   providedIn: 'root'
 })
@@ -117,6 +127,7 @@ export class MyComponent {
     category: 'Angular',
     subCategory: 'typescript',
     title: 'Routing Configuration',
+    type: 'code',
     snippet: `// app.routes.ts
 import { Routes } from '@angular/router';
 
@@ -138,6 +149,7 @@ bootstrapApplication(AppComponent, {
     category: 'Angular',
     subCategory: 'html',
     title: 'Router Outlet and Router Link',
+    type: 'code',
     snippet: `<!-- In your main app component -->
 <router-outlet></router-outlet>
 
@@ -152,6 +164,7 @@ bootstrapApplication(AppComponent, {
     category: 'Angular',
     subCategory: 'typescript',
     title: 'HttpClient GET Request',
+    type: 'code',
     snippet: `import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -171,6 +184,7 @@ export class ApiService {
     category: 'Angular',
     subCategory: 'typescript',
     title: 'Subscribing to an Observable',
+    type: 'code',
     snippet: `export class UserListComponent implements OnInit {
   users: User[] = [];
 
@@ -190,6 +204,7 @@ export class ApiService {
     category: 'Angular',
     subCategory: 'typescript',
     title: 'Component Communication: @Input',
+    type: 'code',
     snippet: `// child.component.ts
 import { Component, Input } from '@angular/core';
 
@@ -208,6 +223,7 @@ export class ChildComponent {
     category: 'Angular',
     subCategory: 'typescript',
     title: 'Component Communication: @Output',
+    type: 'code',
     snippet: `// child.component.ts
 import { Component, Output, EventEmitter } from '@angular/core';
 

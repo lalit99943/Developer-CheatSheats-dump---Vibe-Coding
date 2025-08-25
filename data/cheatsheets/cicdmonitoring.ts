@@ -21,6 +21,51 @@ Continuous Deployment: Extends delivery by automatically deploying every passed 
     tags: ['cicd', 'cd', 'continuous delivery', 'continuous deployment', 'devops', 'release'],
   },
   {
+    id: 'cicd-pipeline-diagram',
+    category: 'CI/CD and Monitoring',
+    subCategory: 'svg',
+    title: 'CI/CD Pipeline Flow',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180" viewBox="0 0 600 180" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .stage { fill: #334155; stroke: #475569; rx: 5; }
+        .label { font-size: 13px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .sub-label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#cicd-arrow); }
+    </style>
+    <defs>
+        <marker id="cicd-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+        </marker>
+    </defs>
+    
+    <!-- Stages -->
+    <rect x="20" y="60" width="100" height="60" class="stage"/>
+    <text x="70" y="85" class="label">Code</text>
+    <text x="70" y="105" class="sub-label">git push</text>
+    
+    <line x1="120" y1="90" x2="160" y2="90" class="arrow"/>
+    
+    <rect x="160" y="60" width="100" height="60" class="stage"/>
+    <text x="210" y="85" class="label">Build</text>
+    <text x="210" y="105" class="sub-label">mvn package</text>
+    
+    <line x1="260" y1="90" x2="300" y2="90" class="arrow"/>
+
+    <rect x="300" y="60" width="100" height="60" class="stage"/>
+    <text x="350" y="85" class="label">Test</text>
+    <text x="350" y="105" class="sub-label">junit tests</text>
+
+    <line x1="400" y1="90" x2="440" y2="90" class="arrow"/>
+    
+    <rect x="440" y="60" width="100" height="60" class="stage"/>
+    <text x="490" y="85" class="label">Deploy</text>
+    <text x="490" y="105" class="sub-label">kubectl apply</text>
+</svg>`,
+    description: 'A visual diagram of a typical CI/CD pipeline. It shows the automated flow from a code commit, through building and testing, to eventual deployment to a production environment.',
+    tags: ['cicd', 'pipeline', 'diagram', 'devops', 'automation', 'svg'],
+  },
+  {
     id: 'cicd-5',
     category: 'CI/CD and Monitoring',
     subCategory: 'bash',

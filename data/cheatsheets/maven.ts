@@ -295,4 +295,59 @@ export const mavenCheatSheets: CheatSheet[] = [
     description: 'The Maven Wrapper (`mvnw`) is a script that allows developers to run a Maven build without having to install Maven manually. It automatically downloads and uses the specific Maven version defined in the project, ensuring build consistency across different machines.',
     tags: ['maven', 'wrapper', 'mvnw', 'build', 'consistency', 'best practice'],
   },
+  {
+    id: 'maven-lifecycle-diagram',
+    category: 'Maven',
+    subCategory: 'svg',
+    title: 'Maven Build Lifecycle',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .label { font-size: 12px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .sub-label { font-size: 10px; fill: #94a3b8; text-anchor: middle; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#maven-arrow); }
+    </style>
+    <defs>
+        <marker id="maven-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+        </marker>
+    </defs>
+    
+    <text x="300" y="30" class="label" font-size="14">Default Build Lifecycle (Running a phase executes all preceding phases)</text>
+
+    <g id="validate">
+      <rect x="20" y="80" width="70" height="40" class="box"/><text x="55" y="105" class="label">validate</text>
+    </g>
+    <line x1="90" y1="100" x2="110" y2="100" class="arrow"/>
+    
+    <g id="compile">
+      <rect x="110" y="80" width="70" height="40" class="box"/><text x="145" y="105" class="label">compile</text>
+    </g>
+    <line x1="180" y1="100" x2="200" y2="100" class="arrow"/>
+    
+    <g id="test">
+      <rect x="200" y="80" width="70" height="40" class="box"/><text x="235" y="105" class="label">test</text>
+    </g>
+    <line x1="270" y1="100" x2="290" y2="100" class="arrow"/>
+
+    <g id="package">
+      <rect x="290" y="80" width="70" height="40" class="box"/><text x="325" y="105" class="label">package</text>
+    </g>
+    <line x1="360" y1="100" x2="380" y2="100" class="arrow"/>
+    
+    <g id="install">
+      <rect x="380" y="80" width="70" height="40" class="box"/><text x="415" y="105" class="label">install</text>
+    </g>
+    <line x1="450" y1="100" x2="470" y2="100" class="arrow"/>
+
+    <g id="deploy">
+      <rect x="470" y="80" width="70" height="40" class="box"/><text x="505" y="105" class="label">deploy</text>
+    </g>
+    
+    <text x="300" y="150" class="sub-label">e.g., 'mvn install' runs validate, compile, test, package, and install</text>
+</svg>`,
+    description: 'A diagram of the main phases in the default Maven build lifecycle. When you run a command like `mvn install`, Maven executes all phases in order up to and including `install`. This ensures a consistent build process.',
+    tags: ['maven', 'lifecycle', 'build', 'diagram', 'ci-cd', 'svg'],
+  },
 ];

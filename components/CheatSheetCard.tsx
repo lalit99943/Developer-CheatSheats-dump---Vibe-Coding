@@ -1,19 +1,11 @@
-import React, { lazy, Suspense, memo, useState, useEffect, useRef } from 'react';
-import { CheatSheet } from '../types';
-import { ClipboardIcon, CheckIcon } from './IconComponents';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import React, { memo, useState, useEffect, useRef, useMemo } from 'react';
+import { CheatSheet, ChatMessage, ChartConfig } from '../types';
+import { ClipboardIcon, CheckIcon, ExpandIcon } from './IconComponents';
+import SnippetRenderer from './SnippetRenderer';
+import FormattedDescription from './FormattedDescription';
 
-const SyntaxHighlighter = lazy(() => import('react-syntax-highlighter'));
-
-const LoadingHighlighter: React.FC = () => (
-    <div className="bg-slate-800 p-4 h-40">
-        <div className="w-3/4 h-4 bg-slate-700 rounded animate-pulse mb-3"></div>
-        <div className="w-1/2 h-4 bg-slate-700 rounded animate-pulse"></div>
-    </div>
-);
-
-const CheatSheetCard: React.FC<{ sheet: CheatSheet }> = ({ sheet }) => {
-    const [copied, setCopied] = React.useState(false);
+const CheatSheetCard: React.FC<{ sheet: CheatSheet, onExpand: (sheet: CheatSheet) => void }> = ({ sheet, onExpand }) => {
+    const [copied, setCopied] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
@@ -42,13 +34,21 @@ const CheatSheetCard: React.FC<{ sheet: CheatSheet }> = ({ sheet }) => {
         };
     }, []);
 
-
-    // Defensively handle cases where the snippet is not a string (e.g., from a malformed API response).
-    // If it's an object, stringify it to show the raw data instead of "[object]".
-    const snippetText = typeof sheet.snippet === 'string' ? sheet.snippet : JSON.stringify(sheet.snippet, null, 2);
-    const language = typeof sheet.snippet === 'string' 
-        ? (sheet.subCategory.toLowerCase() === 'shell' ? 'bash' : sheet.subCategory.toLowerCase()) 
-        : 'json';
+    const snippetText = useMemo(() => {
+        if (sheet.type === 'chat' && Array.isArray(sheet.snippet)) {
+            return (sheet.snippet as ChatMessage[]).map(m => `${m.author.toUpperCase()}: ${m.content}`).join('\n\n');
+        }
+        if (sheet.type === 'chart' && typeof sheet.snippet === 'object' && !Array.isArray(sheet.snippet) && 'data' in sheet.snippet) {
+            return JSON.stringify((sheet.snippet as ChartConfig).data, null, 2);
+        }
+        if (sheet.type === 'svg' && typeof sheet.snippet === 'string') {
+            return sheet.snippet;
+        }
+        if (typeof sheet.snippet === 'string') {
+            return sheet.snippet;
+        }
+        return JSON.stringify(sheet.snippet, null, 2);
+    }, [sheet.snippet, sheet.type]);
 
 
     const handleCopy = () => {
@@ -68,31 +68,38 @@ const CheatSheetCard: React.FC<{ sheet: CheatSheet }> = ({ sheet }) => {
                 </div>
             </div>
             <div className="p-4 text-sm text-slate-300 flex-grow">
-                <p>{sheet.description}</p>
+                 <FormattedDescription text={sheet.description} />
             </div>
-            <div className="relative bg-slate-900/50 group min-h-[160px]">
+            <div className="relative bg-slate-900/50 group min-h-[160px] flex">
                 {isVisible ? (
-                    <>
-                        <button
-                            onClick={handleCopy}
-                            className="absolute top-2 right-2 p-1.5 bg-slate-700 rounded-md text-slate-400 hover:text-white hover:bg-slate-600 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity z-10"
-                            aria-label="Copy code"
-                        >
-                            {copied ? <CheckIcon className="h-5 w-5 text-green-400" /> : <ClipboardIcon className="h-5 w-5" />}
-                        </button>
-                        <Suspense fallback={<LoadingHighlighter />}>
-                            <SyntaxHighlighter
-                                language={language}
-                                style={atomOneDark}
-                                customStyle={{ margin: 0, borderRadius: '0', padding: '16px', backgroundColor: 'transparent' }}
-                                wrapLongLines={true}
+                     <>
+                        <div className="absolute top-2 right-2 flex items-center gap-2 z-10 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
+                            <button
+                                onClick={handleCopy}
+                                className="p-1.5 bg-slate-700 rounded-md text-slate-400 hover:text-white hover:bg-slate-600 focus:opacity-100"
+                                aria-label="Copy snippet"
+                                title="Copy"
                             >
-                                {snippetText}
-                            </SyntaxHighlighter>
-                        </Suspense>
+                                {copied ? <CheckIcon className="h-5 w-5 text-green-400" /> : <ClipboardIcon className="h-5 w-5" />}
+                            </button>
+                             <button
+                                onClick={() => onExpand(sheet)}
+                                className="p-1.5 bg-slate-700 rounded-md text-slate-400 hover:text-white hover:bg-slate-600 focus:opacity-100"
+                                aria-label="View fullscreen"
+                                title="Fullscreen"
+                            >
+                                <ExpandIcon className="h-5 w-5" />
+                            </button>
+                        </div>
+                        <div className="w-full flex-1 flex">
+                           <SnippetRenderer sheet={sheet} />
+                        </div>
                     </>
                 ) : (
-                    <LoadingHighlighter />
+                    <div className="w-full bg-slate-800 p-4 h-full min-h-[160px] flex flex-col justify-center">
+                        <div className="w-3/4 h-4 bg-slate-700 rounded animate-pulse mb-3"></div>
+                        <div className="w-1/2 h-4 bg-slate-700 rounded animate-pulse"></div>
+                    </div>
                 )}
             </div>
             <div className="p-4 bg-slate-800 border-t border-slate-700">

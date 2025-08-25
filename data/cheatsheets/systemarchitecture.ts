@@ -1,4 +1,4 @@
-import { CheatSheet } from '../../types';
+import { CheatSheet, ChartConfig } from '../../types';
 
 export const systemArchitectureCheatSheets: CheatSheet[] = [
   {
@@ -50,6 +50,51 @@ Microservices: The application is broken down into a collection of smaller, inde
     description: 'Choosing between monolithic and microservices architecture is a major design decision. Microservices offer scalability and flexibility at the cost of increased operational complexity.',
     tags: ['system architecture', 'microservices', 'monolith', 'design patterns', 'scalability'],
   },
+   {
+    id: 'sysarch-monolith-vs-micro',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Monolith vs. Microservices',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="220" viewBox="0 0 500 220" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .box { stroke-width: 1.5; rx: 5; }
+        .monolith-box { fill: #334155; stroke: #475569; }
+        .microservice-box { fill: #0f172a; stroke: #334155; }
+        .line { stroke: #64748b; }
+      </style>
+      
+      <!-- Monolith Side -->
+      <text x="125" y="30" class="title">Monolithic Architecture</text>
+      <rect x="25" y="50" width="200" height="150" class="box monolith-box"/>
+      <text x="125" y="70" class="label">UI</text>
+      <line x1="40" y1="80" x2="210" y2="80" class="line"/>
+      <text x="125" y="100" class="label">Business Logic (Users, Orders, etc.)</text>
+      <line x1="40" y1="110" x2="210" y2="110" class="line"/>
+      <text x="125" y="130" class="label">Data Access Layer</text>
+       <line x1="40" y1="140" x2="210" y2="140" class="line"/>
+      <text x="125" y="160" class="label">Database</text>
+
+      <!-- Microservices Side -->
+      <text x="375" y="30" class="title">Microservices Architecture</text>
+      <text x="375" y="60" class="label">UI</text>
+      <rect x="275" y="80" width="80" height="50" class="box microservice-box"/>
+      <text x="315" y="105" class="label">User Service</text>
+      
+      <rect x="375" y="80" width="80" height="50" class="box microservice-box"/>
+      <text x="415" y="105" class="label">Order Service</text>
+      
+      <rect x="275" y="150" width="80" height="50" class="box microservice-box"/>
+      <text x="315" y="175" class="label">User DB</text>
+      
+      <rect x="375" y="150" width="80" height="50" class="box microservice-box"/>
+      <text x="415" y="175" class="label">Order DB</text>
+    </svg>`,
+    description: 'A visual comparison between a monolithic architecture, where the application is a single unit, and a microservices architecture, where the application is split into independent, deployable services, often with their own databases.',
+    tags: ['system architecture', 'microservices', 'monolith', 'diagram', 'svg'],
+  },
   {
     id: 'sysarch-5',
     category: 'System Architecture',
@@ -87,6 +132,51 @@ Examples: RabbitMQ, AWS SQS, Apache Kafka.`,
     tags: ['system architecture', 'message queue', 'async', 'decoupling', 'rabbitmq', 'kafka'],
   },
   {
+    id: 'sysarch-message-queue-diagram',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Message Queue Architecture',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="180" viewBox="0 0 500 180" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .label { font-size: 14px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .queue-box { fill: #0f172a; stroke: #475569; rx: 5; }
+        .message-box { fill: #3b82f6; rx: 3; }
+        .line { stroke: #64748b; stroke-width: 2; marker-end: url(#mq-arrow); }
+      </style>
+      <defs>
+        <marker id="mq-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+        </marker>
+      </defs>
+
+      <!-- Producer -->
+      <rect x="20" y="60" width="100" height="60" class="box"/>
+      <text x="70" y="95" class="label">Producer</text>
+
+      <!-- Line to Queue -->
+      <line x1="120" y1="90" x2="180" y2="90" class="line"/>
+
+      <!-- Message Queue -->
+      <rect x="180" y="40" width="140" height="100" class="queue-box"/>
+      <text x="250" y="30" class="label" font-size="12">Message Queue</text>
+      <rect x="190" y="75" width="20" height="20" class="message-box"/>
+      <rect x="220" y="75" width="20" height="20" class="message-box"/>
+      <rect x="250" y="75" width="20" height="20" class="message-box"/>
+      <rect x="280" y="75" width="20" height="20" class="message-box" opacity="0.5"/>
+      
+      <!-- Line to Consumer -->
+      <line x1="320" y1="90" x2="380" y2="90" class="line"/>
+      
+      <!-- Consumer -->
+      <rect x="380" y="60" width="100" height="60" class="box"/>
+      <text x="430" y="95" class="label">Consumer</text>
+    </svg>`,
+    description: 'A diagram illustrating the basic architecture of a message queue system. The Producer sends messages to a central queue, which decouples it from the Consumer that processes the messages asynchronously.',
+    tags: ['system architecture', 'message queue', 'async', 'diagram', 'svg'],
+  },
+  {
     id: 'sysarch-8',
     category: 'System Architecture',
     subCategory: 'text',
@@ -120,5 +210,64 @@ States:
 - Half-Open: A limited number of test requests are allowed. If successful, it closes. If they fail, it opens again.`,
     description: 'The circuit breaker pattern prevents an application from repeatedly trying to execute an operation that is likely to fail, allowing it to heal and preventing a cascade of failures.',
     tags: ['system architecture', 'resilience', 'fault tolerance', 'design patterns', 'microservices'],
+  },
+  {
+    id: 'sysarch-11',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Basic Load Balancer Diagram',
+    type: 'svg',
+    snippet: `
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" style="font-family: sans-serif; font-size: 12px;">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+        </marker>
+    </defs>
+    <rect x="1" y="1" width="298" height="198" fill="none" stroke="#334155" stroke-width="1"/>
+    
+    <!-- Client -->
+    <text x="30" y="95" text-anchor="middle">Client</text>
+    <line x1="60" y1="95" x2="90" y2="95" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" />
+
+    <!-- Load Balancer -->
+    <rect x="100" y="75" width="80" height="40" rx="5" fill="#1e293b" stroke="#334155" />
+    <text x="140" y="98" fill="#e2e8f0" text-anchor="middle">Load Balancer</text>
+
+    <!-- Lines to Servers -->
+    <line x1="180" y1="95" x2="210" y2="55" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" />
+    <line x1="180" y1="95" x2="210" y2="135" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)" />
+    
+    <!-- Servers -->
+    <rect x="220" y="30" width="60" height="30" rx="3" fill="#0f172a" stroke="#334155" />
+    <text x="250" y="50" fill="#94a3b8" text-anchor="middle">Server 1</text>
+    <rect x="220" y="110" width="60" height="30" rx="3" fill="#0f172a" stroke="#334155" />
+    <text x="250" y="130" fill="#94a3b8" text-anchor="middle">Server 2</text>
+</svg>
+        `,
+    description: 'A simple SVG diagram illustrating how a load balancer distributes traffic from a client to multiple backend servers. This is a fundamental concept in scalable system design.',
+    tags: ['system architecture', 'diagram', 'svg', 'load balancer', 'scalability'],
+  },
+  {
+    id: 'sysarch-12',
+    category: 'System Architecture',
+    subCategory: 'chart',
+    title: 'API Latency Comparison (ms)',
+    type: 'chart',
+    snippet: {
+      type: 'bar',
+      data: [
+        { name: 'Monolith', p95: 120, p99: 250 },
+        { name: 'Microservices', p95: 150, p99: 320 },
+        { name: 'Serverless', p95: 80, p99: 400 },
+      ],
+      xAxisDataKey: 'name',
+      series: [
+        { dataKey: 'p95', color: '#8884d8' },
+        { dataKey: 'p99', color: '#82ca9d' },
+      ],
+    } as ChartConfig,
+    description: 'A bar chart comparing the P95 and P99 response latencies for different architectural styles. Note that values are illustrative; actual performance depends heavily on implementation.',
+    tags: ['system architecture', 'chart', 'performance', 'latency', 'monolith', 'microservices', 'serverless'],
   },
 ];

@@ -2,6 +2,42 @@ import { CheatSheet } from '../../types';
 
 export const sqlCheatSheets: CheatSheet[] = [
   {
+    id: 'sql-19',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'CREATE INDEX',
+    snippet: 'CREATE INDEX idx_lastname\nON Employees (LastName);',
+    description: 'Creates an index on a table. Indexes are used to retrieve data from the database more quickly. While they speed up queries, they slow down data modification (INSERT, UPDATE, DELETE).',
+    tags: ['sql', 'create index', 'ddl', 'performance', 'optimization'],
+  },
+  {
+    id: 'sql-17',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'CREATE TABLE',
+    snippet: "CREATE TABLE Employees (\n    EmployeeID int NOT NULL AUTO_INCREMENT,\n    LastName varchar(255) NOT NULL,\n    FirstName varchar(255),\n    PRIMARY KEY (EmployeeID)\n);",
+    description: 'Creates a new table in the database with specified columns and data types.',
+    tags: ['sql', 'create table', 'ddl', 'schema', 'data definition'],
+  },
+  {
+    id: 'sql-20',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'ALTER TABLE',
+    snippet: "ALTER TABLE Customers\nADD Email varchar(255);",
+    description: 'Adds, deletes, or modifies columns in an existing table. It can also be used to add and drop various constraints on an existing table.',
+    tags: ['sql', 'alter table', 'ddl', 'schema', 'modify'],
+  },
+  {
+    id: 'sql-21',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'DROP TABLE',
+    snippet: "DROP TABLE Shippers;",
+    description: 'Deletes a table and all its data from the database. This action is irreversible.',
+    tags: ['sql', 'drop table', 'ddl', 'schema', 'delete'],
+  },
+  {
     id: 'sql-1',
     category: 'SQL',
     subCategory: 'sql',
@@ -11,13 +47,13 @@ export const sqlCheatSheets: CheatSheet[] = [
     tags: ['sql', 'select', 'query', 'database', 'dql'],
   },
   {
-    id: 'sql-2',
+    id: 'sql-6',
     category: 'SQL',
     subCategory: 'sql',
-    title: 'INNER JOIN',
-    snippet: 'SELECT o.OrderID, c.CustomerName\nFROM Orders AS o\nINNER JOIN Customers AS c ON o.CustomerID = c.CustomerID;',
-    description: 'Selects records that have matching values in both tables. It is the most common type of join.',
-    tags: ['sql', 'join', 'inner join', 'database', 'query'],
+    title: 'SELECT DISTINCT',
+    snippet: "SELECT DISTINCT Country FROM Customers;",
+    description: 'Returns only unique (distinct) values from a specified column.',
+    tags: ['sql', 'select', 'distinct', 'unique'],
   },
   {
     id: 'sql-3',
@@ -47,13 +83,13 @@ export const sqlCheatSheets: CheatSheet[] = [
     tags: ['sql', 'delete', 'dml', 'remove', 'data manipulation'],
   },
   {
-    id: 'sql-6',
+    id: 'sql-8',
     category: 'SQL',
     subCategory: 'sql',
-    title: 'SELECT DISTINCT',
-    snippet: "SELECT DISTINCT Country FROM Customers;",
-    description: 'Returns only unique (distinct) values from a specified column.',
-    tags: ['sql', 'select', 'distinct', 'unique'],
+    title: 'Aggregate Functions (COUNT, SUM, AVG)',
+    snippet: "SELECT COUNT(ProductID), AVG(Price), SUM(Quantity)\nFROM Products;",
+    description: 'Performs a calculation on a set of values and returns a single value. Common functions include COUNT, SUM, AVG, MIN, and MAX.',
+    tags: ['sql', 'aggregate', 'count', 'sum', 'avg'],
   },
   {
     id: 'sql-7',
@@ -63,15 +99,6 @@ export const sqlCheatSheets: CheatSheet[] = [
     snippet: "SELECT * FROM Products\nORDER BY Price ASC, ProductName DESC;",
     description: 'Sorts the result set in ascending (ASC) or descending (DESC) order based on one or more columns.',
     tags: ['sql', 'order by', 'sort', 'query'],
-  },
-  {
-    id: 'sql-8',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'Aggregate Functions (COUNT, SUM, AVG)',
-    snippet: "SELECT COUNT(ProductID), AVG(Price), SUM(Quantity)\nFROM Products;",
-    description: 'Performs a calculation on a set of values and returns a single value. Common functions include COUNT, SUM, AVG, MIN, and MAX.',
-    tags: ['sql', 'aggregate', 'count', 'sum', 'avg'],
   },
   {
     id: 'sql-9',
@@ -90,6 +117,135 @@ export const sqlCheatSheets: CheatSheet[] = [
     snippet: "SELECT COUNT(CustomerID), Country\nFROM Customers\nGROUP BY Country\nHAVING COUNT(CustomerID) > 5;",
     description: 'Filters the results of a GROUP BY clause. While WHERE filters rows, HAVING filters groups.',
     tags: ['sql', 'having', 'group by', 'filter', 'aggregate'],
+  },
+  {
+    id: 'sql-16',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'Subquery (in WHERE clause)',
+    snippet: "SELECT ProductName\nFROM Products\nWHERE ProductID = (\n  SELECT ProductID FROM OrderDetails WHERE Quantity > 100\n);",
+    description: 'A subquery or inner query is a query nested inside another SQL query. It can be used in WHERE, FROM, or SELECT clauses to perform complex data retrieval.',
+    tags: ['sql', 'subquery', 'nested query', 'complex query'],
+  },
+  {
+    id: 'sql-15',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'CASE Statement',
+    snippet: "SELECT OrderID, Quantity,\nCASE\n    WHEN Quantity > 30 THEN 'High Quantity'\n    WHEN Quantity = 30 THEN 'Medium Quantity'\n    ELSE 'Low Quantity'\nEND AS QuantityText\nFROM OrderDetails;",
+    description: 'Goes through conditions and returns a value when the first condition is met (like an if-then-else statement).',
+    tags: ['sql', 'case', 'conditional logic', 'if else'],
+  },
+  {
+    id: 'sql-18',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'Common Table Expression (CTE)',
+    snippet: "WITH CustomerCountry AS (\n  SELECT CustomerID, CustomerName, Country FROM Customers WHERE Country = 'Germany'\n)\nSELECT CustomerName FROM CustomerCountry;",
+    description: 'A CTE is a temporary named result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. It helps to break down complex queries into simpler, more readable logical blocks.',
+    tags: ['sql', 'cte', 'with clause', 'temporary table', 'complex query'],
+  },
+  {
+    id: 'sql-22',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'Window Function (ROW_NUMBER)',
+    snippet: "SELECT\n  ProductName,\n  Price,\n  ROW_NUMBER() OVER (ORDER BY Price DESC) as PriceRank\nFROM Products;",
+    description: 'A window function performs a calculation across a set of table rows that are somehow related to the current row. ROW_NUMBER() assigns a unique rank to each row based on its order.',
+    tags: ['sql', 'window function', 'row_number', 'ranking', 'analytics'],
+  },
+  {
+    id: 'sql-23',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'Window Function (PARTITION BY)',
+    snippet: "SELECT\n  ProductName,\n  Category,\n  Price,\n  AVG(Price) OVER (PARTITION BY Category) as AvgPriceInCategory\nFROM Products;",
+    description: 'Divides the rows into partitions (groups) and applies the window function independently to each partition. Here, it calculates the average price for each product category.',
+    tags: ['sql', 'window function', 'partition by', 'analytics', 'aggregate'],
+  },
+  {
+    id: 'sql-14',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'UNION Operator',
+    snippet: 'SELECT City FROM Customers\nUNION\nSELECT City FROM Suppliers\nORDER BY City;',
+    description: 'Combines the result-set of two or more SELECT statements. Each SELECT statement within UNION must have the same number of columns, and the columns must have similar data types. It returns only distinct values.',
+    tags: ['sql', 'union', 'set operations', 'combine'],
+  },
+  {
+    id: 'sql-join-types-diagram',
+    category: 'SQL',
+    subCategory: 'svg',
+    title: 'SQL Join Types',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+      .title { font-size: 16px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+      .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+      .circle { fill: #3b82f6; stroke: #93c5fd; stroke-width: 2; opacity: 0.5; }
+      .overlap { fill: #8b5cf6; }
+    </style>
+    <defs>
+      <clipPath id="clipA"><circle cx="0" cy="0" r="50"/></clipPath>
+      <clipPath id="clipB"><circle cx="70" cy="0" r="50"/></clipPath>
+    </defs>
+    
+    <!-- INNER JOIN -->
+    <g transform="translate(120, 120)">
+      <text y="-70" class="title">INNER JOIN</text>
+      <g>
+        <circle cx="0" cy="0" r="50" class="circle"/>
+        <circle cx="70" cy="0" r="50" class="circle"/>
+        <g class="overlap">
+          <circle cx="0" cy="0" r="50" clip-path="url(#clipB)"/>
+        </g>
+      </g>
+      <text x="-35" y="0" class="label">A</text><text x="105" y="0" class="label">B</text>
+    </g>
+    
+    <!-- LEFT JOIN -->
+    <g transform="translate(360, 120)">
+      <text y="-70" class="title">LEFT JOIN</text>
+      <g>
+        <circle cx="0" cy="0" r="50" class="circle" fill="#8b5cf6"/>
+        <circle cx="70" cy="0" r="50" class="circle"/>
+        <g class="overlap"><circle cx="0" cy="0" r="50" clip-path="url(#clipB)"/></g>
+      </g>
+      <text x="-35" y="0" class="label">A</text><text x="105" y="0" class="label">B</text>
+    </g>
+    
+    <!-- RIGHT JOIN -->
+    <g transform="translate(120, 360)">
+      <text y="-70" class="title">RIGHT JOIN</text>
+      <g>
+        <circle cx="0" cy="0" r="50" class="circle"/>
+        <circle cx="70" cy="0" r="50" class="circle" fill="#8b5cf6"/>
+        <g class="overlap"><circle cx="0" cy="0" r="50" clip-path="url(#clipB)"/></g>
+      </g>
+      <text x="-35" y="0" class="label">A</text><text x="105" y="0" class="label">B</text>
+    </g>
+    
+    <!-- FULL OUTER JOIN -->
+    <g transform="translate(360, 360)">
+      <text y="-70" class="title">FULL OUTER JOIN</text>
+      <g>
+        <circle cx="0" cy="0" r="50" class="circle" fill="#8b5cf6"/>
+        <circle cx="70"cy="0" r="50" class="circle" fill="#8b5cf6"/>
+      </g>
+      <text x="-35" y="0" class="label">A</text><text x="105" y="0" class="label">B</text>
+    </g>
+    </svg>`,
+    description: 'A visual representation of SQL JOINs using Venn diagrams. INNER returns matching records, LEFT returns all from left + matches, RIGHT returns all from right + matches, and FULL OUTER returns all records from both tables.',
+    tags: ['sql', 'join', 'venn diagram', 'inner join', 'left join', 'right join', 'full outer join', 'svg'],
+  },
+  {
+    id: 'sql-2',
+    category: 'SQL',
+    subCategory: 'sql',
+    title: 'INNER JOIN',
+    snippet: 'SELECT o.OrderID, c.CustomerName\nFROM Orders AS o\nINNER JOIN Customers AS c ON o.CustomerID = c.CustomerID;',
+    description: 'Selects records that have matching values in both tables. It is the most common type of join.',
+    tags: ['sql', 'join', 'inner join', 'database', 'query'],
   },
   {
     id: 'sql-11',
@@ -117,95 +273,5 @@ export const sqlCheatSheets: CheatSheet[] = [
     snippet: 'SELECT c.CustomerName, o.OrderID\nFROM Customers c\nFULL OUTER JOIN Orders o ON c.CustomerID=o.CustomerID;',
     description: 'Returns all records when there is a match in either the left or right table. It combines the functionality of LEFT JOIN and RIGHT JOIN.',
     tags: ['sql', 'join', 'full join', 'outer join'],
-  },
-  {
-    id: 'sql-14',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'UNION Operator',
-    snippet: 'SELECT City FROM Customers\nUNION\nSELECT City FROM Suppliers\nORDER BY City;',
-    description: 'Combines the result-set of two or more SELECT statements. Each SELECT statement within UNION must have the same number of columns, and the columns must have similar data types. It returns only distinct values.',
-    tags: ['sql', 'union', 'set operations', 'combine'],
-  },
-  {
-    id: 'sql-15',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'CASE Statement',
-    snippet: "SELECT OrderID, Quantity,\nCASE\n    WHEN Quantity > 30 THEN 'High Quantity'\n    WHEN Quantity = 30 THEN 'Medium Quantity'\n    ELSE 'Low Quantity'\nEND AS QuantityText\nFROM OrderDetails;",
-    description: 'Goes through conditions and returns a value when the first condition is met (like an if-then-else statement).',
-    tags: ['sql', 'case', 'conditional logic', 'if else'],
-  },
-  {
-    id: 'sql-16',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'Subquery (in WHERE clause)',
-    snippet: "SELECT ProductName\nFROM Products\nWHERE ProductID = (\n  SELECT ProductID FROM OrderDetails WHERE Quantity > 100\n);",
-    description: 'A subquery or inner query is a query nested inside another SQL query. It can be used in WHERE, FROM, or SELECT clauses to perform complex data retrieval.',
-    tags: ['sql', 'subquery', 'nested query', 'complex query'],
-  },
-  {
-    id: 'sql-17',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'Common Table Expression (CTE)',
-    snippet: "WITH CustomerCountry AS (\n  SELECT CustomerID, CustomerName, Country FROM Customers WHERE Country = 'Germany'\n)\nSELECT CustomerName FROM CustomerCountry;",
-    description: 'A CTE is a temporary named result set that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement. It helps to break down complex queries into simpler, more readable logical blocks.',
-    tags: ['sql', 'cte', 'with clause', 'temporary table', 'complex query'],
-  },
-  {
-    id: 'sql-18',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'Window Function (ROW_NUMBER)',
-    snippet: "SELECT\n  ProductName,\n  Price,\n  ROW_NUMBER() OVER (ORDER BY Price DESC) as PriceRank\nFROM Products;",
-    description: 'A window function performs a calculation across a set of table rows that are somehow related to the current row. ROW_NUMBER() assigns a unique rank to each row based on its order.',
-    tags: ['sql', 'window function', 'row_number', 'ranking', 'analytics'],
-  },
-  {
-    id: 'sql-19',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'CREATE TABLE',
-    snippet: "CREATE TABLE Employees (\n    EmployeeID int NOT NULL AUTO_INCREMENT,\n    LastName varchar(255) NOT NULL,\n    FirstName varchar(255),\n    PRIMARY KEY (EmployeeID)\n);",
-    description: 'Creates a new table in the database with specified columns and data types.',
-    tags: ['sql', 'create table', 'ddl', 'schema', 'data definition'],
-  },
-  {
-    id: 'sql-20',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'ALTER TABLE',
-    snippet: "ALTER TABLE Customers\nADD Email varchar(255);",
-    description: 'Adds, deletes, or modifies columns in an existing table. It can also be used to add and drop various constraints on an existing table.',
-    tags: ['sql', 'alter table', 'ddl', 'schema', 'modify'],
-  },
-  {
-    id: 'sql-21',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'DROP TABLE',
-    snippet: "DROP TABLE Shippers;",
-    description: 'Deletes a table and all its data from the database. This action is irreversible.',
-    tags: ['sql', 'drop table', 'ddl', 'schema', 'delete'],
-  },
-  {
-    id: 'sql-22',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'Window Function (PARTITION BY)',
-    snippet: "SELECT\n  ProductName,\n  Category,\n  Price,\n  AVG(Price) OVER (PARTITION BY Category) as AvgPriceInCategory\nFROM Products;",
-    description: 'Divides the rows into partitions (groups) and applies the window function independently to each partition. Here, it calculates the average price for each product category.',
-    tags: ['sql', 'window function', 'partition by', 'analytics', 'aggregate'],
-  },
-  {
-    id: 'sql-23',
-    category: 'SQL',
-    subCategory: 'sql',
-    title: 'CREATE INDEX',
-    snippet: 'CREATE INDEX idx_lastname\nON Employees (LastName);',
-    description: 'Creates an index on a table. Indexes are used to retrieve data from the database more quickly. While they speed up queries, they slow down data modification (INSERT, UPDATE, DELETE).',
-    tags: ['sql', 'create index', 'ddl', 'performance', 'optimization'],
   },
 ];

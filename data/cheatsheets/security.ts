@@ -2,6 +2,304 @@ import { CheatSheet } from '../../types';
 
 export const securityCheatSheets: CheatSheet[] = [
   {
+    id: 'oauth-4',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Access Token vs. Refresh Token',
+    snippet: `Access Token: A short-lived credential used by the client to access the protected resource (API). It is sent with every API request.
+Refresh Token: A long-lived credential used to obtain a new access token after the old one expires. It is stored securely by the client and sent only to the authorization server.`,
+    description: 'This separation allows access tokens to be short-lived, reducing the risk if they are compromised. Refresh tokens can be revoked if a security issue is detected, providing better overall security.',
+    tags: ['oauth', 'access token', 'refresh token', 'security', 'jwt'],
+  },
+  {
+    id: 'security-16',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Authentication vs. Authorization',
+    snippet: `Authentication (AuthN): Verifies who you are. (e.g., logging in with a password).
+Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if a user has admin rights).`,
+    description: 'A fundamental concept in security. Authentication happens first to confirm identity. Authorization happens second to grant or deny access to resources.',
+    tags: ['security', 'authentication', 'authorization', 'authn', 'authz', 'access control'],
+  },
+  {
+    id: 'oauth-2',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Authorization Code Grant (OAuth 2.0)',
+    snippet: `1. Client redirects User to Authorization Server.
+2. User authenticates and grants consent.
+3. Authorization Server redirects User back to Client with an "authorization code".
+4. Client sends the "authorization code" to the Authorization Server.
+5. Authorization Server validates the code and sends back an "access token".
+6. Client uses the "access token" to access the Resource Server (API).`,
+    description: 'The most common and secure OAuth 2.0 grant type, used for traditional web applications where logic can be kept on a secure server. It avoids exposing the access token directly to the user agent (browser).',
+    tags: ['oauth', 'authorization code', 'grant type', 'web app', 'security'],
+  },
+  {
+    id: 'oauth-flow-diagram',
+    category: 'Security',
+    subCategory: 'svg',
+    title: 'Authorization Code Flow Diagram (OAuth 2.0)',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .actor { font-size: 13px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .lifeline { stroke: #475569; stroke-dasharray: 4, 4; }
+        .message { stroke: #60a5fa; stroke-width: 1.5; marker-end: url(#oauth-arrow); }
+        .message-text { fill: #94a3b8; font-size: 11px; }
+        .note { fill: #334155; stroke: #475569; }
+        .note-text { fill: #cbd5e1; font-size: 10px; }
+      </style>
+      <defs>
+        <marker id="oauth-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#60a5fa"/>
+        </marker>
+      </defs>
+      
+      <!-- Actors -->
+      <text x="70" y="30" class="actor">User's Browser</text>
+      <line x1="70" y1="40" x2="70" y2="380" class="lifeline"/>
+      
+      <text x="220" y="30" class="actor">Client App</text>
+      <line x1="220" y1="40" x2="220" y2="380" class="lifeline"/>
+      
+      <text x="380" y="30" class="actor">Auth Server</text>
+      <line x1="380" y1="40" x2="380" y2="380" class="lifeline"/>
+      
+      <text x="530" y="30" class="actor">Resource Server</text>
+      <line x1="530" y1="40" x2="530" y2="380" class="lifeline"/>
+
+      <!-- Flow -->
+      <line x1="80" y1="60" x2="210" y2="60" class="message"/><text x="85" y="55" class="message-text">1. Request Access</text>
+      <line x1="210" y1="80" x2="80" y2="80" class="message"/><text x="85" y="95" class="message-text">2. Redirect to Auth Server</text>
+      <line x1="80" y1="110" x2="370" y2="110" class="message"/><text x="85" y="105" class="message-text">3. User Authenticates & Consents</text>
+      <line x1="370" y1="140" x2="80" y2="140" class="message"/><text x="85" y="155" class="message-text">4. Redirect with Auth Code</text>
+      <line x1="80" y1="170" x2="210" y2="170" class="message"/><text x="85" y="165" class="message-text">5. Pass Auth Code to Client</text>
+      
+      <!-- Backend Communication Note -->
+      <rect x="225" y="190" width="150" height="20" class="note"/>
+      <text x="300" y="204" class="note-text" text-anchor="middle">Backend Channel</text>
+
+      <line x1="230" y1="230" x2="370" y2="230" class="message"/><text x="235" y="225" class="message-text">6. Exchange Auth Code for Token</text>
+      <line x1="370" y1="260" x2="230" y2="260" class="message"/><text x="235" y="275" class="message-text">7. Receive Access Token</text>
+      
+      <line x1="230" y1="300" x2="520" y2="300" class="message"/><text x="235" y="295" class="message-text">8. Request Protected Resource (with Token)</text>
+      <line x1="520" y1="330" x2="230" y2="330" class="message"/><text x="235" y="345" class="message-text">9. Return Protected Resource</text>
+      
+      <line x1="210" y1="360" x2="80" y2="360" class="message"/><text x="85" y="375" class="message-text">10. Display Data</text>
+    </svg>`,
+    description: 'A sequence diagram showing the interactions between the user, client application, authorization server, and resource server during the OAuth 2.0 Authorization Code flow. This is the standard and most secure flow for web applications.',
+    tags: ['oauth', 'sso', 'diagram', 'authorization code', 'sequence', 'svg'],
+  },
+  {
+    id: 'security-8',
+    category: 'Security',
+    subCategory: 'bash',
+    title: 'Basic Port Scan with Nmap',
+    snippet: 'nmap -sT -p- 192.168.1.1',
+    description: 'Uses Nmap to perform a TCP connect scan (`-sT`) across all ports (`-p-`) on a target IP address to see which services are open.',
+    tags: ['security', 'nmap', 'scanning', 'network', 'ports'],
+  },
+  {
+    id: 'oauth-3',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Client Credentials Grant (OAuth 2.0)',
+    snippet: `1. Client authenticates itself directly with the Authorization Server using its client ID and client secret.
+2. Authorization Server validates the credentials and issues an access token.
+Use Case: Machine-to-machine (M2M) communication, CLI tools, or services acting on their own behalf.`,
+    description: 'A simpler grant type used when an application needs to access its own resources, not on behalf of a user. There is no user interaction or consent in this flow.',
+    tags: ['oauth', 'client credentials', 'grant type', 'm2m', 'api'],
+  },
+  {
+    id: 'security-6',
+    category: 'Security',
+    subCategory: 'http',
+    title: 'Content Security Policy (CSP) Header',
+    snippet: `Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted-cdn.com;`,
+    description: 'CSP is an added layer of security that helps to detect and mitigate certain types of attacks, including XSS and data injection. It tells the browser which sources of content (scripts, styles, images) are trusted.',
+    tags: ['security', 'csp', 'http', 'header', 'xss', 'web'],
+  },
+  {
+    id: 'security-5',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'CORS - Cross-Origin Resource Sharing',
+    snippet: `// Example HTTP Header from Server:
+Access-Control-Allow-Origin: https://www.example.com`,
+    description: 'CORS is a browser security mechanism that restricts cross-origin HTTP requests initiated from scripts. Servers can opt-in to allowing cross-origin access by including specific CORS headers in their responses.',
+    tags: ['security', 'cors', 'web', 'browser', 'http', 'header'],
+  },
+  {
+    id: 'security-11',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Cross-Site Request Forgery (CSRF) Prevention',
+    snippet: `Prevention Method: Anti-CSRF Tokens.
+1. Server generates a unique, unpredictable token for a user session.
+2. Token is embedded in a hidden form field.
+3. On submission, server validates that the token from the form matches the one in the session.`,
+    description: 'CSRF tricks a victim\'s browser into making an unwanted request to a web application where they are authenticated. Anti-CSRF tokens ensure that the request was intentionally sent by the user from the application\'s own page.',
+    tags: ['security', 'csrf', 'xsrf', 'owasp', 'web', 'vulnerability', 'token'],
+  },
+  {
+    id: 'security-4',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Cross-Site Scripting (XSS) Prevention',
+    snippet: `Key Principle: Output Encoding.
+When displaying user-provided data in HTML, encode special characters.
+< becomes &lt;
+> becomes &gt;
+" becomes &quot;
+' becomes &#39;
+& becomes &amp;`,
+    description: 'XSS occurs when malicious scripts are injected into trusted websites. Prevent it by properly encoding all user-provided data before it is output in the browser to ensure it is treated as text, not HTML.',
+    tags: ['security', 'xss', 'owasp', 'web', 'encoding'],
+  },
+  {
+    id: 'security-18',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Defense in Depth',
+    snippet: 'A strategy that uses multiple, layered security measures to protect an asset. No single security measure is perfect, so layers provide redundancy.',
+    description: 'If one security layer is breached, other layers are still in place to prevent a full compromise. Examples include having a firewall, intrusion detection system, endpoint protection, and application-level security controls all working together.',
+    tags: ['security', 'defense in depth', 'layered security', 'design', 'principle'],
+  },
+  {
+    id: 'security-15',
+    category: 'Security',
+    subCategory: 'bash',
+    title: 'Dependency Scanning',
+    snippet: `# For Node.js projects
+npm audit
+
+# For Java (Maven) using OWASP Dependency-Check plugin
+mvn org.owasp:dependency-check-maven:check`,
+    description: 'The practice of scanning your project\'s third-party libraries for known vulnerabilities (CVEs). Modern development heavily relies on open-source packages, which can introduce risks. Tools like npm audit, GitHub\'s Dependabot, or Snyk can automate this process.',
+    tags: ['security', 'dependency', 'scanning', 'vulnerability', 'cve', 'npm audit', 'snyk'],
+  },
+  {
+    id: 'security-7',
+    category: 'Security',
+    subCategory: 'bash',
+    title: 'Generate SSH Key Pair',
+    snippet: 'ssh-keygen -t ed25519 -C "your_email@example.com"',
+    description: 'Creates a new SSH key pair for secure, password-less authentication with services like GitHub or remote servers. Ed25519 is a modern and secure algorithm.',
+    tags: ['security', 'ssh', 'authentication', 'keys', 'crypto'],
+  },
+  {
+    id: 'security-17',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'HTTPS/TLS Explained',
+    snippet: `HTTPS = HTTP + TLS (Transport Layer Security)
+Provides three layers of protection:
+1. Encryption: Encrypts the exchanged data to keep it secure from eavesdroppers.
+2. Integrity: Data cannot be modified or corrupted during transfer without being detected.
+3. Authentication: Proves that you are communicating with the intended website.`,
+    description: 'HTTPS is the secure version of HTTP. It uses TLS (formerly SSL) to create a secure, encrypted channel between the client (browser) and the server, protecting against man-in-the-middle attacks.',
+    tags: ['security', 'https', 'tls', 'ssl', 'encryption', 'authentication', 'integrity'],
+  },
+  {
+    id: 'security-14',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'Input Validation (Whitelisting)',
+    snippet: `Whitelisting (Allowlisting): Define exactly what IS allowed, and reject everything else.
+Example: A username field should only allow alphanumeric characters and be between 3-20 characters long. \`^[a-zA-Z0-9]{3,20}$\``,
+    description: 'Validating all input from users, APIs, and other sources is critical to prevent injection attacks. Whitelisting is much safer than blacklisting (trying to block known bad input), as it\'s impossible to predict all malicious inputs.',
+    tags: ['security', 'input validation', 'whitelisting', 'allowlisting', 'injection', 'best practice'],
+  },
+  {
+    id: 'security-jwt-diagram',
+    category: 'Security',
+    subCategory: 'svg',
+    title: 'JWT Structure',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .title { font-size: 13px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .text { font-size: 11px; fill: #94a3b8; font-family: 'Fira Code', monospace; }
+        .dot { font-size: 20px; font-weight: bold; fill: #64748b; text-anchor: middle; }
+        .header-box { fill: #be123c; }
+        .payload-box { fill: #7e22ce; }
+        .signature-box { fill: #059669; }
+      </style>
+      
+      <!-- JWT parts -->
+      <rect x="20" y="50" width="140" height="40" rx="5" class="header-box"/>
+      <text x="90" y="40" class="title">Header</text>
+      <text x="30" y="70" class="text">eyJhbGciOi...</text>
+
+      <text x="170" y="75" class="dot">.</text>
+      
+      <rect x="180" y="50" width="140" height="40" rx="5" class="payload-box"/>
+      <text x="250" y="40" class="title">Payload</text>
+      <text x="190" y="70" class="text">eyJzdWIiOi...</text>
+
+      <text x="330" y="75" class="dot">.</text>
+      
+      <rect x="340" y="50" width="140" height="40" rx="5" class="signature-box"/>
+      <text x="410" y="40" class="title">Signature</text>
+      <text x="350" y="70" class="text">TJVA95OrM7...</text>
+
+      <!-- Descriptions -->
+      <text x="90" y="110" class="text" text-anchor="middle">Algorithm & Token Type</text>
+      <text x="250" y="110" class="text" text-anchor="middle">Data (Claims)</text>
+      <text x="410" y="110" class="text" text-anchor="middle">Verifies Integrity</text>
+    </svg>`,
+    description: 'A visual breakdown of a JSON Web Token (JWT). It consists of three Base64Url-encoded parts separated by dots: the Header (metadata), the Payload (claims/data), and the Signature (for verification).',
+    tags: ['security', 'jwt', 'diagram', 'authentication', 'token', 'svg'],
+  },
+  {
+    id: 'security-9',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'JWT (JSON Web Token) Structure',
+    snippet: `A JWT consists of three parts separated by dots: Header, Payload, Signature.
+Example: xxxxx.yyyyy.zzzzz
+
+Header: { "alg": "HS256", "typ": "JWT" } (Base64Url encoded)
+Payload: { "sub": "123", "name": "John Doe", "iat": 1516239022 } (Base64Url encoded)
+Signature: A cryptographic signature to verify the token's integrity.`,
+    description: 'JWTs are a compact, URL-safe means of representing claims to be transferred between two parties. The payload contains claims about an entity (typically, the user) and additional data. The signature ensures that the token has not been tampered with.',
+    tags: ['security', 'jwt', 'authentication', 'authorization', 'token', 'json'],
+  },
+  {
+    id: 'oauth-1',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'OAuth 2.0 Roles',
+    snippet: `Resource Owner: The user who owns the data.
+Client: The application requesting access to the data.
+Authorization Server: The server that authenticates the user and issues access tokens.
+Resource Server: The API server that hosts the user's protected data.`,
+    description: 'OAuth 2.0 is an authorization framework that defines four key roles to enable third-party applications to obtain limited access to a user\'s resources without exposing their credentials.',
+    tags: ['oauth', 'sso', 'roles', 'authorization', 'framework'],
+  },
+  {
+    id: 'oauth-5',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'OAuth Scopes',
+    snippet: `Scopes are used to limit an application's access to a user's data.
+Example: A calendar app might request the 'calendar.read' and 'calendar.write' scopes, but not the 'contacts.read' scope.`,
+    description: 'Scopes follow the principle of least privilege. The application should only request the permissions it absolutely needs to function. The user is shown the requested scopes on the consent screen.',
+    tags: ['oauth', 'scopes', 'permissions', 'least privilege', 'security'],
+  },
+  {
+    id: 'oauth-7',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'OpenID Connect (OIDC)',
+    snippet: `An identity layer built on top of the OAuth 2.0 framework.
+It allows clients to verify the identity of the end-user based on the authentication performed by an Authorization Server.
+Key feature: Introduces the "ID Token" (a JWT).`,
+    description: 'While OAuth 2.0 is for authorization (what you can do), OIDC is for authentication (who you are). OIDC provides a standard way to get user profile information, like name and email, in a secure manner.',
+    tags: ['oidc', 'openid', 'authentication', 'oauth', 'identity', 'jwt'],
+  },
+  {
     id: 'security-1',
     category: 'Security',
     subCategory: 'text',
@@ -30,108 +328,6 @@ Encryption: Two-way process. You can encrypt and decrypt data with a key. Used f
     tags: ['security', 'password', 'hashing', 'encryption', 'bcrypt', 'authentication'],
   },
   {
-    id: 'security-3',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'SQL Injection (SQLi) Prevention',
-    snippet: `Vulnerable:
-String query = "SELECT * FROM users WHERE name = '" + userName + "'";
-
-Secure (Prepared Statement):
-PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
-stmt.setString(1, userName);`,
-    description: 'Prevent SQLi by using parameterized queries (prepared statements). This ensures that user input is treated as data, not as executable code, by the database.',
-    tags: ['security', 'sqli', 'injection', 'database', 'owasp'],
-  },
-  {
-    id: 'security-4',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'Cross-Site Scripting (XSS) Prevention',
-    snippet: `Key Principle: Output Encoding.
-When displaying user-provided data in HTML, encode special characters.
-< becomes &lt;
-> becomes &gt;
-" becomes &quot;
-' becomes &#39;
-& becomes &amp;`,
-    description: 'XSS occurs when malicious scripts are injected into trusted websites. Prevent it by properly encoding all user-provided data before it is output in the browser to ensure it is treated as text, not HTML.',
-    tags: ['security', 'xss', 'owasp', 'web', 'encoding'],
-  },
-  {
-    id: 'security-5',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'CORS - Cross-Origin Resource Sharing',
-    snippet: `// Example HTTP Header from Server:
-Access-Control-Allow-Origin: https://www.example.com`,
-    description: 'CORS is a browser security mechanism that restricts cross-origin HTTP requests initiated from scripts. Servers can opt-in to allowing cross-origin access by including specific CORS headers in their responses.',
-    tags: ['security', 'cors', 'web', 'browser', 'http', 'header'],
-  },
-  {
-    id: 'security-6',
-    category: 'Security',
-    subCategory: 'http',
-    title: 'Content Security Policy (CSP) Header',
-    snippet: `Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted-cdn.com;`,
-    description: 'CSP is an added layer of security that helps to detect and mitigate certain types of attacks, including XSS and data injection. It tells the browser which sources of content (scripts, styles, images) are trusted.',
-    tags: ['security', 'csp', 'http', 'header', 'xss', 'web'],
-  },
-  {
-    id: 'security-7',
-    category: 'Security',
-    subCategory: 'bash',
-    title: 'Generate SSH Key Pair',
-    snippet: 'ssh-keygen -t ed25519 -C "your_email@example.com"',
-    description: 'Creates a new SSH key pair for secure, password-less authentication with services like GitHub or remote servers. Ed25519 is a modern and secure algorithm.',
-    tags: ['security', 'ssh', 'authentication', 'keys', 'crypto'],
-  },
-  {
-    id: 'security-8',
-    category: 'Security',
-    subCategory: 'bash',
-    title: 'Basic Port Scan with Nmap',
-    snippet: 'nmap -sT -p- 192.168.1.1',
-    description: 'Uses Nmap to perform a TCP connect scan (`-sT`) across all ports (`-p-`) on a target IP address to see which services are open.',
-    tags: ['security', 'nmap', 'scanning', 'network', 'ports'],
-  },
-  {
-    id: 'security-9',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'JWT (JSON Web Token) Structure',
-    snippet: `A JWT consists of three parts separated by dots: Header, Payload, Signature.
-Example: xxxxx.yyyyy.zzzzz
-
-Header: { "alg": "HS256", "typ": "JWT" } (Base64Url encoded)
-Payload: { "sub": "123", "name": "John Doe", "iat": 1516239022 } (Base64Url encoded)
-Signature: A cryptographic signature to verify the token's integrity.`,
-    description: 'JWTs are a compact, URL-safe means of representing claims to be transferred between two parties. The payload contains claims about an entity (typically, the user) and additional data. The signature ensures that the token has not been tampered with.',
-    tags: ['security', 'jwt', 'authentication', 'authorization', 'token', 'json'],
-  },
-  {
-    id: 'security-10',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'Authentication vs. Authorization',
-    snippet: `Authentication (AuthN): Verifies who you are. (e.g., logging in with a password).
-Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if a user has admin rights).`,
-    description: 'A fundamental concept in security. Authentication happens first to confirm identity. Authorization happens second to grant or deny access to resources.',
-    tags: ['security', 'authentication', 'authorization', 'authn', 'authz', 'access control'],
-  },
-  {
-    id: 'security-11',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'Cross-Site Request Forgery (CSRF) Prevention',
-    snippet: `Prevention Method: Anti-CSRF Tokens.
-1. Server generates a unique, unpredictable token for a user session.
-2. Token is embedded in a hidden form field.
-3. On submission, server validates that the token from the form matches the one in the session.`,
-    description: 'CSRF tricks a victim\'s browser into making an unwanted request to a web application where they are authenticated. Anti-CSRF tokens ensure that the request was intentionally sent by the user from the application\'s own page.',
-    tags: ['security', 'csrf', 'xsrf', 'owasp', 'web', 'vulnerability', 'token'],
-  },
-  {
     id: 'security-12',
     category: 'Security',
     subCategory: 'text',
@@ -139,6 +335,18 @@ Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if
     snippet: 'Grant only the minimum permissions necessary for a user or system to perform its required task.',
     description: 'A foundational security principle. It limits the damage that can result from an accident, error, or malicious attack. For example, a web server process should not run as the root user.',
     tags: ['security', 'principle', 'least privilege', 'polp', 'access control', 'design'],
+  },
+  {
+    id: 'oauth-8',
+    category: 'Security',
+    subCategory: 'text',
+    title: 'SAML (Security Assertion Markup Language)',
+    snippet: `An XML-based open standard for exchanging authentication and authorization data between parties.
+Key Parties:
+- Identity Provider (IdP): The authority that authenticates the user (e.g., Okta, ADFS).
+- Service Provider (SP): The application the user wants to access.`,
+    description: 'SAML is a widely used protocol for implementing SSO, especially in enterprise environments. The IdP sends a digitally signed SAML Assertion to the SP, confirming the user\'s identity and permissions.',
+    tags: ['saml', 'sso', 'authentication', 'enterprise', 'xml', 'idp', 'sp'],
   },
   {
     id: 'security-13',
@@ -152,62 +360,26 @@ Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if
     tags: ['security', 'secrets management', 'api keys', 'credentials', 'vault', 'best practice'],
   },
   {
-    id: 'security-14',
+    id: 'oauth-6',
     category: 'Security',
     subCategory: 'text',
-    title: 'Input Validation (Whitelisting)',
-    snippet: `Whitelisting (Allowlisting): Define exactly what IS allowed, and reject everything else.
-Example: A username field should only allow alphanumeric characters and be between 3-20 characters long. \`^[a-zA-Z0-9]{3,20}$\``,
-    description: 'Validating all input from users, APIs, and other sources is critical to prevent injection attacks. Whitelisting is much safer than blacklisting (trying to block known bad input), as it\'s impossible to predict all malicious inputs.',
-    tags: ['security', 'input validation', 'whitelisting', 'allowlisting', 'injection', 'best practice'],
+    title: 'Single Sign-On (SSO)',
+    snippet: 'SSO is an authentication scheme that allows a user to log in with a single ID and password to any of several related, yet independent, software systems.',
+    description: 'SSO improves user experience by reducing password fatigue. For enterprises, it centralizes user management and access control. Technologies like SAML and OpenID Connect are used to implement SSO.',
+    tags: ['sso', 'authentication', 'identity', 'enterprise'],
   },
   {
-    id: 'security-15',
+    id: 'security-3',
     category: 'Security',
-    subCategory: 'bash',
-    title: 'Dependency Scanning',
-    snippet: `# For Node.js projects
-npm audit
+    subCategory: 'text',
+    title: 'SQL Injection (SQLi) Prevention',
+    snippet: `Vulnerable:
+String query = "SELECT * FROM users WHERE name = '" + userName + "'";
 
-# For Java (Maven) using OWASP Dependency-Check plugin
-mvn org.owasp:dependency-check-maven:check`,
-    description: 'The practice of scanning your project\'s third-party libraries for known vulnerabilities (CVEs). Modern development heavily relies on open-source packages, which can introduce risks. Tools like npm audit, GitHub\'s Dependabot, or Snyk can automate this process.',
-    tags: ['security', 'dependency', 'scanning', 'vulnerability', 'cve', 'npm audit', 'snyk'],
-  },
-  {
-    id: 'security-16',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'OAuth 2.0 (Concept)',
-    snippet: `An authorization framework that enables applications to obtain limited access to user accounts on an HTTP service.
-Key Roles:
-- Resource Owner: The user.
-- Client: The application requesting access.
-- Authorization Server: The server that authenticates the user and issues access tokens.
-- Resource Server: The API server that hosts the user's data.`,
-    description: 'OAuth 2.0 allows users to grant third-party applications access to their resources without sharing their credentials. The application receives an access token instead of the user\'s password.',
-    tags: ['security', 'oauth', 'authorization', 'api', 'delegation', 'token'],
-  },
-  {
-    id: 'security-17',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'HTTPS/TLS Explained',
-    snippet: `HTTPS = HTTP + TLS (Transport Layer Security)
-Provides three layers of protection:
-1. Encryption: Encrypts the exchanged data to keep it secure from eavesdroppers.
-2. Integrity: Data cannot be modified or corrupted during transfer without being detected.
-3. Authentication: Proves that you are communicating with the intended website.`,
-    description: 'HTTPS is the secure version of HTTP. It uses TLS (formerly SSL) to create a secure, encrypted channel between the client (browser) and the server, protecting against man-in-the-middle attacks.',
-    tags: ['security', 'https', 'tls', 'ssl', 'encryption', 'authentication', 'integrity'],
-  },
-  {
-    id: 'security-18',
-    category: 'Security',
-    subCategory: 'text',
-    title: 'Defense in Depth',
-    snippet: 'A strategy that uses multiple, layered security measures to protect an asset. No single security measure is perfect, so layers provide redundancy.',
-    description: 'If one security layer is breached, other layers are still in place to prevent a full compromise. Examples include having a firewall, intrusion detection system, endpoint protection, and application-level security controls all working together.',
-    tags: ['security', 'defense in depth', 'layered security', 'design', 'principle'],
+Secure (Prepared Statement):
+PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
+stmt.setString(1, userName);`,
+    description: 'Prevent SQLi by using parameterized queries (prepared statements). This ensures that user input is treated as data, not as executable code, by the database.',
+    tags: ['security', 'sqli', 'injection', 'database', 'owasp'],
   },
 ];

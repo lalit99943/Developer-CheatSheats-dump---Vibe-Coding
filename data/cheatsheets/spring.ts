@@ -2,156 +2,94 @@ import { CheatSheet } from '../../types';
 
 export const springCheatSheets: CheatSheet[] = [
   {
-    id: 'spring-1',
+    id: 'spring-ai-3',
     category: 'Spring',
     subCategory: 'java',
-    title: '@Component, @Service, @Repository',
-    snippet: '@Component\npublic class MyComponent {}\n\n@Service\npublic class MyService {}\n\n@Repository\npublic class MyRepository {}',
-    description: 'Core stereotype annotations that mark classes as Spring-managed beans. @Service is for business logic, and @Repository is for data access layers, providing exception translation.',
-    tags: ['spring', 'di', 'ioc', 'bean', 'component', 'service', 'repository'],
-  },
-  {
-    id: 'spring-2',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Autowired - Dependency Injection',
-    snippet: '@Service\npublic class MyService {\n    private final MyRepository repository;\n\n    @Autowired\n    public MyService(MyRepository repository) {\n        this.repository = repository;\n    }\n}',
-    description: 'Marks a constructor, field, or setter method to be autowired by Spring\'s dependency injection facilities. Constructor injection is the recommended approach.',
-    tags: ['spring', 'di', 'autowired', 'injection', 'ioc'],
-  },
-  {
-    id: 'spring-3',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Configuration and @Bean',
-    snippet: '@Configuration\npublic class AppConfig {\n    @Bean\n    public MyService myService() {\n        return new MyService(myRepository());\n    }\n\n    @Bean\n    public MyRepository myRepository() {\n        return new MyRepositoryImpl();\n    }\n}',
-    description: 'Used for Java-based configuration. @Configuration marks a class as a source of bean definitions, and @Bean on a method indicates that it creates a bean to be managed by the Spring container.',
-    tags: ['spring', 'config', 'configuration', 'bean', 'java-config'],
-  },
-  {
-    id: 'spring-4',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Qualifier - Disambiguate Beans',
-    snippet: '@Autowired\n@Qualifier("emailNotificationService")\nprivate NotificationService notificationService;',
-    description: 'Used in conjunction with @Autowired to specify which bean should be injected when there are multiple beans of the same type.',
-    tags: ['spring', 'di', 'autowired', 'qualifier', 'ambiguity'],
-  },
-  {
-    id: 'spring-5',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Value - Injecting Properties',
-    snippet: '@Value("${app.name}")\nprivate String appName;\n\n@Value("${app.port:8080}")\nprivate int port;',
-    description: 'Injects values from properties files, environment variables, or other configuration sources into fields. A default value can be specified with a colon.',
-    tags: ['spring', 'properties', 'value', 'configuration', 'injection'],
-  },
-  {
-    id: 'spring-6',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Scope - Bean Scopes',
-    snippet: '@Component\n@Scope("prototype")\npublic class MyPrototypeBean {}',
-    description: 'Defines the scope of a bean. Common scopes are "singleton" (default, one instance per container) and "prototype" (new instance each time it is requested).',
-    tags: ['spring', 'bean', 'scope', 'singleton', 'prototype'],
-  },
-  {
-    id: 'spring-7',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Profile - Environment-Specific Beans',
-    snippet: '@Configuration\n@Profile("development")\npublic class DevConfig {\n    // Beans for the development environment\n}',
-    description: 'Indicates that a component is eligible for registration only when one or more specified profiles are active. This allows for different bean configurations in different environments (dev, prod).',
-    tags: ['spring', 'profile', 'configuration', 'environment'],
-  },
-  {
-    id: 'spring-8',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Transactional - Declarative Transactions',
-    snippet: '@Service\npublic class MyService {\n    @Transactional\n    public void performDatabaseOperation() {\n        // ... database code ...\n    }\n}',
-    description: 'Marks a method or class to be executed within a database transaction. Spring handles the start, commit, and rollback of the transaction automatically.',
-    tags: ['spring', 'transaction', 'transactional', 'database', 'data-access'],
-  },
-  {
-    id: 'spring-9',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Aspect and AOP Annotations',
-    snippet: '@Aspect\n@Component\npublic class LoggingAspect {\n    @Before("execution(* com.example.service.*.*(..))")\n    public void logBefore(JoinPoint joinPoint) {\n        System.out.println("Method called: " + joinPoint.getSignature().getName());\n    }\n}',
-    description: 'Used for Aspect-Oriented Programming (AOP). @Aspect declares a class as an aspect. Annotations like @Before, @After, @Around define advice that runs at specific join points (e.g., before a method execution).',
-    tags: ['spring', 'aop', 'aspect', 'cross-cutting', 'logging'],
-  },
-  {
-    id: 'spring-10',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@ComponentScan',
-    snippet: '@Configuration\n@ComponentScan(basePackages = "com.example.myapp")\npublic class AppConfig {}',
-    description: 'Configures component scanning directives for use with @Configuration classes. It tells Spring where to look for classes annotated with @Component, @Service, etc.',
-    tags: ['spring', 'configuration', 'componentscan', 'di', 'bean'],
-  },
-  {
-    id: 'spring-11',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@PostConstruct and @PreDestroy',
-    snippet: '@Component\npublic class MyBean {\n    @PostConstruct\n    public void init() {\n        // Initialization logic after dependency injection\n    }\n\n    @PreDestroy\n    public void cleanup() {\n        // Cleanup logic before bean is destroyed\n    }\n}',
-    description: 'Lifecycle callback annotations. Methods annotated with @PostConstruct are invoked after a bean has been constructed and its dependencies injected. @PreDestroy methods are called just before the bean is removed from the container.',
-    tags: ['spring', 'bean', 'lifecycle', 'postconstruct', 'predestroy'],
-  },
-  {
-    id: 'spring-12',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@EnableAsync and @Async',
-    snippet: '@Configuration\n@EnableAsync\npublic class AppConfig {}\n\n@Service\npublic class MyService {\n    @Async\n    public void performLongRunningTask() {\n        // This method will run in a separate thread\n    }\n}',
-    description: '@EnableAsync enables Spring\'s asynchronous method execution capability. The @Async annotation on a method marks it as a candidate for asynchronous execution, typically in a separate thread from the caller.',
-    tags: ['spring', 'async', 'asynchronous', 'threading', 'concurrency'],
-  },
-  {
-    id: 'spring-13',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@EnableScheduling and @Scheduled',
-    snippet: '@Configuration\n@EnableScheduling\npublic class AppConfig {}\n\n@Component\npublic class MyScheduledTasks {\n    @Scheduled(fixedRate = 5000) // runs every 5 seconds\n    public void doTask() {\n        // ... \n    }\n}',
-    description: '@EnableScheduling enables Spring\'s scheduled task execution. @Scheduled marks a method to be executed at a given interval, with options like `fixedRate`, `fixedDelay`, or a `cron` expression.',
-    tags: ['spring', 'scheduling', 'cron', 'task', 'background'],
-  },
-  {
-    id: 'spring-14',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@Primary',
-    snippet: '@Component\n@Primary\npublic class EmailNotification implements NotificationService {}\n\n@Component\npublic class SmsNotification implements NotificationService {}',
-    description: 'Indicates that a bean should be given preference when multiple candidates are qualified to autowire a single-valued dependency. If a bean with @Primary exists, it will be chosen.',
-    tags: ['spring', 'di', 'autowired', 'primary', 'ambiguity'],
-  },
-  {
-    id: 'spring-15',
-    category: 'Spring',
-    subCategory: 'java',
-    title: '@PropertySource',
-    snippet: '@Configuration\n@PropertySource("classpath:custom.properties")\npublic class AppConfig {}',
-    description: 'Provides a convenient and declarative mechanism for adding a PropertySource to Spring\'s Environment. It is used to load properties files into the context.',
-    tags: ['spring', 'properties', 'propertysource', 'configuration'],
-  },
-  {
-    id: 'spring-16',
-    category: 'Spring',
-    subCategory: 'java',
-    title: 'RestTemplate for Client-Side HTTP',
-    snippet: `@Service
-public class MyClient {
-    private final RestTemplate restTemplate = new RestTemplate();
+    title: 'AI: Basic Chat Request',
+    snippet: `@RestController
+public class ChatController {
+    private final ChatClient chatClient;
 
-    public String fetchData() {
-        String url = "https://api.example.com/data";
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
-        return response.getBody();
+    @Autowired
+    public ChatController(ChatClient chatClient) {
+        this.chatClient = chatClient;
+    }
+
+    @GetMapping("/ai/simple")
+    public String simpleChat() {
+        return chatClient.call("Tell me a joke");
     }
 }`,
-    description: '`RestTemplate` is the central Spring class for synchronous client-side HTTP access. It simplifies interaction with REST APIs. Note: In modern Spring, the reactive `WebClient` is often preferred.',
-    tags: ['spring', 'resttemplate', 'http', 'client', 'rest', 'api'],
+    description: 'The ChatClient is the central interface for interacting with LLMs. Autowire it and use the .call() method for a simple request-response interaction.',
+    tags: ['spring ai', 'chatclient', 'llm', 'ai', 'java', 'openai'],
+  },
+  {
+    id: 'spring-ai-10',
+    category: 'Spring',
+    subCategory: 'java',
+    title: 'AI: Function Calling',
+    snippet: `// In your ChatController, referencing a bean that defines the function
+ChatResponse response = chatClient.call(new Prompt(
+    "What's the weather like in San Francisco?",
+    AiOptions.builder().withFunction("weatherFunction").build()
+));
+
+// Function definition in another bean
+@Bean
+@Description("Get the weather in a location")
+public Function<WeatherRequest, WeatherResponse> weatherFunction() {
+    return (request) -> new WeatherResponse("The weather in " + request.location() + " is sunny.");
+}
+`,
+    description: 'Enable the LLM to call your application\'s Java functions. Define a Function bean with an @Description annotation and reference its name in the ChatClient call options. Spring AI handles the mapping.',
+    tags: ['spring ai', 'function calling', 'tools', 'llm', 'api'],
+  },
+  {
+    id: 'spring-ai-11',
+    category: 'Spring',
+    subCategory: 'java',
+    title: 'AI: Image Generation',
+    snippet: `@Autowired
+private ImageClient imageClient;
+
+public String generateImage() {
+    ImagePrompt imagePrompt = new ImagePrompt("A photorealistic cat astronaut on the moon.");
+    ImageResponse response = imageClient.call(imagePrompt);
+    String imageUrl = response.getResult().getOutput().getUrl();
+    return imageUrl;
+}`,
+    description: 'Use the ImageClient interface to generate images from a text prompt. The client must be backed by a model that supports image generation (e.g., DALL-E 3 with OpenAI).',
+    tags: ['spring ai', 'image generation', 'imageclient', 'dalle', 'openai'],
+  },
+  {
+    id: 'spring-ai-9',
+    category: 'Spring',
+    subCategory: 'java',
+    title: 'AI: RAG - Augmenting a Prompt',
+    snippet: `public String ragQuery(String userQuery) {
+    // 1. Retrieve relevant documents from the VectorStore
+    List<Document> similarDocuments = vectorStore.similaritySearch(userQuery);
+    String context = similarDocuments.stream()
+            .map(Document::getContent)
+            .collect(Collectors.joining(System.lineSeparator()));
+
+    // 2. Create a prompt with the retrieved context
+    String template = """
+            Answer the user's question based on the following information:
+            {context}
+            
+            Question: {question}
+            """;
+    PromptTemplate promptTemplate = new PromptTemplate(template);
+    Prompt prompt = promptTemplate.create(Map.of(
+        "context", context, 
+        "question", userQuery
+    ));
+
+    // 3. Call the LLM with the augmented prompt
+    return chatClient.call(prompt).getResult().getOutput().getContent();
+}`,
+    description: 'The core of RAG: find documents semantically similar to the user\'s query, inject their content into a prompt as context, and then ask the LLM to answer based on that context.',
+    tags: ['spring ai', 'rag', 'prompt', 'context', 'vectorstore', 'retrieval'],
   },
 ];

@@ -6,6 +6,7 @@ export const junitCheatSheets: CheatSheet[] = [
     category: 'JUnit',
     subCategory: 'java',
     title: '@Test Annotation',
+    type: 'code',
     snippet: `@Test
 void myFirstTest() {
     assertEquals(2, 1 + 1);
@@ -18,6 +19,7 @@ void myFirstTest() {
     category: 'JUnit',
     subCategory: 'java',
     title: 'Assertion Methods',
+    type: 'code',
     snippet: `import static org.junit.jupiter.api.Assertions.*;
 
 @Test
@@ -34,6 +36,7 @@ void standardAssertions() {
     category: 'JUnit',
     subCategory: 'java',
     title: 'Test Lifecycle Annotations',
+    type: 'code',
     snippet: `@BeforeAll
 static void setupAll() { /* Runs once before all tests */ }
 
@@ -53,6 +56,7 @@ static void tearDownAll() { /* Runs once after all tests */ }`,
     category: 'JUnit',
     subCategory: 'java',
     title: '@DisplayName and @Disabled',
+    type: 'code',
     snippet: `@Test
 @DisplayName("This is a custom test name with spaces and symbols")
 void testWithCustomName() { /* ... */ }
@@ -68,6 +72,7 @@ void skippedTest() { /* ... */ }`,
     category: 'JUnit',
     subCategory: 'java',
     title: 'Testing for Exceptions',
+    type: 'code',
     snippet: `@Test
 void exceptionTesting() {
     IllegalArgumentException exception = assertThrows(
@@ -87,6 +92,7 @@ void exceptionTesting() {
     category: 'JUnit',
     subCategory: 'java',
     title: 'Parameterized Tests',
+    type: 'code',
     snippet: `@ParameterizedTest
 @ValueSource(strings = { "racecar", "radar", "level" })
 void palindromes(String candidate) {
@@ -100,6 +106,7 @@ void palindromes(String candidate) {
     category: 'JUnit',
     subCategory: 'java',
     title: 'Mockito Integration: @ExtendWith',
+    type: 'code',
     snippet: `import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -115,6 +122,7 @@ class MyMockitoTest {
     category: 'JUnit',
     subCategory: 'java',
     title: 'Mockito Integration: @Mock and @InjectMocks',
+    type: 'code',
     snippet: `@ExtendWith(MockitoExtension.class)
 class MyServiceTest {
     @Mock

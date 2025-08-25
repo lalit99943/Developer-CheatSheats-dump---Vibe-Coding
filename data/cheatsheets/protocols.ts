@@ -17,6 +17,64 @@ export const protocolsCheatSheets: CheatSheet[] = [
     tags: ['protocols', 'osi model', 'networking', 'layers', 'conceptual'],
   },
   {
+    id: 'proto-osi-diagram',
+    category: 'Protocols',
+    subCategory: 'svg',
+    title: 'OSI Model Layers',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 400 320" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .layer-box { stroke: #475569; stroke-width: 1.5; rx: 5; }
+        .layer-text { fill: #e2e8f0; font-size: 14px; font-weight: 600; }
+        .example-text { fill: #94a3b8; font-size: 12px; }
+        .arrow { fill: #64748b; }
+      </style>
+      <defs>
+        <marker id="proto-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="arrow"/>
+        </marker>
+      </defs>
+      
+      <g class="layer" id="layer7">
+        <rect x="20" y="20" width="360" height="35" fill="#3b82f6" class="layer-box"/>
+        <text x="35" y="43" class="layer-text">7. Application</text>
+        <text x="250" y="43" class="example-text">HTTP, SMTP, FTP</text>
+      </g>
+      <g class="layer" id="layer6">
+        <rect x="20" y="60" width="360" height="35" fill="#6366f1" class="layer-box"/>
+        <text x="35" y="83" class="layer-text">6. Presentation</text>
+        <text x="250" y="83" class="example-text">SSL/TLS, JPEG, MIDI</text>
+      </g>
+      <g class="layer" id="layer5">
+        <rect x="20" y="100" width="360" height="35" fill="#8b5cf6" class="layer-box"/>
+        <text x="35" y="123" class="layer-text">5. Session</text>
+        <text x="250" y="123" class="example-text">APIs, Sockets</text>
+      </g>
+      <g class="layer" id="layer4">
+        <rect x="20" y="140" width="360" height="35" fill="#a855f7" class="layer-box"/>
+        <text x="35" y="163" class="layer-text">4. Transport</text>
+        <text x="250" y="163" class="example-text">TCP, UDP</text>
+      </g>
+      <g class="layer" id="layer3">
+        <rect x="20" y="180" width="360" height="35" fill="#d946ef" class="layer-box"/>
+        <text x="35" y="203" class="layer-text">3. Network</text>
+        <text x="250" y="203" class="example-text">IP, ICMP, IGMP</text>
+      </g>
+      <g class="layer" id="layer2">
+        <rect x="20" y="220" width="360" height="35" fill="#ec4899" class="layer-box"/>
+        <text x="35" y="243" class="layer-text">2. Data Link</text>
+        <text x="250" y="243" class="example-text">Ethernet, MAC Address</text>
+      </g>
+      <g class="layer" id="layer1">
+        <rect x="20" y="260" width="360" height="35" fill="#f43f5e" class="layer-box"/>
+        <text x="35" y="283" class="layer-text">1. Physical</text>
+        <text x="250" y="283" class="example-text">Cables, Hubs</text>
+      </g>
+    </svg>`,
+    description: 'A visual diagram of the 7 layers of the OSI model, showing the hierarchy from the Physical layer to the Application layer with common examples for each.',
+    tags: ['protocols', 'osi model', 'networking', 'layers', 'diagram', 'svg'],
+  },
+  {
     id: 'proto-2',
     category: 'Protocols',
     subCategory: 'text',
@@ -26,6 +84,51 @@ Establishes a connection via a three-way handshake (SYN, SYN-ACK, ACK).
 Guarantees that data arrives in order and retransmits lost packets.`,
     description: 'TCP is one of the main protocols of the Internet protocol suite. It is used for applications that require high reliability, such as web browsing (HTTP/HTTPS), email (SMTP), and file transfer (FTP).',
     tags: ['protocols', 'tcp', 'transport layer', 'reliable', 'networking'],
+  },
+   {
+    id: 'proto-tcp-handshake',
+    category: 'Protocols',
+    subCategory: 'svg',
+    title: 'TCP 3-Way Handshake',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" width="450" height="250" viewBox="0 0 450 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .actor { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .lifeline { stroke: #475569; stroke-dasharray: 4, 4; }
+        .message { stroke: #60a5fa; stroke-width: 2; marker-end: url(#msg-arrow); }
+        .message-text { fill: #94a3b8; font-size: 12px; }
+      </style>
+      <defs>
+        <marker id="msg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#60a5fa"/>
+        </marker>
+      </defs>
+      
+      <!-- Actors -->
+      <text x="100" y="40" class="actor">Client</text>
+      <line x1="100" y1="50" x2="100" y2="220" class="lifeline"/>
+      
+      <text x="350" y="40" class="actor">Server</text>
+      <line x1="350" y1="50" x2="350" y2="220" class="lifeline"/>
+      
+      <!-- SYN -->
+      <line x1="110" y1="80" x2="340" y2="80" class="message"/>
+      <text x="225" y="75" class="message-text" text-anchor="middle">1. SYN (Synchronize)</text>
+      <text x="225" y="95" class="message-text" text-anchor="middle" font-style="italic">"Hi, I want to connect."</text>
+      
+      <!-- SYN-ACK -->
+      <line x1="340" y1="140" x2="110" y2="140" class="message"/>
+      <text x="225" y="135" class="message-text" text-anchor="middle">2. SYN-ACK (Synchronize-Acknowledge)</text>
+       <text x="225" y="155" class="message-text" text-anchor="middle" font-style="italic">"I hear you. I'm ready."</text>
+      
+      <!-- ACK -->
+      <line x1="110" y1="200" x2="340" y2="200" class="message"/>
+      <text x="225" y="195" class="message-text" text-anchor="middle">3. ACK (Acknowledge)</text>
+      <text x="225" y="215" class="message-text" text-anchor="middle" font-style="italic">"Got it. Let's talk."</text>
+      
+    </svg>`,
+    description: 'A sequence diagram showing the three steps TCP uses to establish a reliable connection between a client and a server before any data is transferred.',
+    tags: ['protocols', 'tcp', 'handshake', 'networking', 'syn', 'ack', 'diagram', 'svg'],
   },
   {
     id: 'proto-3',

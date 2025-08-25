@@ -4,8 +4,9 @@ import {
     KubernetesIcon, DatabaseIcon, TerminalIcon, PythonIcon, JavaScriptIcon,
     AngularIcon, RegexIcon, CssIcon, ApiIcon, MavenIcon, SpringIcon, JavaIcon,
     BriefcaseIcon, BrainCircuitIcon, NetworkIcon, AwsIcon, NpmIcon, MongoDbIcon,
-    NodeJsIcon, SecurityIcon, AlgorithmsIcon, DataStructuresIcon, ProtocolsIcon,
-    SystemArchitectureIcon, ServerIcon, JUnitIcon, OAuthIcon, CiCdMonitoringIcon, RedisIcon
+    NodeJsIcon, SecurityIcon, AlgorithmsIcon, DataStructuresIcon,
+    SystemArchitectureIcon, ServerIcon, JUnitIcon, CiCdMonitoringIcon, RedisIcon,
+    ReactIcon, GcpIcon, TerraformIcon, JestIcon, GoIcon, DesignPatternsIcon
 } from './IconComponents';
 
 interface SidebarProps {
@@ -20,12 +21,10 @@ const CategoryIcon: React.FC<{ category: string; className: string }> = memo(({ 
     switch (category.toLowerCase()) {
         case 'all': return <HomeIcon className={className} />;
         case 'git': return <GitIcon className={className} />;
-        case 'docker':
-        case 'dockerfile': return <DockerIcon className={className} />;
+        case 'docker': return <DockerIcon className={className} />;
         case 'kubernetes': return <KubernetesIcon className={className} />;
         case 'sql': return <DatabaseIcon className={className} />;
-        case 'command line':
-        case 'linux cli': return <TerminalIcon className={className} />;
+        case 'command line': return <TerminalIcon className={className} />;
         case 'python': return <PythonIcon className={className} />;
         case 'pip': return <PythonIcon className={className} />;
         case 'javascript': return <JavaScriptIcon className={className} />;
@@ -34,16 +33,13 @@ const CategoryIcon: React.FC<{ category: string; className: string }> = memo(({ 
         case 'css': return <CssIcon className={className} />;
         case 'rest': return <ApiIcon className={className} />;
         case 'maven': return <MavenIcon className={className} />;
-        case 'spring':
-        case 'springmvc':
-        case 'springboot':
-        case 'spring ai': return <SpringIcon className={className} />;
-        case 'java 8':
-        case 'java basics': return <JavaIcon className={className} />;
+        case 'spring': return <SpringIcon className={className} />;
+        case 'java': return <JavaIcon className={className} />;
         case 'management': return <BriefcaseIcon className={className} />;
         case 'ai': return <BrainCircuitIcon className={className} />;
-        case 'networking': return <NetworkIcon className={className} />;
+        case 'networking & protocols': return <NetworkIcon className={className} />;
         case 'aws': return <AwsIcon className={className} />;
+        case 'gcp': return <GcpIcon className={className} />;
         case 'npm': return <NpmIcon className={className} />;
         case 'mongodb': return <MongoDbIcon className={className} />;
         case 'redis': return <RedisIcon className={className} />;
@@ -51,14 +47,15 @@ const CategoryIcon: React.FC<{ category: string; className: string }> = memo(({ 
         case 'security': return <SecurityIcon className={className} />;
         case 'algorithms': return <AlgorithmsIcon className={className} />;
         case 'data structures': return <DataStructuresIcon className={className} />;
-        case 'protocols': return <ProtocolsIcon className={className} />;
         case 'system architecture': return <SystemArchitectureIcon className={className} />;
         case 'servers': return <ServerIcon className={className} />;
         case 'junit': return <JUnitIcon className={className} />;
-        case 'oauth and sso': return <OAuthIcon className={className} />;
-        case 'ci/cd and monitoring':
-        case 'jenkins':
-        case 'github actions': return <CiCdMonitoringIcon className={className} />;
+        case 'ci/cd': return <CiCdMonitoringIcon className={className} />;
+        case 'react': return <ReactIcon className={className} />;
+        case 'terraform': return <TerraformIcon className={className} />;
+        case 'jest': return <JestIcon className={className} />;
+        case 'go': return <GoIcon className={className} />;
+        case 'design patterns': return <DesignPatternsIcon className={className} />;
         default: return <FolderIcon className={className} />;
     }
 });

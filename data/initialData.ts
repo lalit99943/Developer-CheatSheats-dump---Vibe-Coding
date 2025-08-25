@@ -1,19 +1,13 @@
 import { CheatSheet } from '../types';
 import { gitCheatSheets } from './cheatsheets/git';
 import { dockerCheatSheets } from './cheatsheets/docker';
-import { dockerfileCheatSheets } from './cheatsheets/dockerfile';
 import { sqlCheatSheets } from './cheatsheets/sql';
-import { shellCheatSheets } from './cheatsheets/shell';
 import { pythonCheatSheets } from './cheatsheets/python';
 import { restCheatSheets } from './cheatsheets/rest';
 import { mavenCheatSheets } from './cheatsheets/maven';
 import { springCheatSheets } from './cheatsheets/spring';
-import { springMvcCheatSheets } from './cheatsheets/springMvc';
-import { springBootCheatSheets } from './cheatsheets/springBoot';
-import { java8CheatSheets } from './cheatsheets/java8';
 import { managementCheatSheets } from './cheatsheets/management';
 import { aiCheatSheets } from './cheatsheets/ai';
-import { springAiCheatSheets } from './cheatsheets/springAi';
 import { kubernetesCheatSheets } from './cheatsheets/kubernetes';
 import { cssCheatSheets } from './cheatsheets/css';
 import { angularCheatSheets } from './cheatsheets/angular';
@@ -29,56 +23,65 @@ import { nodejsCheatSheets } from './cheatsheets/nodejs';
 import { securityCheatSheets } from './cheatsheets/security';
 import { algorithmsCheatSheets } from './cheatsheets/algorithms';
 import { dataStructuresCheatSheets } from './cheatsheets/datastructures';
-import { protocolsCheatSheets } from './cheatsheets/protocols';
 import { systemArchitectureCheatSheets } from './cheatsheets/systemarchitecture';
 import { serversCheatSheets } from './cheatsheets/servers';
 import { junitCheatSheets } from './cheatsheets/junit';
-import { oauthSsoCheatSheets } from './cheatsheets/oauthsso';
-import { cicdMonitoringCheatSheets } from './cheatsheets/cicdmonitoring';
-import { javaBasicsCheatSheets } from './cheatsheets/java-basics';
-import { jenkinsCheatSheets } from './cheatsheets/jenkins';
-import { linuxCheatSheets } from './cheatsheets/linux';
-import { githubActionsCheatSheets } from './cheatsheets/github-actions';
+import { javaCheatSheets } from './cheatsheets/java';
+import { cicdCheatSheets } from './cheatsheets/cicd';
+import { shellCheatSheets } from './cheatsheets/shell';
+import { reactCheatSheets } from './cheatsheets/react';
+import { gcpCheatSheets } from './cheatsheets/gcp';
+import { terraformCheatSheets } from './cheatsheets/terraform';
+import { jestCheatSheets } from './cheatsheets/jest';
+import { designPatternsCheatSheets } from './cheatsheets/designpatterns';
+import { goCheatSheets } from './cheatsheets/go';
 
-export const initialData: CheatSheet[] = [
-  ...gitCheatSheets,
-  ...dockerCheatSheets,
-  ...dockerfileCheatSheets,
-  ...kubernetesCheatSheets,
-  ...sqlCheatSheets,
-  ...mongoDbCheatSheets,
-  ...redisCheatSheets,
-  ...shellCheatSheets,
-  ...linuxCheatSheets,
-  ...pythonCheatSheets,
-  ...javascriptCheatSheets,
-  ...nodejsCheatSheets,
-  ...angularCheatSheets,
-  ...regexCheatSheets,
-  ...cssCheatSheets,
-  ...restCheatSheets,
-  ...mavenCheatSheets,
-  ...springCheatSheets,
-  ...springMvcCheatSheets,
-  ...springBootCheatSheets,
-  ...java8CheatSheets,
-  ...javaBasicsCheatSheets,
-  ...jenkinsCheatSheets,
-  ...managementCheatSheets,
+const allData: CheatSheet[] = [
   ...aiCheatSheets,
-  ...springAiCheatSheets,
-  ...networkingCheatSheets,
-  ...protocolsCheatSheets,
+  ...algorithmsCheatSheets,
+  ...angularCheatSheets,
   ...awsCheatSheets,
+  ...cicdCheatSheets,
+  ...shellCheatSheets, // Consolidated from shell & linux
+  ...cssCheatSheets,
+  ...dataStructuresCheatSheets,
+  ...designPatternsCheatSheets, // New
+  ...dockerCheatSheets, // Consolidated from docker & dockerfile
+  ...gitCheatSheets,
+  ...goCheatSheets, // New
+  ...gcpCheatSheets, // New
+  ...javaCheatSheets, // Consolidated from java, java-basics, java8
+  ...javascriptCheatSheets,
+  ...jestCheatSheets, // New
+  ...junitCheatSheets,
+  ...kubernetesCheatSheets,
+  ...managementCheatSheets,
+  ...mavenCheatSheets,
+  ...mongoDbCheatSheets,
+  ...networkingCheatSheets, // Consolidated from networking & protocols
+  ...nodejsCheatSheets,
   ...npmCheatSheets,
   ...pipCheatSheets,
-  ...securityCheatSheets,
-  ...algorithmsCheatSheets,
-  ...dataStructuresCheatSheets,
-  ...systemArchitectureCheatSheets,
+  ...pythonCheatSheets,
+  ...reactCheatSheets, // New
+  ...redisCheatSheets,
+  ...regexCheatSheets,
+  ...restCheatSheets,
+  ...securityCheatSheets, // Consolidated from security & oauth
   ...serversCheatSheets,
-  ...junitCheatSheets,
-  ...oauthSsoCheatSheets,
-  ...cicdMonitoringCheatSheets,
-  ...githubActionsCheatSheets,
+  ...springCheatSheets, // Consolidated from spring, springmvc, springboot, springai
+  ...sqlCheatSheets,
+  ...systemArchitectureCheatSheets,
+  ...terraformCheatSheets, // New
 ];
+
+// Sort by category, then by title for a consistent order
+allData.sort((a, b) => {
+    if (a.category.toLowerCase() < b.category.toLowerCase()) return -1;
+    if (a.category.toLowerCase() > b.category.toLowerCase()) return 1;
+    if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+    if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+    return 0;
+});
+
+export const initialData: CheatSheet[] = allData;

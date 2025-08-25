@@ -28,6 +28,62 @@ Resource Server: The API server that hosts the user's protected data.`,
     tags: ['oauth', 'authorization code', 'grant type', 'web app', 'security'],
   },
   {
+    id: 'oauth-flow-diagram',
+    category: 'OAuth and SSO',
+    subCategory: 'svg',
+    title: 'OAuth 2.0 Authorization Code Flow',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .actor { font-size: 13px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .lifeline { stroke: #475569; stroke-dasharray: 4, 4; }
+        .message { stroke: #60a5fa; stroke-width: 1.5; marker-end: url(#oauth-arrow); }
+        .message-text { fill: #94a3b8; font-size: 11px; }
+        .note { fill: #334155; stroke: #475569; }
+        .note-text { fill: #cbd5e1; font-size: 10px; }
+      </style>
+      <defs>
+        <marker id="oauth-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#60a5fa"/>
+        </marker>
+      </defs>
+      
+      <!-- Actors -->
+      <text x="70" y="30" class="actor">User's Browser</text>
+      <line x1="70" y1="40" x2="70" y2="380" class="lifeline"/>
+      
+      <text x="220" y="30" class="actor">Client App</text>
+      <line x1="220" y1="40" x2="220" y2="380" class="lifeline"/>
+      
+      <text x="380" y="30" class="actor">Auth Server</text>
+      <line x1="380" y1="40" x2="380" y2="380" class="lifeline"/>
+      
+      <text x="530" y="30" class="actor">Resource Server</text>
+      <line x1="530" y1="40" x2="530" y2="380" class="lifeline"/>
+
+      <!-- Flow -->
+      <line x1="80" y1="60" x2="210" y2="60" class="message"/><text x="85" y="55" class="message-text">1. Request Access</text>
+      <line x1="210" y1="80" x2="80" y2="80" class="message"/><text x="85" y="95" class="message-text">2. Redirect to Auth Server</text>
+      <line x1="80" y1="110" x2="370" y2="110" class="message"/><text x="85" y="105" class="message-text">3. User Authenticates & Consents</text>
+      <line x1="370" y1="140" x2="80" y2="140" class="message"/><text x="85" y="155" class="message-text">4. Redirect with Auth Code</text>
+      <line x1="80" y1="170" x2="210" y2="170" class="message"/><text x="85" y="165" class="message-text">5. Pass Auth Code to Client</text>
+      
+      <!-- Backend Communication Note -->
+      <rect x="225" y="190" width="150" height="20" class="note"/>
+      <text x="300" y="204" class="note-text" text-anchor="middle">Backend Channel</text>
+
+      <line x1="230" y1="230" x2="370" y2="230" class="message"/><text x="235" y="225" class="message-text">6. Exchange Auth Code for Token</text>
+      <line x1="370" y1="260" x2="230" y2="260" class="message"/><text x="235" y="275" class="message-text">7. Receive Access Token</text>
+      
+      <line x1="230" y1="300" x2="520" y2="300" class="message"/><text x="235" y="295" class="message-text">8. Request Protected Resource (with Token)</text>
+      <line x1="520" y1="330" x2="230" y2="330" class="message"/><text x="235" y="345" class="message-text">9. Return Protected Resource</text>
+      
+      <line x1="210" y1="360" x2="80" y2="360" class="message"/><text x="85" y="375" class="message-text">10. Display Data</text>
+    </svg>`,
+    description: 'A sequence diagram showing the interactions between the user, client application, authorization server, and resource server during the OAuth 2.0 Authorization Code flow. This is the standard and most secure flow for web applications.',
+    tags: ['oauth', 'sso', 'diagram', 'authorization code', 'sequence', 'svg'],
+  },
+  {
     id: 'oauth-3',
     category: 'OAuth and SSO',
     subCategory: 'text',

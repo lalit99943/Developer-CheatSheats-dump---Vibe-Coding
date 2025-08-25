@@ -108,5 +108,51 @@ export const redisCheatSheets: CheatSheet[] = [
     snippet: 'SUBSCRIBE mychannel',
     description: 'Listens for messages published to the given channels. This command blocks the client and waits for messages.',
     tags: ['redis', 'pubsub', 'subscribe', 'messaging'],
+  },
+  {
+    id: 'redis-pubsub-diagram',
+    category: 'Redis',
+    subCategory: 'svg',
+    title: 'Redis Pub/Sub Pattern',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .channel-box { fill: #0f172a; stroke: #475569; rx: 5; }
+        .label { font-size: 14px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .sub-label { font-size: 11px; fill: #94a3b8; text-anchor: middle; font-family: 'Fira Code', monospace;}
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#redis-arrow); }
+        .message-arrow { stroke: #f59e0b; }
+    </style>
+    <defs>
+        <marker id="redis-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+        </marker>
+    </defs>
+
+    <!-- Publisher -->
+    <rect x="20" y="95" width="100" height="60" class="box"/>
+    <text x="70" y="130" class="label">Publisher</text>
+
+    <!-- Channel -->
+    <rect x="190" y="95" width="120" height="60" class="channel-box"/>
+    <text x="250" y="120" class="label">Channel</text>
+    <text x="250" y="140" class="sub-label">"news.sports"</text>
+
+    <!-- Subscribers -->
+    <rect x="380" y="20" width="100" height="60" class="box"/>
+    <text x="430" y="55" class="label">Subscriber 1</text>
+    <rect x="380" y="170" width="100" height="60" class="box"/>
+    <text x="430" y="205" class="label">Subscriber 2</text>
+    
+    <!-- Arrows -->
+    <path d="M 120 125 L 190 125" class="arrow message-arrow"/>
+    <text x="155" y="115" class="sub-label" fill="#fcd34d">PUBLISH</text>
+
+    <path d="M 310 110 L 380 50" class="arrow"/>
+    <path d="M 310 140 L 380 200" class="arrow"/>
+</svg>`,
+    description: 'A diagram of the Redis Pub/Sub model. A "Publisher" client sends messages to a specific "Channel". One or more "Subscriber" clients, who are subscribed to that channel, receive the message. This decouples the message sender from the receivers.',
+    tags: ['redis', 'pubsub', 'messaging', 'design pattern', 'diagram', 'svg'],
   }
 ];
