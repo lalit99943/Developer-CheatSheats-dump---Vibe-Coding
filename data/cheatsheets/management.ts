@@ -1,4 +1,4 @@
-import { CheatSheet } from '../../types';
+import { CheatSheet, ChartConfig } from '../../types';
 
 export const managementCheatSheets: CheatSheet[] = [
   {
@@ -104,17 +104,33 @@ export const managementCheatSheets: CheatSheet[] = [
   {
     id: 'mgmt-6',
     category: 'Management',
-    subCategory: 'text',
+    subCategory: 'chart',
     title: 'Agile Metric: Velocity',
-    snippet: 'Velocity: The average amount of work a scrum team completes during a sprint, measured in story points or hours.',
-    description: 'Velocity is used for planning and forecasting. By knowing the team\'s average velocity, a project manager can estimate how many sprints it might take to complete the backlog.',
-    tags: ['management', 'agile', 'scrum', 'metrics', 'velocity', 'planning'],
+    type: 'chart',
+    snippet: {
+      type: 'bar',
+      data: [
+        { name: 'Sprint 1', points: 20, average: 22.4 },
+        { name: 'Sprint 2', points: 25, average: 22.4 },
+        { name: 'Sprint 3', points: 22, average: 22.4 },
+        { name: 'Sprint 4', points: 24, average: 22.4 },
+        { name: 'Sprint 5', points: 21, average: 22.4 },
+      ],
+      xAxisDataKey: 'name',
+      series: [
+        { dataKey: 'points', color: '#60a5fa' },
+        { dataKey: 'average', color: '#f59e0b' },
+      ],
+    } as ChartConfig,
+    description: 'Velocity is the average amount of work a scrum team completes during a sprint, measured in story points. This chart shows the team\'s velocity over several sprints and the running average, which is used for planning and forecasting future work.',
+    tags: ['management', 'agile', 'scrum', 'metrics', 'velocity', 'planning', 'chart'],
   },
   {
     id: 'mgmt-1',
     category: 'Management',
     subCategory: 'text',
     title: 'KPI - Key Performance Indicator',
+    type: 'code',
     snippet: 'KPI: A measurable value that demonstrates how effectively a company is achieving key business objectives.',
     description: 'KPIs are used to evaluate success at reaching targets. For a software team, a KPI could be "average lead time for changes" or "deployment frequency".',
     tags: ['management', 'metrics', 'kpi', 'performance', 'business'],
@@ -122,29 +138,128 @@ export const managementCheatSheets: CheatSheet[] = [
   {
     id: 'mgmt-10',
     category: 'Management',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'MoSCoW Method',
-    snippet: 'Must have: Critical for the current delivery.\nShould have: Important but not necessary for delivery.\nCould have: Desirable but not necessary.\nWon\'t have (this time): Agreed not to be delivered in the current time frame.',
-    description: 'A prioritization technique used to reach a common understanding with stakeholders on the importance they place on the delivery of each requirement.',
-    tags: ['management', 'prioritization', 'moscow', 'requirements', 'agile'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 300" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .title { font-size: 16px; font-weight: bold; fill: #e2e8f0; }
+        .subtitle { font-size: 11px; fill: #64748b; font-style: italic; }
+        .item-text { font-size: 12px; fill: #94a3b8; }
+        .line { stroke: #475569; stroke-width: 2; }
+    </style>
+    
+    <line x1="225" y1="20" x2="225" y2="280" class="line"/>
+    <line x1="20" y1="150" x2="430" y2="150" class="line"/>
+    
+    <!-- Must Have -->
+    <g transform="translate(40, 40)">
+        <text class="title" fill="#ef4444">Must Have</text>
+        <text y="15" class="subtitle">Critical for delivery</text>
+        <text y="40" class="item-text">- Non-negotiable</text>
+        <text y="55" class="item-text">- Core functionality</text>
+    </g>
+    
+    <!-- Should Have -->
+    <g transform="translate(245, 40)">
+        <text class="title" fill="#f59e0b">Should Have</text>
+        <text y="15" class="subtitle">Important, but not critical</text>
+        <text y="40" class="item-text">- High value</text>
+        <text y="55" class="item-text">- Can be delayed if needed</text>
+    </g>
+
+    <!-- Could Have -->
+    <g transform="translate(40, 170)">
+        <text class="title" fill="#3b82f6">Could Have</text>
+        <text y="15" class="subtitle">Desirable, but not necessary</text>
+        <text y="40" class="item-text">- "Nice to have"</text>
+        <text y="55" class="item-text">- Low impact if omitted</text>
+    </g>
+    
+    <!-- Won't Have -->
+    <g transform="translate(245, 170)">
+        <text class="title" fill="#64748b">Won't Have</text>
+        <text y="15" class="subtitle">Out of scope for this timeframe</text>
+        <text y="40" class="item-text">- Can be done later</text>
+        <text y="55" class="item-text">- Least critical</text>
+    </g>
+</svg>`,
+    description: 'A prioritization technique visualized as a 2x2 grid. It helps teams and stakeholders reach a common understanding of the importance of requirements for a specific delivery timeframe.',
+    tags: ['management', 'prioritization', 'moscow', 'requirements', 'agile', 'svg'],
   },
   {
     id: 'mgmt-3',
     category: 'Management',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'MVP - Minimum Viable Product',
-    snippet: 'MVP: A version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort.',
-    description: 'The core idea is to release a basic version of the product that solves a core problem for a set of users, and then iterate based on feedback rather than building a feature-complete product upfront.',
-    tags: ['management', 'product', 'mvp', 'agile', 'lean'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .title { font-size: 13px; font-weight: bold; fill: #e2e8f0; }
+        .label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#mvp-arrow); }
+        .happy { fill: #34d399; }
+        .sad { fill: #ef4444; }
+    </style>
+    <defs>
+        <marker id="mvp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+
+    <!-- Not MVP -->
+    <text x="20" y="40" class="title">Not an MVP (Incremental)</text>
+    <path d="M 80 80 L 140 80" class="arrow"/><text x="80" y="110" class="label">Wheel</text><text x="80" y="60" class="sad">☹️</text>
+    <path d="M 190 80 L 250 80" class="arrow"/><text x="190" y="110" class="label">Axle</text><text x="190" y="60" class="sad">☹️</text>
+    <path d="M 300 80 L 360 80" class="arrow"/><text x="300" y="110" class="label">Chassis</text><text x="300" y="60" class="sad">☹️</text>
+    <text x="410" y="110" class="label">Car</text><text x="410" y="60" class="happy">😊</text>
+    
+    <!-- Is MVP -->
+    <text x="20" y="150" class="title">Is an MVP (Iterative)</text>
+    <path d="M 80 190 L 140 190" class="arrow"/><text x="80" y="220" class="label">Skateboard</text><text x="80" y="170" class="happy">😊</text>
+    <path d="M 190 190 L 250 190" class="arrow"/><text x="190" y="220" class="label">Scooter</text><text x="190" y="170" class="happy">😊</text>
+    <path d="M 300 190 L 360 190" class="arrow"/><text x="300" y="220" class="label">Bicycle</text><text x="300" y="170" class="happy">😊</text>
+    <text x="410" y="220" class="label">Car</text><text x="410" y="170" class="happy">😊</text>
+</svg>`,
+    description: 'An MVP is a version of a new product that allows a team to collect the maximum amount of validated learning about customers with the least effort. The goal is to deliver a functional, lovable product at each stage, not just a component of the final product.',
+    tags: ['management', 'product', 'mvp', 'agile', 'lean', 'svg'],
   },
   {
     id: 'mgmt-2',
     category: 'Management',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'OKR - Objectives and Key Results',
-    snippet: 'Objective: A significant, concrete, action-oriented, and inspirational goal.\nKey Results: Measurable milestones which, if achieved, will advance the objective.',
-    description: 'A goal-setting framework used by companies to define and track objectives and their outcomes. Example: Objective="Launch a successful MVP", KR="Achieve 1,000 sign-ups in the first month".',
-    tags: ['management', 'goals', 'okr', 'strategy', 'planning'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .kr-box { fill: #0f172a; stroke: #334155; rx: 5; }
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#okr-arrow); }
+    </style>
+    <defs>
+        <marker id="okr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+    
+    <rect x="100" y="30" width="250" height="60" class="box"/>
+    <text x="225" y="50" class="title">Objective</text>
+    <text x="225" y="75" class="label">Launch a successful MVP</text>
+    
+    <path d="M 225 90 V 120" class="arrow" />
+
+    <rect x="25" y="150" width="120" height="60" class="kr-box"/>
+    <text x="85" y="170" class="title">Key Result 1</text>
+    <text x="85" y="195" class="label">1,000 sign-ups</text>
+
+    <rect x="165" y="150" width="120" height="60" class="kr-box"/>
+    <text x="225" y="170" class="title">Key Result 2</text>
+    <text x="225" y="195" class="label">20% weekly active</text>
+
+    <rect x="305" y="150" width="120" height="60" class="kr-box"/>
+    <text x="365" y="170" class="title">Key Result 3</text>
+    <text x="365" y="195" class="label">NPS > 40</text>
+</svg>`,
+    description: 'A goal-setting framework. The **Objective** is a significant, inspirational goal. **Key Results** are measurable milestones which, if achieved, will advance the objective. This structure provides a clear path to success.',
+    tags: ['management', 'goals', 'okr', 'strategy', 'planning', 'svg'],
   },
   {
     id: 'mgmt-5',
@@ -200,6 +315,7 @@ export const managementCheatSheets: CheatSheet[] = [
     category: 'Management',
     subCategory: 'text',
     title: 'ROI - Return on Investment',
+    type: 'code',
     snippet: 'ROI = (Net Profit / Cost of Investment) * 100',
     description: 'A performance measure used to evaluate the efficiency or profitability of an investment. In projects, it helps stakeholders decide if a feature or initiative is worth the cost.',
     tags: ['management', 'finance', 'roi', 'business', 'metrics'],
@@ -209,6 +325,7 @@ export const managementCheatSheets: CheatSheet[] = [
     category: 'Management',
     subCategory: 'text',
     title: 'SOW - Statement of Work',
+    type: 'code',
     snippet: 'SOW: A formal document that captures and defines all the work, deliverables, timelines, and costs for a project.',
     description: 'An SOW is a detailed project contract that outlines everything that will be done, by whom, and by when. It is often used for external contractors or client work.',
     tags: ['management', 'project', 'sow', 'contract', 'planning'],
@@ -309,10 +426,40 @@ export const managementCheatSheets: CheatSheet[] = [
   {
     id: 'mgmt-11',
     category: 'Management',
-    subCategory: 'text',
-    title: 'WIP - Work in Progress',
-    snippet: 'WIP Limit: A constraint on the number of work items that are actively being worked on at any given time in a process.',
-    description: 'Limiting WIP is a core concept in Kanban. It helps to reduce context switching, identify bottlenecks, and improve the flow of work, leading to faster delivery.',
-    tags: ['management', 'kanban', 'wip', 'agile', 'flow', 'efficiency'],
+    subCategory: 'svg',
+    title: 'WIP - Work in Progress Limits',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .header { font-size: 12px; fill: #cbd5e1; text-anchor: middle; }
+        .board { fill: #0f172a; stroke: #334155; rx: 5; }
+        .card { fill: #334155; stroke: #475569; rx: 3; }
+        .bottleneck { fill: #ef4444; }
+    </style>
+    
+    <!-- Without WIP -->
+    <text x="125" y="30" class="title">Without WIP Limits (Bottleneck)</text>
+    <rect x="25" y="40" width="200" height="220" class="board"/>
+    <text x="75" y="60" class="header">To Do</text>
+    <text x="175" y="60" class="header">In Progress</text>
+    <rect x="135" y="70" width="80" height="25" class="card bottleneck"/>
+    <rect x="135" y="100" width="80" height="25" class="card bottleneck"/>
+    <rect x="135" y="130" width="80" height="25" class="card bottleneck"/>
+    <rect x="135" y="160" width="80" height="25" class="card bottleneck"/>
+    <rect x="135" y="190" width="80" height="25" class="card bottleneck"/>
+    
+    <!-- With WIP -->
+    <text x="375" y="30" class="title">With WIP Limit (Limit = 2)</text>
+    <rect x="275" y="40" width="200" height="220" class="board"/>
+    <text x="325" y="60" class="header">To Do</text>
+    <text x="425" y="60" class="header">In Progress (2)</text>
+    <rect x="285" y="70" width="80" height="25" class="card"/>
+    <rect x="285" y="100" width="80" height="25" class="card"/>
+    <rect x="385" y="70" width="80" height="25" class="card"/>
+    <rect x="385" y="100" width="80" height="25" class="card"/>
+</svg>`,
+    description: 'Limiting Work In Progress is a core concept in Kanban. It prevents bottlenecks by constraining the number of tasks in a given stage. This improves flow, reduces context switching, and helps teams deliver work faster.',
+    tags: ['management', 'kanban', 'wip', 'agile', 'flow', 'efficiency', 'svg'],
   },
 ];

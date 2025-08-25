@@ -72,24 +72,59 @@ export const gitCheatSheets: CheatSheet[] = [
     tags: ['git', 'checkout', 'switch', 'branch'],
   },
   {
-    id: 'git-8',
+    id: 'git-merge-vs-rebase',
     category: 'GIT',
-    subCategory: 'bash',
-    title: 'Merge Branches',
-    type: 'code',
-    snippet: 'git merge <branch_to_merge>',
-    description: 'Joins another branch into your current branch. This is often done after a pull request has been completed.',
-    tags: ['git', 'merge', 'join', 'branch'],
-  },
-  {
-    id: 'git-9',
-    category: 'GIT',
-    subCategory: 'bash',
-    title: 'Rebase Branch',
-    type: 'code',
-    snippet: 'git rebase <base_branch>',
-    description: 'Re-applies commits from your current branch onto the tip of another branch, creating a more linear commit history.',
-    tags: ['git', 'rebase', 'history', 'linear'],
+    subCategory: 'svg',
+    title: 'Git Merge vs. Rebase',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+      .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+      .label { font-size: 11px; fill: #94a3b8; }
+      .line { stroke-width: 2.5; }
+      .main-line { stroke: #38bdf8; }
+      .feature-line { stroke: #34d399; }
+      .dot { stroke-width: 2; stroke: #0f172a; }
+      .main-dot { fill: #38bdf8; }
+      .feature-dot { fill: #34d399; }
+      .merge-dot { fill: #facc15; }
+    </style>
+    
+    <!-- Merge Section -->
+    <text x="125" y="30" class="title">git merge</text>
+    <path d="M 50 80 H 150" class="line main-line" fill="none"/>
+    <path d="M 150 80 C 175 80, 175 120, 200 120" class="line main-line" fill="none"/>
+    <path d="M 100 80 C 125 80, 125 120, 150 120" class="line feature-line" fill="none"/>
+    <path d="M 150 120 H 200" class="line feature-line" fill="none"/>
+    <circle cx="50" cy="80" r="5" class="dot main-dot"/>
+    <circle cx="100" cy="80" r="5" class="dot main-dot"/>
+    <circle cx="150" cy="80" r="5" class="dot main-dot"/>
+    <circle cx="150" cy="120" r="5" class="dot feature-dot"/>
+    <circle cx="200" cy="120" r="7" class="dot merge-dot"/>
+    <text x="25" y="190" class="label">Preserves original history</text>
+    <text x="25" y="205" class="label">Creates a "merge commit"</text>
+
+    <!-- Divider -->
+    <line x1="250" y1="20" x2="250" y2="260" stroke="#475569"/>
+
+    <!-- Rebase Section -->
+    <text x="375" y="30" class="title">git rebase</text>
+    <path d="M 300 80 H 450" class="line main-line" fill="none"/>
+    <circle cx="300" cy="80" r="5" class="dot main-dot"/>
+    <circle cx="325" cy="80" r="5" class="dot main-dot"/>
+    <circle cx="350" cy="80" r="5" class="dot main-dot"/>
+    <circle cx="375" cy="80" r="5" class="dot feature-dot"/>
+    <circle cx="400" cy="80" r="5" class="dot feature-dot"/>
+    <path d="M 325 120 H 375" class="line feature-line" fill="none" stroke-dasharray="3 3" opacity="0.5"/>
+    <circle cx="325" cy="120" r="5" class="dot main-dot" opacity="0.5"/>
+    <circle cx="350" cy="120" r="5" class="dot feature-dot" opacity="0.5"/>
+    <circle cx="375" cy="120" r="5" class="dot feature-dot" opacity="0.5"/>
+    <path d="M 325 120 C 325 90, 375 110, 375 80" stroke="#64748b" fill="none" stroke-dasharray="3 3" />
+    <text x="275" y="190" class="label">Re-writes history to be linear</text>
+    <text x="275" y="205" class="label">Avoids extra merge commits</text>
+  </svg>`,
+    description: 'A visual comparison of Git workflows. **Merge** joins branches with a new merge commit, preserving the exact history. **Rebase** re-applies commits from one branch onto another, creating a cleaner, linear history but altering the original commit data.',
+    tags: ['git', 'merge', 'rebase', 'workflow', 'diagram', 'svg'],
   },
   {
     id: 'git-10',

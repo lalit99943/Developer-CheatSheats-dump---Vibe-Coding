@@ -53,12 +53,41 @@ jobs:
   {
     id: 'cicd-13',
     category: 'CI/CD',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'Blue-Green Deployment Strategy',
-    type: 'code',
-    snippet: 'A strategy that reduces downtime by running two identical production environments called "Blue" and "Green". At any time, only one of them is live.',
-    description: 'To deploy a new version, you deploy and test it on the inactive (Green) environment. Once it\'s ready, you switch the router to send all traffic to Green. This allows for near-zero downtime and instant rollback by simply switching the router back to Blue.',
-    tags: ['cicd', 'deployment strategy', 'blue-green', 'release', 'devops', 'zero-downtime'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .blue-box { fill: #1e3a8a; stroke: #3b82f6; }
+        .green-box { fill: #064e3b; stroke: #34d399; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#bg-arrow); }
+    </style>
+    <defs>
+        <marker id="bg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+    
+    <!-- Step 1 -->
+    <text x="125" y="30" class="title">Step 1: Deploy to Green</text>
+    <rect x="75" y="50" width="100" height="40" class="box"/><text x="125" y="75" class="label">Router</text>
+    <rect x="25" y="120" width="100" height="50" class="box blue-box"/><text x="75" y="145" class="label">Blue (v1)</text><text x="75" y="160" class="label" font-size="10" fill="#7dd3fc">Live Traffic</text>
+    <rect x="125" y="120" width="100" height="50" class="box green-box"/><text x="175" y="145" class="label">Green (v2)</text><text x="175" y="160" class="label" font-size="10" fill="#a7f3d0">Idle / Testing</text>
+    <path d="M 100 90 V 120" class="arrow" stroke="#3b82f6"/>
+
+    <!-- Divider -->
+    <line x1="250" y1="20" x2="250" y2="260" stroke="#475569"/>
+
+    <!-- Step 2 -->
+    <text x="375" y="30" class="title">Step 2: Switch Traffic</text>
+    <rect x="325" y="50" width="100" height="40" class="box"/><text x="375" y="75" class="label">Router</text>
+    <rect x="275" y="120" width="100" height="50" class="box blue-box"/><text x="325" y="145" class="label">Blue (v1)</text><text x="325" y="160" class="label" font-size="10" fill="#7dd3fc">Idle / Rollback</text>
+    <rect x="375" y="120" width="100" height="50" class="box green-box"/><text x="425" y="145" class="label">Green (v2)</text><text x="425" y="160" class="label" font-size="10" fill="#a7f3d0">Live Traffic</text>
+    <path d="M 350 90 V 120" class="arrow" stroke="#34d399"/>
+</svg>`,
+    description: 'A strategy that reduces downtime by running two identical production environments ("Blue" and "Green"). To deploy, you deploy and test on the inactive environment. Once ready, you switch the router to send all traffic to the new version. This allows for near-zero downtime and instant rollback.',
+    tags: ['cicd', 'deployment strategy', 'blue-green', 'release', 'devops', 'zero-downtime', 'svg'],
   },
   {
     id: 'jenkins-12',
@@ -93,12 +122,43 @@ jobs:
   {
     id: 'cicd-12',
     category: 'CI/CD',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'Canary Deployment Strategy',
-    type: 'code',
-    snippet: 'A strategy where the new version of an application is gradually rolled out to a small subset of users before making it available to everyone.',
-    description: 'This technique allows you to test the new version in a live production environment with minimal impact. If the new version shows errors or poor performance, it can be rolled back without affecting the majority of users.',
-    tags: ['cicd', 'deployment strategy', 'canary', 'release', 'devops'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .label { font-size: 13px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .sub-label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .stable-box { fill: #0f172a; stroke: #3b82f6; }
+        .canary-box { fill: #0f172a; stroke: #f59e0b; }
+        .arrow { stroke-width: 2; marker-end: url(#cd-arrow); }
+    </style>
+    <defs>
+        <marker id="cd-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+    
+    <text x="50" y="125" class="label">User Traffic</text>
+
+    <rect x="150" y="90" width="120" height="70" class="box"/>
+    <text x="210" y="115" class="label">Load Balancer</text>
+    <text x="210" y="140" class="sub-label">Traffic Splitter</text>
+    
+    <path d="M 80 125 L 150 125" class="arrow" stroke="#64748b" />
+    <path d="M 270 115 L 340 60" class="arrow" stroke="#3b82f6" />
+    <text x="320" y="90" class="sub-label" fill="#7dd3fc">99% Traffic</text>
+    
+    <path d="M 270 135 L 340 190" class="arrow" stroke="#f59e0b" />
+    <text x="320" y="160" class="sub-label" fill="#fcd34d">1% Traffic</text>
+
+    <rect x="340" y="30" width="120" height="50" class="box stable-box"/>
+    <text x="400" y="55" class="label">Stable (v1.0)</text>
+    
+    <rect x="340" y="170" width="120" height="50" class="box canary-box"/>
+    <text x="400" y="195" class="label">Canary (v1.1)</text>
+</svg>`,
+    description: 'A strategy where the new version of an application is gradually rolled out to a small subset of users (the "canary") before making it available to everyone. This allows for testing in production with minimal impact. If the canary version shows errors, it can be rolled back without affecting the majority of users.',
+    tags: ['cicd', 'deployment strategy', 'canary', 'release', 'devops', 'svg'],
   },
   {
     id: 'gha-6',

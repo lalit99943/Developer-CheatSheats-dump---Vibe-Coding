@@ -6,6 +6,7 @@ export const securityCheatSheets: CheatSheet[] = [
     category: 'Security',
     subCategory: 'text',
     title: 'Access Token vs. Refresh Token',
+    type: 'code',
     snippet: `Access Token: A short-lived credential used by the client to access the protected resource (API). It is sent with every API request.
 Refresh Token: A long-lived credential used to obtain a new access token after the old one expires. It is stored securely by the client and sent only to the authorization server.`,
     description: 'This separation allows access tokens to be short-lived, reducing the risk if they are compromised. Refresh tokens can be revoked if a security issue is detected, providing better overall security.',
@@ -16,6 +17,7 @@ Refresh Token: A long-lived credential used to obtain a new access token after t
     category: 'Security',
     subCategory: 'text',
     title: 'Authentication vs. Authorization',
+    type: 'code',
     snippet: `Authentication (AuthN): Verifies who you are. (e.g., logging in with a password).
 Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if a user has admin rights).`,
     description: 'A fundamental concept in security. Authentication happens first to confirm identity. Authorization happens second to grant or deny access to resources.',
@@ -26,6 +28,7 @@ Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if
     category: 'Security',
     subCategory: 'text',
     title: 'Authorization Code Grant (OAuth 2.0)',
+    type: 'code',
     snippet: `1. Client redirects User to Authorization Server.
 2. User authenticates and grants consent.
 3. Authorization Server redirects User back to Client with an "authorization code".
@@ -57,34 +60,25 @@ Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if
       </defs>
       
       <!-- Actors -->
-      <text x="70" y="30" class="actor">User's Browser</text>
-      <line x1="70" y1="40" x2="70" y2="380" class="lifeline"/>
-      
-      <text x="220" y="30" class="actor">Client App</text>
-      <line x1="220" y1="40" x2="220" y2="380" class="lifeline"/>
-      
-      <text x="380" y="30" class="actor">Auth Server</text>
-      <line x1="380" y1="40" x2="380" y2="380" class="lifeline"/>
-      
-      <text x="530" y="30" class="actor">Resource Server</text>
-      <line x1="530" y1="40" x2="530" y2="380" class="lifeline"/>
+      <text x="70" y="30" class="actor">User's Browser</text><line x1="70" y1="40" x2="70" y2="380" class="lifeline"/>
+      <text x="220" y="30" class="actor">Client App</text><line x1="220" y1="40" x2="220" y2="380" class="lifeline"/>
+      <text x="380" y="30" class="actor">Auth Server</text><line x1="380" y1="40" x2="380" y2="380" class="lifeline"/>
+      <text x="530" y="30" class="actor">Resource Server</text><line x1="530" y1="40" x2="530" y2="380" class="lifeline"/>
 
       <!-- Flow -->
-      <line x1="80" y1="60" x2="210" y2="60" class="message"/><text x="85" y="55" class="message-text">1. Request Access</text>
-      <line x1="210" y1="80" x2="80" y2="80" class="message"/><text x="85" y="95" class="message-text">2. Redirect to Auth Server</text>
-      <line x1="80" y1="110" x2="370" y2="110" class="message"/><text x="85" y="105" class="message-text">3. User Authenticates & Consents</text>
+      <line x1="80" y1="60" x2="210" y2="60" class="message"/><text x="85" y="55" class="message-text">1. Req Access</text>
+      <line x1="210" y1="80" x2="80" y2="80" class="message"/><text x="85" y="95" class="message-text">2. Redirect to Auth</text>
+      <line x1="80" y1="110" x2="370" y2="110" class="message"/><text x="85" y="105" class="message-text">3. Authenticate & Consent</text>
       <line x1="370" y1="140" x2="80" y2="140" class="message"/><text x="85" y="155" class="message-text">4. Redirect with Auth Code</text>
-      <line x1="80" y1="170" x2="210" y2="170" class="message"/><text x="85" y="165" class="message-text">5. Pass Auth Code to Client</text>
+      <line x1="80" y1="170" x2="210" y2="170" class="message"/><text x="85" y="165" class="message-text">5. Pass Code to Client</text>
       
-      <!-- Backend Communication Note -->
-      <rect x="225" y="190" width="150" height="20" class="note"/>
-      <text x="300" y="204" class="note-text" text-anchor="middle">Backend Channel</text>
+      <rect x="225" y="190" width="150" height="20" class="note"/><text x="300" y="204" class="note-text" text-anchor="middle">Backend Channel</text>
 
-      <line x1="230" y1="230" x2="370" y2="230" class="message"/><text x="235" y="225" class="message-text">6. Exchange Auth Code for Token</text>
+      <line x1="230" y1="230" x2="370" y2="230" class="message"/><text x="235" y="225" class="message-text">6. Exchange Code</text>
       <line x1="370" y1="260" x2="230" y2="260" class="message"/><text x="235" y="275" class="message-text">7. Receive Access Token</text>
       
-      <line x1="230" y1="300" x2="520" y2="300" class="message"/><text x="235" y="295" class="message-text">8. Request Protected Resource (with Token)</text>
-      <line x1="520" y1="330" x2="230" y2="330" class="message"/><text x="235" y="345" class="message-text">9. Return Protected Resource</text>
+      <line x1="230" y1="300" x2="520" y2="300" class="message"/><text x="235" y="295" class="message-text">8. Request Resource</text>
+      <line x1="520" y1="330" x2="230" y2="330" class="message"/><text x="235" y="345" class="message-text">9. Return Resource</text>
       
       <line x1="210" y1="360" x2="80" y2="360" class="message"/><text x="85" y="375" class="message-text">10. Display Data</text>
     </svg>`,
@@ -96,6 +90,7 @@ Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if
     category: 'Security',
     subCategory: 'bash',
     title: 'Basic Port Scan with Nmap',
+    type: 'code',
     snippet: 'nmap -sT -p- 192.168.1.1',
     description: 'Uses Nmap to perform a TCP connect scan (`-sT`) across all ports (`-p-`) on a target IP address to see which services are open.',
     tags: ['security', 'nmap', 'scanning', 'network', 'ports'],
@@ -105,6 +100,7 @@ Authorization (AuthZ): Determines what you are allowed to do. (e.g., checking if
     category: 'Security',
     subCategory: 'text',
     title: 'Client Credentials Grant (OAuth 2.0)',
+    type: 'code',
     snippet: `1. Client authenticates itself directly with the Authorization Server using its client ID and client secret.
 2. Authorization Server validates the credentials and issues an access token.
 Use Case: Machine-to-machine (M2M) communication, CLI tools, or services acting on their own behalf.`,
@@ -116,25 +112,49 @@ Use Case: Machine-to-machine (M2M) communication, CLI tools, or services acting 
     category: 'Security',
     subCategory: 'http',
     title: 'Content Security Policy (CSP) Header',
+    type: 'code',
     snippet: `Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted-cdn.com;`,
     description: 'CSP is an added layer of security that helps to detect and mitigate certain types of attacks, including XSS and data injection. It tells the browser which sources of content (scripts, styles, images) are trusted.',
     tags: ['security', 'csp', 'http', 'header', 'xss', 'web'],
   },
   {
-    id: 'security-5',
+    id: 'security-cors-diagram',
     category: 'Security',
-    subCategory: 'text',
-    title: 'CORS - Cross-Origin Resource Sharing',
-    snippet: `// Example HTTP Header from Server:
-Access-Control-Allow-Origin: https://www.example.com`,
-    description: 'CORS is a browser security mechanism that restricts cross-origin HTTP requests initiated from scripts. Servers can opt-in to allowing cross-origin access by including specific CORS headers in their responses.',
-    tags: ['security', 'cors', 'web', 'browser', 'http', 'header'],
+    subCategory: 'svg',
+    title: 'CORS Pre-flight Request',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 300" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .actor { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .lifeline { stroke: #475569; stroke-dasharray: 4, 4; }
+        .message { stroke: #60a5fa; stroke-width: 2; marker-end: url(#cors-arrow); }
+        .message-text { fill: #94a3b8; font-size: 12px; font-family: 'Fira Code', monospace; }
+      </style>
+      <defs>
+        <marker id="cors-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#60a5fa"/></marker>
+      </defs>
+      
+      <text x="100" y="40" class="actor">Browser</text><line x1="100" y1="50" x2="100" y2="280" class="lifeline"/>
+      <text x="350" y="40" class="actor">Server</text><line x1="350" y1="50" x2="350" y2="280" class="lifeline"/>
+      
+      <line x1="110" y1="80" x2="340" y2="80" class="message"/><text x="115" y="75" class="message-text">1. OPTIONS /api/data</text>
+      
+      <line x1="340" y1="140" x2="110" y2="140" class="message"/><text x="115" y="135" class="message-text">2. Access-Control-Allow-Origin: *</text>
+      <text x="115" y="155" class="message-text">   Access-Control-Allow-Methods: PUT</text>
+
+      <line x1="110" y1="200" x2="340" y2="200" class="message" stroke="#34d399"/><text x="115" y="195" class="message-text" fill="#a7f3d0">3. PUT /api/data (Actual Request)</text>
+      
+      <line x1="340" y1="250" x2="110" y2="250" class="message" stroke="#34d399"/><text x="115" y="265" class="message-text" fill="#a7f3d0">4. 200 OK</text>
+    </svg>`,
+    description: 'CORS is a browser security feature. For requests that can modify data (like PUT), the browser first sends a "pre-flight" OPTIONS request to the server. The server must respond with the correct `Access-Control-Allow-*` headers to permit the actual request.',
+    tags: ['security', 'cors', 'web', 'browser', 'http', 'header', 'diagram', 'svg'],
   },
   {
     id: 'security-11',
     category: 'Security',
     subCategory: 'text',
     title: 'Cross-Site Request Forgery (CSRF) Prevention',
+    type: 'code',
     snippet: `Prevention Method: Anti-CSRF Tokens.
 1. Server generates a unique, unpredictable token for a user session.
 2. Token is embedded in a hidden form field.
@@ -143,25 +163,43 @@ Access-Control-Allow-Origin: https://www.example.com`,
     tags: ['security', 'csrf', 'xsrf', 'owasp', 'web', 'vulnerability', 'token'],
   },
   {
-    id: 'security-4',
+    id: 'security-xss-diagram',
     category: 'Security',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'Cross-Site Scripting (XSS) Prevention',
-    snippet: `Key Principle: Output Encoding.
-When displaying user-provided data in HTML, encode special characters.
-< becomes &lt;
-> becomes &gt;
-" becomes &quot;
-' becomes &#39;
-& becomes &amp;`,
-    description: 'XSS occurs when malicious scripts are injected into trusted websites. Prevent it by properly encoding all user-provided data before it is output in the browser to ensure it is treated as text, not HTML.',
-    tags: ['security', 'xss', 'owasp', 'web', 'encoding'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; font-family: 'Fira Code', monospace;}
+        .box { fill: #0f172a; stroke: #334155; rx: 5; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#xss-arrow); }
+      </style>
+      <defs><marker id="xss-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+      
+      <text x="125" y="30" class="title" fill="#f87171">Vulnerable (No Encoding)</text>
+      <rect x="25" y="50" width="200" height="40" class="box"/><text x="125" y="75" class="label">&lt;script&gt;alert('XSS')&lt;/script&gt;</text>
+      <path d="M 125 90 V 130" class="arrow"/>
+      <rect x="25" y="130" width="200" height="40" class="box" stroke-dasharray="4 4" stroke="#f87171"/>
+      <text x="125" y="155" class="label" fill="#fca5a5">Malicious script runs!</text>
+
+      <line x1="250" y1="20" y2="200" stroke="#475569"/>
+      
+      <text x="375" y="30" class="title" fill="#34d399">Secure (Output Encoding)</text>
+      <rect x="275" y="50" width="200" height="40" class="box"/><text x="375" y="75" class="label">&lt;script&gt;alert('XSS')&lt;/script&gt;</text>
+      <path d="M 375 90 V 130" class="arrow"/>
+      <rect x="275" y="130" width="200" height="40" class="box" stroke-dasharray="4 4" stroke="#34d399"/>
+      <text x="375" y="155" class="label" fill="#a7f3d0">Script shown as plain text</text>
+    </svg>`,
+    description: 'XSS attacks inject malicious scripts into trusted websites. To prevent this, always encode user-provided data before rendering it in HTML. This converts special characters (like `<` and `>`) into their entity equivalents, ensuring the browser treats the input as harmless text instead of executable code.',
+    tags: ['security', 'xss', 'owasp', 'web', 'encoding', 'diagram', 'svg'],
   },
   {
     id: 'security-18',
     category: 'Security',
     subCategory: 'text',
     title: 'Defense in Depth',
+    type: 'code',
     snippet: 'A strategy that uses multiple, layered security measures to protect an asset. No single security measure is perfect, so layers provide redundancy.',
     description: 'If one security layer is breached, other layers are still in place to prevent a full compromise. Examples include having a firewall, intrusion detection system, endpoint protection, and application-level security controls all working together.',
     tags: ['security', 'defense in depth', 'layered security', 'design', 'principle'],
@@ -171,6 +209,7 @@ When displaying user-provided data in HTML, encode special characters.
     category: 'Security',
     subCategory: 'bash',
     title: 'Dependency Scanning',
+    type: 'code',
     snippet: `# For Node.js projects
 npm audit
 
@@ -184,6 +223,7 @@ mvn org.owasp:dependency-check-maven:check`,
     category: 'Security',
     subCategory: 'bash',
     title: 'Generate SSH Key Pair',
+    type: 'code',
     snippet: 'ssh-keygen -t ed25519 -C "your_email@example.com"',
     description: 'Creates a new SSH key pair for secure, password-less authentication with services like GitHub or remote servers. Ed25519 is a modern and secure algorithm.',
     tags: ['security', 'ssh', 'authentication', 'keys', 'crypto'],
@@ -193,6 +233,7 @@ mvn org.owasp:dependency-check-maven:check`,
     category: 'Security',
     subCategory: 'text',
     title: 'HTTPS/TLS Explained',
+    type: 'code',
     snippet: `HTTPS = HTTP + TLS (Transport Layer Security)
 Provides three layers of protection:
 1. Encryption: Encrypts the exchanged data to keep it secure from eavesdroppers.
@@ -206,6 +247,7 @@ Provides three layers of protection:
     category: 'Security',
     subCategory: 'text',
     title: 'Input Validation (Whitelisting)',
+    type: 'code',
     snippet: `Whitelisting (Allowlisting): Define exactly what IS allowed, and reject everything else.
 Example: A username field should only allow alphanumeric characters and be between 3-20 characters long. \`^[a-zA-Z0-9]{3,20}$\``,
     description: 'Validating all input from users, APIs, and other sources is critical to prevent injection attacks. Whitelisting is much safer than blacklisting (trying to block known bad input), as it\'s impossible to predict all malicious inputs.',
@@ -222,29 +264,13 @@ Example: A username field should only allow alphanumeric characters and be betwe
         .title { font-size: 13px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
         .text { font-size: 11px; fill: #94a3b8; font-family: 'Fira Code', monospace; }
         .dot { font-size: 20px; font-weight: bold; fill: #64748b; text-anchor: middle; }
-        .header-box { fill: #be123c; }
-        .payload-box { fill: #7e22ce; }
-        .signature-box { fill: #059669; }
+        .header-box { fill: #be123c; } .payload-box { fill: #7e22ce; } .signature-box { fill: #059669; }
       </style>
-      
-      <!-- JWT parts -->
-      <rect x="20" y="50" width="140" height="40" rx="5" class="header-box"/>
-      <text x="90" y="40" class="title">Header</text>
-      <text x="30" y="70" class="text">eyJhbGciOi...</text>
-
+      <rect x="20" y="50" width="140" height="40" rx="5" class="header-box"/><text x="90" y="40" class="title">Header</text><text x="30" y="70" class="text">eyJhbGciOi...</text>
       <text x="170" y="75" class="dot">.</text>
-      
-      <rect x="180" y="50" width="140" height="40" rx="5" class="payload-box"/>
-      <text x="250" y="40" class="title">Payload</text>
-      <text x="190" y="70" class="text">eyJzdWIiOi...</text>
-
+      <rect x="180" y="50" width="140" height="40" rx="5" class="payload-box"/><text x="250" y="40" class="title">Payload</text><text x="190" y="70" class="text">eyJzdWIiOi...</text>
       <text x="330" y="75" class="dot">.</text>
-      
-      <rect x="340" y="50" width="140" height="40" rx="5" class="signature-box"/>
-      <text x="410" y="40" class="title">Signature</text>
-      <text x="350" y="70" class="text">TJVA95OrM7...</text>
-
-      <!-- Descriptions -->
+      <rect x="340" y="50" width="140" height="40" rx="5" class="signature-box"/><text x="410" y="40" class="title">Signature</text><text x="350" y="70" class="text">TJVA95OrM7...</text>
       <text x="90" y="110" class="text" text-anchor="middle">Algorithm & Token Type</text>
       <text x="250" y="110" class="text" text-anchor="middle">Data (Claims)</text>
       <text x="410" y="110" class="text" text-anchor="middle">Verifies Integrity</text>
@@ -257,6 +283,7 @@ Example: A username field should only allow alphanumeric characters and be betwe
     category: 'Security',
     subCategory: 'text',
     title: 'JWT (JSON Web Token) Structure',
+    type: 'code',
     snippet: `A JWT consists of three parts separated by dots: Header, Payload, Signature.
 Example: xxxxx.yyyyy.zzzzz
 
@@ -271,6 +298,7 @@ Signature: A cryptographic signature to verify the token's integrity.`,
     category: 'Security',
     subCategory: 'text',
     title: 'OAuth 2.0 Roles',
+    type: 'code',
     snippet: `Resource Owner: The user who owns the data.
 Client: The application requesting access to the data.
 Authorization Server: The server that authenticates the user and issues access tokens.
@@ -283,6 +311,7 @@ Resource Server: The API server that hosts the user's protected data.`,
     category: 'Security',
     subCategory: 'text',
     title: 'OAuth Scopes',
+    type: 'code',
     snippet: `Scopes are used to limit an application's access to a user's data.
 Example: A calendar app might request the 'calendar.read' and 'calendar.write' scopes, but not the 'contacts.read' scope.`,
     description: 'Scopes follow the principle of least privilege. The application should only request the permissions it absolutely needs to function. The user is shown the requested scopes on the consent screen.',
@@ -293,6 +322,7 @@ Example: A calendar app might request the 'calendar.read' and 'calendar.write' s
     category: 'Security',
     subCategory: 'text',
     title: 'OpenID Connect (OIDC)',
+    type: 'code',
     snippet: `An identity layer built on top of the OAuth 2.0 framework.
 It allows clients to verify the identity of the end-user based on the authentication performed by an Authorization Server.
 Key feature: Introduces the "ID Token" (a JWT).`,
@@ -304,6 +334,7 @@ Key feature: Introduces the "ID Token" (a JWT).`,
     category: 'Security',
     subCategory: 'text',
     title: 'OWASP Top 10 (Concept)',
+    type: 'code',
     snippet: `1. Broken Access Control
 2. Cryptographic Failures
 3. Injection
@@ -318,20 +349,46 @@ Key feature: Introduces the "ID Token" (a JWT).`,
     tags: ['security', 'owasp', 'vulnerability', 'web', 'best practice'],
   },
   {
-    id: 'security-2',
+    id: 'security-hashing-diagram',
     category: 'Security',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'Password Hashing vs. Encryption',
-    snippet: `Hashing: One-way process. You can't un-hash a password. Used for storing passwords.
-Encryption: Two-way process. You can encrypt and decrypt data with a key. Used for protecting data in transit (TLS) or at rest (disk encryption).`,
-    description: 'Never store plain-text passwords. Always use a strong, salted, one-way hashing algorithm like Argon2, scrypt, or bcrypt.',
-    tags: ['security', 'password', 'hashing', 'encryption', 'bcrypt', 'authentication'],
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; font-family: 'Fira Code', monospace;}
+        .box { fill: #0f172a; stroke: #334155; rx: 5; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#sec-arrow); }
+      </style>
+      <defs><marker id="sec-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+      
+      <text x="125" y="30" class="title">Hashing (One-Way)</text>
+      <rect x="25" y="50" width="200" height="40" class="box"/><text x="125" y="75" class="label">"password123"</text>
+      <path d="M 125 90 V 130" class="arrow"/>
+      <text x="125" y="115" class="label">bcrypt()</text>
+      <rect x="25" y="130" width="200" height="40" class="box"/><text x="125" y="155" class="label">$2b$12$...longhash...</text>
+      <text x="125" y="185" class="label" fill="#f87171">Cannot be reversed</text>
+
+      <line x1="250" y1="20" y2="200" stroke="#475569"/>
+      
+      <text x="375" y="30" class="title">Encryption (Two-Way)</text>
+      <rect x="275" y="50" width="200" height="40" class="box"/><text x="375" y="75" class="label">"secret data"</text>
+      <path d="M 375 90 V 130" class="arrow"/>
+      <text x="375" y="115" class="label">encrypt(key)</text>
+      <rect x="275" y="130" width="200" height="40" class="box"/><text x="375" y="155" class="label">a1b2c3d4e5f6</text>
+      <path d="M 325 170 C 290 190, 290 90, 325 70" class="arrow" fill="none"/>
+      <text x="290" y="130" class="label" transform="rotate(-90 290 130)">decrypt(key)</text>
+    </svg>`,
+    description: 'Never store plain-text passwords. **Hashing** is a one-way process used to securely store passwords; the original password cannot be recovered. **Encryption** is a two-way process used to protect data in transit or at rest; the original data can be recovered with the correct key.',
+    tags: ['security', 'password', 'hashing', 'encryption', 'bcrypt', 'authentication', 'diagram', 'svg'],
   },
   {
     id: 'security-12',
     category: 'Security',
     subCategory: 'text',
     title: 'Principle of Least Privilege (PoLP)',
+    type: 'code',
     snippet: 'Grant only the minimum permissions necessary for a user or system to perform its required task.',
     description: 'A foundational security principle. It limits the damage that can result from an accident, error, or malicious attack. For example, a web server process should not run as the root user.',
     tags: ['security', 'principle', 'least privilege', 'polp', 'access control', 'design'],
@@ -341,6 +398,7 @@ Encryption: Two-way process. You can encrypt and decrypt data with a key. Used f
     category: 'Security',
     subCategory: 'text',
     title: 'SAML (Security Assertion Markup Language)',
+    type: 'code',
     snippet: `An XML-based open standard for exchanging authentication and authorization data between parties.
 Key Parties:
 - Identity Provider (IdP): The authority that authenticates the user (e.g., Okta, ADFS).
@@ -353,6 +411,7 @@ Key Parties:
     category: 'Security',
     subCategory: 'text',
     title: 'Secrets Management Best Practices',
+    type: 'code',
     snippet: `1. Never hardcode secrets (API keys, passwords) in source code.
 2. Use environment variables for local development.
 3. For production, use a dedicated secrets management service (e.g., HashiCorp Vault, AWS Secrets Manager, Azure Key Vault).`,
@@ -364,22 +423,44 @@ Key Parties:
     category: 'Security',
     subCategory: 'text',
     title: 'Single Sign-On (SSO)',
+    type: 'code',
     snippet: 'SSO is an authentication scheme that allows a user to log in with a single ID and password to any of several related, yet independent, software systems.',
     description: 'SSO improves user experience by reducing password fatigue. For enterprises, it centralizes user management and access control. Technologies like SAML and OpenID Connect are used to implement SSO.',
     tags: ['sso', 'authentication', 'identity', 'enterprise'],
   },
   {
-    id: 'security-3',
+    id: 'security-sqli-diagram',
     category: 'Security',
-    subCategory: 'text',
+    subCategory: 'svg',
     title: 'SQL Injection (SQLi) Prevention',
-    snippet: `Vulnerable:
-String query = "SELECT * FROM users WHERE name = '" + userName + "'";
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; font-family: 'Fira Code', monospace;}
+        .box { fill: #0f172a; stroke: #334155; rx: 5; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#sqli-arrow); }
+      </style>
+      <defs><marker id="sqli-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+      
+      <text x="125" y="30" class="title" fill="#f87171">Vulnerable (String Concatenation)</text>
+      <rect x="25" y="50" width="200" height="40" class="box"/><text x="125" y="75" class="label">userInput = "1' OR '1'='1";</text>
+      <path d="M 125 90 V 130" class="arrow"/>
+      <rect x="25" y="130" width="200" height="60" class="box" stroke-dasharray="4 4" stroke="#f87171"/>
+      <text x="125" y="155" class="label">SELECT * FROM users WHERE</text>
+      <text x="125" y="175" class="label" fill="#fca5a5">id = '1' OR '1'='1'</text>
 
-Secure (Prepared Statement):
-PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
-stmt.setString(1, userName);`,
-    description: 'Prevent SQLi by using parameterized queries (prepared statements). This ensures that user input is treated as data, not as executable code, by the database.',
-    tags: ['security', 'sqli', 'injection', 'database', 'owasp'],
+      <line x1="250" y1="20" y2="230" stroke="#475569"/>
+      
+      <text x="375" y="30" class="title" fill="#34d399">Secure (Parameterized Query)</text>
+      <rect x="275" y="50" width="200" height="40" class="box"/><text x="375" y="75" class="label">userInput = "1' OR '1'='1";</text>
+      <path d="M 375 90 V 130" class="arrow"/>
+      <rect x="275" y="130" width="200" height="60" class="box" stroke-dasharray="4 4" stroke="#34d399"/>
+      <text x="375" y="155" class="label">SELECT * FROM users WHERE</text>
+      <text x="375" y="175" class="label">id = ?</text>
+      <text x="375" y="200" class="label" fill="#a7f3d0">(Input is treated as data)</text>
+    </svg>`,
+    description: 'SQLi attacks occur when user input is concatenated directly into a SQL query, allowing an attacker to alter the query\'s logic. **Prepared Statements** (parameterized queries) prevent this by strictly separating the SQL code from the user-provided data.',
+    tags: ['security', 'sqli', 'injection', 'database', 'owasp', 'diagram', 'svg'],
   },
 ];
