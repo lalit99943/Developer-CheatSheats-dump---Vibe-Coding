@@ -17,6 +17,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -25,6 +26,14 @@
             },
           }
         }
+      }
+    </script>
+    <script>
+      // Prevents Flash of Un-themed Content (FOUC)
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,12 +48,14 @@
     "react-syntax-highlighter": "https://esm.sh/react-syntax-highlighter@^15.6.1",
     "react-syntax-highlighter/": "https://esm.sh/react-syntax-highlighter@^15.6.1/",
     "@google/genai": "https://esm.sh/@google/genai@^1.14.0",
-    "recharts": "https://esm.sh/recharts@^2.12.7"
+    "recharts": "https://esm.sh/recharts@^2.12.7",
+    "react-markdown": "https://esm.sh/react-markdown@^9.0.1",
+    "remark-gfm": "https://esm.sh/remark-gfm@^4.0.0"
   }
 }
 </script>
 </head>
-  <body class="bg-slate-900">
+  <body class="bg-slate-50 dark:bg-slate-900">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

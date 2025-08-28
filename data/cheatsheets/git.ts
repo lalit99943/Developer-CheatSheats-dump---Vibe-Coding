@@ -10,6 +10,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git clone <repository_url>',
     description: 'Creates a local copy of a remote repository on your machine.',
     tags: ['git', 'clone', 'repository', 'version control'],
+    priority: 'High',
   },
   {
     id: 'git-2',
@@ -20,6 +21,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git add .\ngit commit -m "Your commit message"',
     description: 'Stages all new and modified files for the next commit, then records the changes to the repository with a descriptive message.',
     tags: ['git', 'commit', 'stage', 'add', 'version control'],
+    priority: 'High',
   },
   {
     id: 'git-3',
@@ -30,6 +32,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git push origin <branch_name>',
     description: 'Uploads your committed changes from your local branch to the remote repository.',
     tags: ['git', 'push', 'remote', 'version control'],
+    priority: 'High',
   },
   {
     id: 'git-4',
@@ -40,6 +43,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git status',
     description: 'Displays the state of the working directory and the staging area. It lets you see which changes have been staged, which haven\'t, and which files aren\'t being tracked by Git.',
     tags: ['git', 'status', 'state', 'changes'],
+    priority: 'Medium',
   },
   {
     id: 'git-5',
@@ -50,6 +54,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git pull origin <branch_name>',
     description: 'Fetches changes from a remote repository and merges them into the current branch.',
     tags: ['git', 'pull', 'remote', 'fetch', 'merge'],
+    priority: 'High',
   },
   {
     id: 'git-6',
@@ -60,6 +65,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git branch\ngit branch <new_branch_name>\ngit branch -d <branch_name>',
     description: 'List all local branches (`git branch`), create a new branch (`git branch <new_branch_name>`), or delete a specified branch (`git branch -d <branch_name>`).',
     tags: ['git', 'branch', 'list', 'create', 'delete'],
+    priority: 'Medium',
   },
   {
     id: 'git-7',
@@ -70,6 +76,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git checkout <branch_name>\ngit checkout -b <new_branch_name>',
     description: 'Switches to an existing branch (`git checkout <branch_name>`). Creates a new branch and switches to it (`git checkout -b <new_branch_name>`).',
     tags: ['git', 'checkout', 'switch', 'branch'],
+    priority: 'Medium',
   },
   {
     id: 'git-merge-vs-rebase',
@@ -125,6 +132,7 @@ export const gitCheatSheets: CheatSheet[] = [
   </svg>`,
     description: 'A visual comparison of Git workflows. **Merge** joins branches with a new merge commit, preserving the exact history. **Rebase** re-applies commits from one branch onto another, creating a cleaner, linear history but altering the original commit data.',
     tags: ['git', 'merge', 'rebase', 'workflow', 'diagram', 'svg'],
+    priority: 'Low',
   },
   {
     id: 'git-10',
@@ -155,6 +163,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git stash\ngit stash pop',
     description: 'Temporarily saves your uncommitted changes so you can switch branches. `git stash pop` reapplies the last stashed changes.',
     tags: ['git', 'stash', 'save', 'wip'],
+    priority: 'Medium',
   },
   {
     id: 'git-13',
@@ -185,6 +194,7 @@ export const gitCheatSheets: CheatSheet[] = [
     snippet: 'git reset --soft HEAD~\ngit reset --hard HEAD~',
     description: 'Un-commits the most recent commit, keeping changes in the staging area (`--soft`) or discarding them entirely (`--hard`). Use with caution.',
     tags: ['git', 'reset', 'undo', 'commit'],
+    priority: 'Low',
   },
   {
     id: 'git-16',
@@ -262,5 +272,6 @@ export const gitCheatSheets: CheatSheet[] = [
   </svg>`,
     description: 'A visual representation of a common Git workflow where a new branch is created from the main branch to work on a feature. After committing changes, the feature branch is merged back into the main branch.',
     tags: ['git', 'workflow', 'branching', 'merge', 'diagram', 'svg'],
+    priority: 'Medium',
   },
 ];

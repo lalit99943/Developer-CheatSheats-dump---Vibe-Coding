@@ -42,7 +42,7 @@ const InfiniteScrollLoader: React.FC<InfiniteScrollLoaderProps> = ({ onVisible, 
     return (
         <div ref={loaderRef} className="flex justify-center items-center p-8" aria-live="polite">
             <LoaderIcon className="h-8 w-8 animate-spin text-sky-500" />
-            <span className="ml-3 text-slate-400">Loading more cheatsheets...</span>
+            <span className="ml-3 text-slate-500 dark:text-slate-400">Loading more cheatsheets...</span>
         </div>
     );
 };

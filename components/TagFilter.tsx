@@ -14,7 +14,7 @@ const TagFilter: React.FC<TagFilterProps> = ({ tags, selectedTag, setSelectedTag
 
     return (
         <div className="mb-6">
-            <h4 className="text-sm font-semibold text-slate-400 mb-3">Top Tags</h4>
+            <h4 className="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-3">Top Tags</h4>
             <div className="flex flex-wrap gap-2">
                 {tags.map(tag => (
                     <button
@@ -23,7 +23,7 @@ const TagFilter: React.FC<TagFilterProps> = ({ tags, selectedTag, setSelectedTag
                         className={`px-3 py-1 text-sm font-medium rounded-full transition-colors ${
                             selectedTag === tag
                                 ? 'bg-sky-600 text-white'
-                                : 'bg-slate-700 text-slate-300 hover:bg-slate-600 hover:text-white'
+                                : 'bg-slate-200 text-slate-700 dark:bg-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 hover:text-slate-800 dark:hover:text-white'
                         }`}
                     >
                         {tag}

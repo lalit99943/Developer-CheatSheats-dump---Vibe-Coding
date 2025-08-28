@@ -2,86 +2,6 @@ import { CheatSheet, ChartConfig } from '../../types';
 
 export const systemArchitectureCheatSheets: CheatSheet[] = [
   {
-    id: 'sysarch-1',
-    category: 'System Architecture',
-    subCategory: 'svg',
-    title: 'CAP Theorem',
-    type: 'svg',
-    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 300" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
-    <style>
-        .title { font-size: 16px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
-        .label { font-size: 14px; font-weight: bold; }
-        .sub-label { font-size: 11px; fill: #94a3b8; }
-        .triangle { fill: none; stroke: #475569; stroke-width: 2; }
-        .c-text { fill: #f59e0b; }
-        .a-text { fill: #34d399; }
-        .p-text { fill: #60a5fa; }
-    </style>
-    <text x="225" y="40" class="title">CAP Theorem</text>
-    <polygon points="225,60 75,260 375,260" class="triangle"/>
-    
-    <g id="consistency">
-        <text x="225" y="55" text-anchor="middle" class="label c-text">C</text>
-        <text x="225" y="75" text-anchor="middle" class="sub-label c-text">Consistency</text>
-    </g>
-    <g id="availability">
-        <text x="65" y="270" text-anchor="middle" class="label a-text">A</text>
-        <text x="65" y="290" text-anchor="middle" class="sub-label a-text">Availability</text>
-    </g>
-    <g id="partition-tolerance">
-        <text x="385" y="270" text-anchor="middle" class="label p-text">P</text>
-        <text x="385" y="290" text-anchor="middle" class="sub-label p-text">Partition Tolerance</text>
-    </g>
-
-    <text x="145" y="170" class="label" fill="#cbd5e1" transform="rotate(-60 145 170)">Choose 2 of 3</text>
-    
-    <text x="300" y="170" class="label" fill="#cbd5e1" transform="rotate(60 300 170)">In Reality: Must choose P</text>
-    
-    <text x="225" y="250" class="label" fill="#cbd5e1">Trade-off: C vs A</text>
-</svg>`,
-    description: 'A distributed data store can only provide two of the following three guarantees: **Consistency** (every read receives the most recent write), **Availability** (every request receives a non-error response), and **Partition Tolerance** (the system operates despite network failures). In modern distributed systems, Partition Tolerance is non-negotiable, forcing a trade-off between Consistency and Availability.',
-    tags: ['system architecture', 'distributed systems', 'cap theorem', 'consistency', 'availability', 'partition tolerance', 'svg'],
-  },
-  {
-    id: 'sysarch-2',
-    category: 'System Architecture',
-    subCategory: 'svg',
-    title: 'Load Balancer',
-    type: 'svg',
-    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
-    <style>
-        .label { font-size: 13px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
-        .sub-label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
-        .box { fill: #334155; stroke: #475569; rx: 5; }
-        .server-box { fill: #0f172a; stroke: #334155; rx: 5; }
-        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#lb-arrow); }
-    </style>
-    <defs>
-        <marker id="lb-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
-    </defs>
-    
-    <text x="50" y="125" class="label">Users</text>
-    <path d="M 80 125 L 150 125" class="arrow" />
-
-    <rect x="150" y="90" width="120" height="70" class="box"/>
-    <text x="210" y="115" class="label">Load Balancer</text>
-    <text x="210" y="140" class="sub-label">(e.g., Round Robin)</text>
-    
-    <path d="M 270 125 L 340 60" class="arrow" />
-    <path d="M 270 125 L 340 125" class="arrow" />
-    <path d="M 270 125 L 340 190" class="arrow" />
-
-    <rect x="340" y="30" width="120" height="50" class="server-box"/>
-    <text x="400" y="55" class="label">Server 1</text>
-    <rect x="340" y="100" width="120" height="50" class="server-box"/>
-    <text x="400" y="125" class="label">Server 2</text>
-    <rect x="340" y="170" width="120" height="50" class="server-box"/>
-    <text x="400" y="195" class="label">Server 3</text>
-</svg>`,
-    description: 'A load balancer distributes network or application traffic across multiple servers to improve capacity and reliability. Common algorithms include **Round Robin** (sequential distribution), **Least Connections** (sends to the server with fewest connections), and **IP Hash** (distributes based on client IP).',
-    tags: ['system architecture', 'load balancer', 'scalability', 'availability', 'networking', 'svg'],
-  },
-  {
     id: 'sysarch-3',
     category: 'System Architecture',
     subCategory: 'svg',
@@ -127,50 +47,76 @@ export const systemArchitectureCheatSheets: CheatSheet[] = [
     description: 'An API Gateway acts as a single entry point for all clients. It sits between clients and backend microservices to handle routing, authentication, rate limiting, and caching, simplifying both the client and the services.',
     tags: ['system architecture', 'api gateway', 'microservices', 'routing', 'security', 'svg'],
   },
-   {
-    id: 'sysarch-monolith-vs-micro',
+  {
+    id: 'sysarch-12',
     category: 'System Architecture',
-    subCategory: 'svg',
-    title: 'Monolith vs. Microservices',
-    type: 'svg',
-    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
-      <style>
-        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
-        .label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
-        .box { stroke-width: 1.5; rx: 5; }
-        .monolith-box { fill: #334155; stroke: #475569; }
-        .microservice-box { fill: #0f172a; stroke: #334155; }
-        .line { stroke: #64748b; }
-      </style>
-      
-      <!-- Monolith Side -->
-      <text x="125" y="30" class="title">Monolithic Architecture</text>
-      <rect x="25" y="50" width="200" height="150" class="box monolith-box"/>
-      <text x="125" y="70" class="label">UI</text>
-      <line x1="40" y1="80" x2="210" y2="80" class="line"/>
-      <text x="125" y="100" class="label">Business Logic (Users, Orders, etc.)</text>
-      <line x1="40" y1="110" x2="210" y2="110" class="line"/>
-      <text x="125" y="130" class="label">Data Access Layer</text>
-       <line x1="40" y1="140" x2="210" y2="140" class="line"/>
-      <text x="125" y="160" class="label">Database</text>
+    subCategory: 'chart',
+    title: 'API Latency Comparison (ms)',
+    type: 'chart',
+    snippet: {
+      type: 'bar',
+      data: [
+        { name: 'Monolith', p95: 120, p99: 250 },
+        { name: 'Microservices', p95: 150, p99: 320 },
+        { name: 'Serverless', p95: 80, p99: 400 },
+      ],
+      xAxisDataKey: 'name',
+      series: [
+        { dataKey: 'p95', color: '#8884d8' },
+        { dataKey: 'p99', color: '#82ca9d' },
+      ],
+    } as ChartConfig,
+    description: 'A bar chart comparing the P95 and P99 response latencies for different architectural styles. Note that values are illustrative; actual performance depends heavily on implementation.',
+    tags: ['system architecture', 'chart', 'performance', 'latency', 'monolith', 'microservices', 'serverless'],
+  },
+  {
+    id: 'sysarch-boto-estimation',
+    category: 'System Architecture',
+    subCategory: 'text',
+    title: 'Back-of-the-Envelope Estimation',
+    type: 'code',
+    snippet: `// === Latency Numbers Every Programmer Should Know ===
+// (Numbers are approximate, for order-of-magnitude estimates)
+L1 cache reference ...................       ~1 ns
+Branch mispredict ....................       ~3 ns
+L2 cache reference ...................       ~4 ns
+Mutex lock/unlock ..................      ~20 ns
+Main memory reference ..............     ~100 ns
+Compress 1 KB with Zippy .............    ~2,000 ns (2 µs)
+Send 1 KB bytes over 1 Gbps network ..    ~8,000 ns (8 µs)
+Read 4 KB randomly from SSD* .........  ~120,000 ns (120 µs)
+Read 1 MB sequentially from memory ...  ~300,000 ns (300 µs)
+Round trip within same datacenter ....  ~500,000 ns (500 µs)
+Read 1 MB sequentially from SSD* ..... ~1,000,000 ns (1 ms)
+HDD seek ............................. ~8,000,000 ns (8 ms)
+Read 1 MB sequentially from HDD ......~25,000,000 ns (25 ms)
+Round trip CA to Netherlands .........~150,000,000 ns (150 ms)
+*Assumes NVMe SSD
 
-      <!-- Microservices Side -->
-      <text x="375" y="30" class="title">Microservices Architecture</text>
-      <text x="375" y="60" class="label">UI</text>
-      <rect x="275" y="80" width="80" height="50" class="box microservice-box"/>
-      <text x="315" y="105" class="label">User Service</text>
-      
-      <rect x="375" y="80" width="80" height="50" class="box microservice-box"/>
-      <text x="415" y="105" class="label">Order Service</text>
-      
-      <rect x="275" y="150" width="80" height="50" class="box microservice-box"/>
-      <text x="315" y="175" class="label">User DB</text>
-      
-      <rect x="375" y="150" width="80" height="50" class="box microservice-box"/>
-      <text x="415" y="175" class="label">Order DB</text>
-    </svg>`,
-    description: '**Monolith:** The application is a single, unified unit. Simple to develop/deploy initially, but complex to scale and maintain. **Microservices:** The application is a collection of smaller, independent services, each with its own database. They can be developed, deployed, and scaled independently but add operational complexity.',
-    tags: ['system architecture', 'microservices', 'monolith', 'diagram', 'svg'],
+// === Common Capacity & Throughput Estimates ===
+// --- Storage & Memory ---
+1 character (UTF-8) ..... 1-4 bytes
+Integer (64-bit) ........ 8 bytes
+1 million users @ 1KB/user ... 1 GB of storage
+
+// --- Network & Throughput ---
+1 Gbps network throughput ........ ~125 MB/s
+Reads from memory ...... ~10-30 GB/s
+Reads from SSD ......... ~1-3 GB/s
+Reads from HDD ......... ~100-200 MB/s
+
+// --- Scale & Time ---
+Requests per second (RPS) for a simple API server: ~1k - 50k
+1 day = ~86,400 seconds (~10^5)
+1 million seconds = ~11.5 days
+
+// --- Powers of 2 ---
+2^10 = 1,024          ~ 1 Thousand (Kilo)
+2^20 = 1,048,576       ~ 1 Million (Mega)
+2^30 = 1,073,741,824   ~ 1 Billion (Giga)
+2^40 = ...             ~ 1 Trillion (Tera)`,
+    description: 'Back-of-the-envelope estimations are crucial for system design. They involve using common performance numbers to make quick calculations about system capacity, latency, and bottlenecks. This helps in choosing the right technologies and designing a scalable system. The goal is to be accurate within an order of magnitude.',
+    tags: ['system architecture', 'system design', 'estimation', 'scalability', 'performance', 'latency', 'back-of-the-envelope'],
   },
   {
     id: 'sysarch-5',
@@ -222,90 +168,45 @@ export const systemArchitectureCheatSheets: CheatSheet[] = [
     tags: ['system architecture', 'caching', 'performance', 'redis', 'memcached', 'svg'],
   },
   {
-    id: 'sysarch-6',
+    id: 'sysarch-1',
     category: 'System Architecture',
     subCategory: 'svg',
-    title: 'Database Scaling: Replication vs. Sharding',
+    title: 'CAP Theorem',
     type: 'svg',
-    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 300" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
     <style>
-        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
-        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
-        .box { fill: #334155; stroke: #475569; rx: 5; }
-        .db-primary { fill: #0f172a; stroke: #3b82f6; }
-        .db-replica { fill: #0f172a; stroke: #34d399; }
-        .db-shard { fill: #0f172a; stroke: #f59e0b; }
-        .arrow { stroke-width: 2; marker-end: url(#db-arrow); }
+        .title { font-size: 16px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 14px; font-weight: bold; }
+        .sub-label { font-size: 11px; fill: #94a3b8; }
+        .triangle { fill: none; stroke: #475569; stroke-width: 2; }
+        .c-text { fill: #f59e0b; }
+        .a-text { fill: #34d399; }
+        .p-text { fill: #60a5fa; }
     </style>
-    <defs>
-        <marker id="db-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
-    </defs>
+    <text x="225" y="40" class="title">CAP Theorem</text>
+    <polygon points="225,60 75,260 375,260" class="triangle"/>
     
-    <text x="125" y="30" class="title">Replication (Read Scaling)</text>
-    <rect x="75" y="50" width="100" height="40" class="box db-primary"/><text x="125" y="75" class="label">Primary DB</text>
-    <rect x="25" y="150" width="100" height="40" class="box db-replica"/><text x="75" y="175" class="label">Replica 1</text>
-    <rect x="125" y="150" width="100" height="40" class="box db-replica"/><text x="175" y="175" class="label">Replica 2</text>
-    <path d="M 125 90 V 150" class="arrow" stroke="#64748b"/>
-    <path d="M 125 90 L 75 150" class="arrow" stroke="#64748b"/>
-    <text x="100" y="45" class="label" fill="#f87171">Writes</text><path d="M 100 50 V 40" class="arrow" stroke="#f87171"/>
-    <text x="50" y="200" class="label" fill="#a7f3d0">Reads</text><path d="M 50 190 V 200" class="arrow" stroke="#a7f3d0"/>
-    <text x="150" y="200" class="label" fill="#a7f3d0">Reads</text><path d="M 150 190 V 200" class="arrow" stroke="#a7f3d0"/>
+    <g id="consistency">
+        <text x="225" y="55" text-anchor="middle" class="label c-text">C</text>
+        <text x="225" y="75" text-anchor="middle" class="sub-label c-text">Consistency</text>
+    </g>
+    <g id="availability">
+        <text x="65" y="270" text-anchor="middle" class="label a-text">A</text>
+        <text x="65" y="290" text-anchor="middle" class="sub-label a-text">Availability</text>
+    </g>
+    <g id="partition-tolerance">
+        <text x="385" y="270" text-anchor="middle" class="label p-text">P</text>
+        <text x="385" y="290" text-anchor="middle" class="sub-label p-text">Partition Tolerance</text>
+    </g>
 
-    <line x1="250" y1="20" y2="230" stroke="#475569"/>
-
-    <text x="375" y="30" class="title">Sharding (Write Scaling)</text>
-    <rect x="275" y="100" width="60" height="40" class="box db-shard"/><text x="305" y="125" class="label">Shard 1</text><text x="305" y="90" class="label" fill="#fcd34d">Users A-H</text>
-    <rect x="345" y="100" width="60" height="40" class="box db-shard"/><text x="375" y="125" class="label">Shard 2</text><text x="375" y="90" class="label" fill="#fcd34d">Users I-P</text>
-    <rect x="415" y="100" width="60" height="40" class="box db-shard"/><text x="445" y="125" class="label">Shard 3</text><text x="445" y="90" class="label" fill="#fcd34d">Users Q-Z</text>
-    <text x="375" y="60" class="label">Load Balancer / Router</text><path d="M 375 70 V 100" class="arrow" stroke="#64748b"/>
+    <text x="145" y="170" class="label" fill="#cbd5e1" transform="rotate(-60 145 170)">Choose 2 of 3</text>
+    
+    <text x="300" y="170" class="label" fill="#cbd5e1" transform="rotate(60 300 170)">In Reality: Must choose P</text>
+    
+    <text x="225" y="250" class="label" fill="#cbd5e1">Trade-off: C vs A</text>
 </svg>`,
-    description: '**Replication** improves read performance by creating copies of a primary database. Writes go to the primary, and reads are spread across replicas. **Sharding** improves write performance by splitting data horizontally across multiple independent databases (shards), with each shard holding a subset of the data.',
-    tags: ['system architecture', 'database', 'scalability', 'replication', 'sharding', 'performance', 'svg'],
-  },
-  {
-    id: 'sysarch-message-queue-diagram',
-    category: 'System Architecture',
-    subCategory: 'svg',
-    title: 'Message Queue Architecture',
-    type: 'svg',
-    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
-      <style>
-        .label { font-size: 14px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
-        .box { fill: #334155; stroke: #475569; rx: 5; }
-        .queue-box { fill: #0f172a; stroke: #475569; rx: 5; }
-        .message-box { fill: #3b82f6; rx: 3; }
-        .line { stroke: #64748b; stroke-width: 2; marker-end: url(#mq-arrow); }
-      </style>
-      <defs>
-        <marker id="mq-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
-        </marker>
-      </defs>
-
-      <!-- Producer -->
-      <rect x="20" y="60" width="100" height="60" class="box"/>
-      <text x="70" y="95" class="label">Producer</text>
-
-      <!-- Line to Queue -->
-      <line x1="120" y1="90" x2="180" y2="90" class="line"/>
-
-      <!-- Message Queue -->
-      <rect x="180" y="40" width="140" height="100" class="queue-box"/>
-      <text x="250" y="30" class="label" font-size="12">Message Queue</text>
-      <rect x="190" y="75" width="20" height="20" class="message-box"/>
-      <rect x="220" y="75" width="20" height="20" class="message-box"/>
-      <rect x="250" y="75" width="20" height="20" class="message-box"/>
-      <rect x="280" y="75" width="20" height="20" class="message-box" opacity="0.5"/>
-      
-      <!-- Line to Consumer -->
-      <line x1="320" y1="90" x2="380" y2="90" class="line"/>
-      
-      <!-- Consumer -->
-      <rect x="380" y="60" width="100" height="60" class="box"/>
-      <text x="430" y="95" class="label">Consumer</text>
-    </svg>`,
-    description: 'Message queues enable asynchronous communication between services. The **Producer** sends messages to a central **Queue** (e.g., RabbitMQ, AWS SQS). The **Consumer** receives and processes messages from the queue. This decouples services, improving reliability and scalability.',
-    tags: ['system architecture', 'message queue', 'async', 'diagram', 'svg', 'rabbitmq', 'kafka'],
+    description: 'A distributed data store can only provide two of the following three guarantees: **Consistency** (every read receives the most recent write), **Availability** (every request receives a non-error response), and **Partition Tolerance** (the system operates despite network failures). In modern distributed systems, Partition Tolerance is non-negotiable, forcing a trade-off between Consistency and Availability.',
+    tags: ['system architecture', 'distributed systems', 'cap theorem', 'consistency', 'availability', 'partition tolerance', 'svg'],
   },
   {
     id: 'sysarch-8',
@@ -352,6 +253,223 @@ export const systemArchitectureCheatSheets: CheatSheet[] = [
     tags: ['system architecture', 'cdn', 'performance', 'latency', 'networking', 'caching', 'svg'],
   },
   {
+    id: 'sysarch-10',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Circuit Breaker Pattern',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .state { stroke-width: 2; }
+        .closed { fill: #10b981; stroke: #a7f3d0; }
+        .open { fill: #ef4444; stroke: #fca5a5; }
+        .half-open { fill: #f59e0b; stroke: #fcd34d; }
+        .state-text { font-size: 14px; font-weight: bold; text-anchor: middle; fill: #0f172a; }
+        .label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#cb-arrow); }
+    </style>
+    <defs>
+        <marker id="cb-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+    
+    <circle cx="100" cy="125" r="40" class="state closed"/>
+    <text x="100" y="130" class="state-text">CLOSED</text>
+    <text x="100" y="65" class="label">Requests Flow</text>
+
+    <circle cx="400" cy="125" r="40" class="state open"/>
+    <text x="400" y="130" class="state-text">OPEN</text>
+    <text x="400" y="65" class="label">Requests Fail Fast</text>
+    
+    <circle cx="250" cy="200" r="40" class="state half-open"/>
+    <text x="250" y="205" class="state-text">HALF-OPEN</text>
+    
+    <!-- Arrows -->
+    <path d="M 140 110 C 220 50, 360 60, 380 100" class="arrow"/>
+    <text x="260" y="60" class="label">Failures > Threshold</text>
+    
+    <path d="M 360 150 C 320 190, 290 195, 270 200" class="arrow"/>
+    <text x="330" y="185" class="label">Timeout expires</text>
+
+    <path d="M 230 200 C 190 195, 160 190, 140 150" class="arrow"/>
+    <text x="180" y="165" class="label">Success</text>
+    
+    <path d="M 280 210 C 330 240, 380 210, 380 155" class="arrow"/>
+    <text x="350" y="225" class="label">Failure</text>
+</svg>`,
+    description: 'A design pattern to prevent a cascade of failures in a distributed system. The circuit is **Closed** during normal operation. If failures exceed a threshold, it trips to **Open**, failing requests immediately. After a timeout, it becomes **Half-Open**, allowing a test request. On success, it closes; on failure, it opens again.',
+    tags: ['system architecture', 'resilience', 'fault tolerance', 'design patterns', 'microservices', 'svg'],
+  },
+  {
+    id: 'sysarch-6',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Database Scaling: Replication vs. Sharding',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .db-primary { fill: #0f172a; stroke: #3b82f6; }
+        .db-replica { fill: #0f172a; stroke: #34d399; }
+        .db-shard { fill: #0f172a; stroke: #f59e0b; }
+        .arrow { stroke-width: 2; marker-end: url(#db-arrow); }
+    </style>
+    <defs>
+        <marker id="db-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+    
+    <text x="125" y="30" class="title">Replication (Read Scaling)</text>
+    <rect x="75" y="50" width="100" height="40" class="box db-primary"/><text x="125" y="75" class="label">Primary DB</text>
+    <rect x="25" y="150" width="100" height="40" class="box db-replica"/><text x="75" y="175" class="label">Replica 1</text>
+    <rect x="125" y="150" width="100" height="40" class="box db-replica"/><text x="175" y="175" class="label">Replica 2</text>
+    <path d="M 125 90 V 150" class="arrow" stroke="#64748b"/>
+    <path d="M 125 90 L 75 150" class="arrow" stroke="#64748b"/>
+    <text x="100" y="45" class="label" fill="#f87171">Writes</text><path d="M 100 50 V 40" class="arrow" stroke="#f87171"/>
+    <text x="50" y="200" class="label" fill="#a7f3d0">Reads</text><path d="M 50 190 V 200" class="arrow" stroke="#a7f3d0"/>
+    <text x="150" y="200" class="label" fill="#a7f3d0">Reads</text><path d="M 150 190 V 200" class="arrow" stroke="#a7f3d0"/>
+
+    <line x1="250" y1="20" y2="230" stroke="#475569"/>
+
+    <text x="375" y="30" class="title">Sharding (Write Scaling)</text>
+    <rect x="275" y="100" width="60" height="40" class="box db-shard"/><text x="305" y="125" class="label">Shard 1</text><text x="305" y="90" class="label" fill="#fcd34d">Users A-H</text>
+    <rect x="345" y="100" width="60" height="40" class="box db-shard"/><text x="375" y="125" class="label">Shard 2</text><text x="375" y="90" class="label" fill="#fcd34d">Users I-P</text>
+    <rect x="415" y="100" width="60" height="40" class="box db-shard"/><text x="445" y="125" class="label">Shard 3</text><text x="445" y="90" class="label" fill="#fcd34d">Users Q-Z</text>
+    <text x="375" y="60" class="label">Load Balancer / Router</text><path d="M 375 70 V 100" class="arrow" stroke="#64748b"/>
+</svg>`,
+    description: '**Replication** improves read performance by creating copies of a primary database. Writes go to the primary, and reads are spread across replicas. **Sharding** improves write performance by splitting data horizontally across multiple independent databases (shards), with each shard holding a subset of the data.',
+    tags: ['system architecture', 'database', 'scalability', 'replication', 'sharding', 'performance', 'svg'],
+  },
+  {
+    id: 'sysarch-2',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Load Balancer',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+    <style>
+        .label { font-size: 13px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .sub-label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .server-box { fill: #0f172a; stroke: #334155; rx: 5; }
+        .arrow { stroke: #64748b; stroke-width: 2; marker-end: url(#lb-arrow); }
+    </style>
+    <defs>
+        <marker id="lb-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+    </defs>
+    
+    <text x="50" y="125" class="label">Users</text>
+    <path d="M 80 125 L 150 125" class="arrow" />
+
+    <rect x="150" y="90" width="120" height="70" class="box"/>
+    <text x="210" y="115" class="label">Load Balancer</text>
+    <text x="210" y="140" class="sub-label">(e.g., Round Robin)</text>
+    
+    <path d="M 270 125 L 340 60" class="arrow" />
+    <path d="M 270 125 L 340 125" class="arrow" />
+    <path d="M 270 125 L 340 190" class="arrow" />
+
+    <rect x="340" y="30" width="120" height="50" class="server-box"/>
+    <text x="400" y="55" class="label">Server 1</text>
+    <rect x="340" y="100" width="120" height="50" class="server-box"/>
+    <text x="400" y="125" class="label">Server 2</text>
+    <rect x="340" y="170" width="120" height="50" class="server-box"/>
+    <text x="400" y="195" class="label">Server 3</text>
+</svg>`,
+    description: 'A load balancer distributes network or application traffic across multiple servers to improve capacity and reliability. Common algorithms include **Round Robin** (sequential distribution), **Least Connections** (sends to the server with fewest connections), and **IP Hash** (distributes based on client IP).',
+    tags: ['system architecture', 'load balancer', 'scalability', 'availability', 'networking', 'svg'],
+  },
+  {
+    id: 'sysarch-message-queue-diagram',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Message Queue Architecture',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 180" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .label { font-size: 14px; font-weight: 600; fill: #e2e8f0; text-anchor: middle; }
+        .box { fill: #334155; stroke: #475569; rx: 5; }
+        .queue-box { fill: #0f172a; stroke: #475569; rx: 5; }
+        .message-box { fill: #3b82f6; rx: 3; }
+        .line { stroke: #64748b; stroke-width: 2; marker-end: url(#mq-arrow); }
+      </style>
+      <defs>
+        <marker id="mq-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+        </marker>
+      </defs>
+
+      <!-- Producer -->
+      <rect x="20" y="60" width="100" height="60" class="box"/>
+      <text x="70" y="95" class="label">Producer</text>
+
+      <!-- Line to Queue -->
+      <line x1="120" y1="90" x2="180" y2="90" class="line"/>
+
+      <!-- Message Queue -->
+      <rect x="180" y="40" width="140" height="100" class="queue-box"/>
+      <text x="250" y="30" class="label" font-size="12">Message Queue</text>
+      <rect x="190" y="75" width="20" height="20" class="message-box"/>
+      <rect x="220" y="75" width="20" height="20" class="message-box"/>
+      <rect x="250" y="75" width="20" height="20" class="message-box"/>
+      <rect x="280" y="75" width="20" height="20" class="message-box" opacity="0.5"/>
+      
+      <!-- Line to Consumer -->
+      <line x1="320" y1="90" x2="380" y2="90" class="line"/>
+      
+      <!-- Consumer -->
+      <rect x="380" y="60" width="100" height="60" class="box"/>
+      <text x="430" y="95" class="label">Consumer</text>
+    </svg>`,
+    description: 'Message queues enable asynchronous communication between services. The **Producer** sends messages to a central **Queue** (e.g., RabbitMQ, AWS SQS). The **Consumer** receives and processes messages from the queue. This decouples services, improving reliability and scalability.',
+    tags: ['system architecture', 'message queue', 'async', 'diagram', 'svg', 'rabbitmq', 'kafka'],
+  },
+   {
+    id: 'sysarch-monolith-vs-micro',
+    category: 'System Architecture',
+    subCategory: 'svg',
+    title: 'Monolith vs. Microservices',
+    type: 'svg',
+    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
+      <style>
+        .title { font-size: 14px; font-weight: bold; fill: #e2e8f0; text-anchor: middle; }
+        .label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
+        .box { stroke-width: 1.5; rx: 5; }
+        .monolith-box { fill: #334155; stroke: #475569; }
+        .microservice-box { fill: #0f172a; stroke: #334155; }
+        .line { stroke: #64748b; }
+      </style>
+      
+      <!-- Monolith Side -->
+      <text x="125" y="30" class="title">Monolithic Architecture</text>
+      <rect x="25" y="50" width="200" height="150" class="box monolith-box"/>
+      <text x="125" y="70" class="label">UI</text>
+      <line x1="40" y1="80" x2="210" y2="80" class="line"/>
+      <text x="125" y="100" class="label">Business Logic (Users, Orders, etc.)</text>
+      <line x1="40" y1="110" x2="210" y2="110" class="line"/>
+      <text x="125" y="130" class="label">Data Access Layer</text>
+       <line x1="40" y1="140" x2="210" y2="140" class="line"/>
+      <text x="125" y="160" class="label">Database</text>
+
+      <!-- Microservices Side -->
+      <text x="375" y="30" class="title">Microservices Architecture</text>
+      <text x="375" y="60" class="label">UI</text>
+      <rect x="275" y="80" width="80" height="50" class="box microservice-box"/>
+      <text x="315" y="105" class="label">User Service</text>
+      
+      <rect x="375" y="80" width="80" height="50" class="box microservice-box"/>
+      <text x="415" y="105" class="label">Order Service</text>
+      
+      <rect x="275" y="150" width="80" height="50" class="box microservice-box"/>
+      <text x="315" y="175" class="label">User DB</text>
+      
+      <rect x="375" y="150" width="80" height="50" class="box microservice-box"/>
+      <text x="415" y="175" class="label">Order DB</text>
+    </svg>`,
+    description: '**Monolith:** The application is a single, unified unit. Simple to develop/deploy initially, but complex to scale and maintain. **Microservices:** The application is a collection of smaller, independent services, each with its own database. They can be developed, deployed, and scaled independently but add operational complexity.',
+    tags: ['system architecture', 'microservices', 'monolith', 'diagram', 'svg'],
+  },
+  {
     id: 'sysarch-9',
     category: 'System Architecture',
     subCategory: 'svg',
@@ -395,74 +513,5 @@ export const systemArchitectureCheatSheets: CheatSheet[] = [
 </svg>`,
     description: 'The process of how services find each other in a microservices architecture. Services register their location with a central **Service Registry**. A **Client** then queries the registry to find the current address of a service it needs to call.',
     tags: ['system architecture', 'microservices', 'service discovery', 'networking', 'eureka', 'consul', 'svg'],
-  },
-  {
-    id: 'sysarch-10',
-    category: 'System Architecture',
-    subCategory: 'svg',
-    title: 'Circuit Breaker Pattern',
-    type: 'svg',
-    snippet: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" style="font-family: 'Inter', sans-serif; background-color: #1e293b; border-radius: 8px;">
-    <style>
-        .state { stroke-width: 2; }
-        .closed { fill: #10b981; stroke: #a7f3d0; }
-        .open { fill: #ef4444; stroke: #fca5a5; }
-        .half-open { fill: #f59e0b; stroke: #fcd34d; }
-        .state-text { font-size: 14px; font-weight: bold; text-anchor: middle; fill: #0f172a; }
-        .label { font-size: 11px; fill: #94a3b8; text-anchor: middle; }
-        .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#cb-arrow); }
-    </style>
-    <defs>
-        <marker id="cb-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
-    </defs>
-    
-    <circle cx="100" cy="125" r="40" class="state closed"/>
-    <text x="100" y="130" class="state-text">CLOSED</text>
-    <text x="100" y="65" class="label">Requests Flow</text>
-
-    <circle cx="400" cy="125" r="40" class="state open"/>
-    <text x="400" y="130" class="state-text">OPEN</text>
-    <text x="400" y="65" class="label">Requests Fail Fast</text>
-    
-    <circle cx="250" cy="200" r="40" class="state half-open"/>
-    <text x="250" y="205" class="state-text">HALF-OPEN</text>
-    
-    <!-- Arrows -->
-    <path d="M 140 110 C 220 50, 360 60, 380 100" class="arrow"/>
-    <text x="260" y="60" class="label">Failures &gt; Threshold</text>
-    
-    <path d="M 360 150 C 320 190, 290 195, 270 200" class="arrow"/>
-    <text x="330" y="185" class="label">Timeout expires</text>
-
-    <path d="M 230 200 C 190 195, 160 190, 140 150" class="arrow"/>
-    <text x="180" y="165" class="label">Success</text>
-    
-    <path d="M 280 210 C 330 240, 380 210, 380 155" class="arrow"/>
-    <text x="350" y="225" class="label">Failure</text>
-</svg>`,
-    description: 'A design pattern to prevent a cascade of failures in a distributed system. The circuit is **Closed** during normal operation. If failures exceed a threshold, it trips to **Open**, failing requests immediately. After a timeout, it becomes **Half-Open**, allowing a test request. On success, it closes; on failure, it opens again.',
-    tags: ['system architecture', 'resilience', 'fault tolerance', 'design patterns', 'microservices', 'svg'],
-  },
-  {
-    id: 'sysarch-12',
-    category: 'System Architecture',
-    subCategory: 'chart',
-    title: 'API Latency Comparison (ms)',
-    type: 'chart',
-    snippet: {
-      type: 'bar',
-      data: [
-        { name: 'Monolith', p95: 120, p99: 250 },
-        { name: 'Microservices', p95: 150, p99: 320 },
-        { name: 'Serverless', p95: 80, p99: 400 },
-      ],
-      xAxisDataKey: 'name',
-      series: [
-        { dataKey: 'p95', color: '#8884d8' },
-        { dataKey: 'p99', color: '#82ca9d' },
-      ],
-    } as ChartConfig,
-    description: 'A bar chart comparing the P95 and P99 response latencies for different architectural styles. Note that values are illustrative; actual performance depends heavily on implementation.',
-    tags: ['system architecture', 'chart', 'performance', 'latency', 'monolith', 'microservices', 'serverless'],
   },
 ];

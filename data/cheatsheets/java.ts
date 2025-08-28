@@ -366,4 +366,73 @@ long myLong = 15000000000L;  // Long integer`,
     description: 'The `sorted` method is an intermediate operation that returns a stream consisting of the elements of this stream, sorted according to natural order.',
     tags: ['java8', 'stream', 'sorted', 'sort', 'order'],
   },
+  {
+    id: 'java-keywords',
+    category: 'Java',
+    subCategory: 'java',
+    title: 'Java Reserved Keywords',
+    type: 'code',
+    snippet: `// Keywords
+abstract   assert     boolean    break      byte
+case       catch      char       class      const*
+continue   default    do         double     else
+enum       extends    final      finally    float
+for        goto*      if         implements import
+instanceof int        interface  long       native
+new        package    private    protected  public
+return     short      static     strictfp   super
+switch     synchronized this     throw      throws
+transient  try        void       volatile   while
+
+// Literals (treated as keywords)
+true       false      null
+
+// * const and goto are reserved but not used.`,
+    description: 'A list of reserved keywords in the Java programming language. These words cannot be used as identifiers (e.g., variable names, method names, or class names) in your code.',
+    tags: ['java', 'keywords', 'reserved words', 'syntax', 'basics'],
+  },
+  {
+    id: 'java-operator-precedence',
+    category: 'Java',
+    subCategory: 'java',
+    title: 'Operator Precedence',
+    type: 'code',
+    snippet: `// Highest precedence at the top.
+// 15: () [] .                          (Parentheses, Array, Member access)
+// 14: ++ -- + - ! ~ (type)            (Unary)
+// 13: new                             (Creation)
+// 12: * / %                           (Multiplicative)
+// 11: + -                             (Additive)
+// 10: << >> >>>                       (Bitwise shifts)
+// 9:  < > <= >= instanceof            (Relational)
+// 8:  == !=                           (Equality)
+// 7:  &                               (Bitwise AND)
+// 6:  ^                               (Bitwise XOR)
+// 5:  |                               (Bitwise OR)
+// 4:  &&                              (Logical AND)
+// 3:  ||                              (Logical OR)
+// 2:  ? :                             (Ternary)
+// 1:  = += -= *= /= %= ...            (Assignment)`,
+    description: 'A summary of Java operator precedence, which determines the order in which operators are evaluated. Operators with higher precedence are evaluated before operators with lower precedence.',
+    tags: ['java', 'operators', 'precedence', 'order of operations', 'syntax'],
+  },
+  {
+    id: 'java-bitwise-operators',
+    category: 'Java',
+    subCategory: 'java',
+    title: 'Bitwise Operators',
+    type: 'code',
+    snippet: `int a = 60;  // 0011 1100
+int b = 13;  // 0000 1101
+
+a & b;   // Bitwise AND. Result: 12 (0000 1100)
+a | b;   // Bitwise OR. Result: 61 (0011 1101)
+a ^ b;   // Bitwise XOR. Result: 49 (0011 0001)
+~a;      // Unary Bitwise Complement (NOT). Result: -61
+a << 2;  // Signed Left Shift. Result: 240 (1111 0000)
+a >> 2;  // Signed Right Shift. Result: 15 (0000 1111)
+a >>> 2; // Unsigned (Zero-fill) Right Shift. Result: 15`,
+    description: 'Bitwise operators work on integers (long, int, short, char, byte) at the level of individual bits. They can be used for efficient low-level manipulation.',
+    tags: ['java', 'operators', 'bitwise', 'binary', 'masking', 'shift'],
+  }
 ];

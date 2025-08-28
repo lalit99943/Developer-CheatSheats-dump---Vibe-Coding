@@ -18,6 +18,8 @@ export interface ChartConfig {
     series: ChartSeries[];
 }
 
+export type Priority = 'High' | 'Medium' | 'Low';
+
 export interface CheatSheet {
     id: string;
     category: string;
@@ -27,4 +29,5 @@ export interface CheatSheet {
     description: string;
     tags: string[];
     type?: SnippetType;
+    priority?: Priority;
 }

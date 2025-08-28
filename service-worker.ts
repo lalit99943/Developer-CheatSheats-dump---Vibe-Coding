@@ -1,3 +1,4 @@
+
 const CACHE_NAME = 'cheatsheats-cache-v2'; // Version bumped to invalidate old cache
 
 // App shell and core assets that are critical for the app to work offline
@@ -75,6 +76,7 @@ const VENDOR_ASSETS = [
   'https://esm.sh/react-dom@^19.1.1/client',
   'https://esm.sh/react-syntax-highlighter@^15.6.1',
   'https://esm.sh/react-syntax-highlighter@^15.6.1/dist/esm/styles/hljs/atom-one-dark',
+  'https://esm.sh/react-syntax-highlighter@^15.6.1/dist/esm/styles/hljs/atom-one-light',
   'https://esm.sh/recharts@^2.12.7',
   'https://esm.sh/@google/genai@^1.14.0'
 ];

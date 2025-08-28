@@ -160,4 +160,70 @@ Promise.all([promise1, promise2])
     description: 'Takes an array of promises and returns a single promise that resolves when all of the input promises have resolved. It is useful for aggregating the results of multiple asynchronous operations.',
     tags: ['javascript', 'async', 'promise', 'promise.all', 'es6', 'concurrent'],
   },
+  {
+    id: 'js-keywords',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'JavaScript Reserved Keywords',
+    type: 'code',
+    snippet: `// Keywords as of ECMAScript 2015 (ES6) and later
+await      break      case       catch      class
+const      continue   debugger   default    delete
+do         else       enum       export     extends
+false      finally    for        function   if
+implements import     in         instanceof interface
+let        new        null       package    private
+protected  public     return     static     super
+switch     this       throw      true       try
+typeof     var        void       while      with
+yield`,
+    description: 'A list of reserved keywords in JavaScript. These words have special meaning in the language and cannot be used as identifiers (variable names, function names, etc.).',
+    tags: ['javascript', 'keywords', 'reserved words', 'syntax', 'es6'],
+  },
+  {
+    id: 'js-operator-precedence',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Operator Precedence',
+    type: 'code',
+    snippet: `// Abridged list. Higher number = higher precedence.
+// 21: () Grouping
+// 17: . [] new Member Access, new (with arguments)
+// 16: ++ -- Postfix Increment/Decrement
+// 15: ! ~ + - typeof Unary Operators
+// 14: ** Exponentiation
+// 13: * / % Multiplicative
+// 12: + - Additive
+// 11: << >> >>> Bitwise Shift
+// 10: < <= > >= in instanceof Relational
+// 9: == != === !== Equality
+// 8: & Bitwise AND
+// 7: ^ Bitwise XOR
+// 6: | Bitwise OR
+// 5: && Logical AND
+// 4: || ?? Logical OR, Nullish Coalescing
+// 3: ? : Conditional (Ternary)
+// 2: = += -= ... Assignment`,
+    description: 'A summary of JavaScript operator precedence, which determines the order in which operators are parsed and evaluated. Higher precedence operators are evaluated first.',
+    tags: ['javascript', 'operators', 'precedence', 'order of operations', 'syntax'],
+  },
+  {
+    id: 'js-bitwise-operators',
+    category: 'JavaScript',
+    subCategory: 'javascript',
+    title: 'Bitwise Operators',
+    type: 'code',
+    snippet: `let a = 5;  // 00000101
+let b = 3;  // 00000011
+
+a & b;    // Bitwise AND. Result: 1 (00000001)
+a | b;    // Bitwise OR. Result: 7 (00000111)
+a ^ b;    // Bitwise XOR. Result: 6 (00000110)
+~a;       // Bitwise NOT. Result: -6 
+a << 1;   // Left Shift. Result: 10 (00001010)
+a >> 1;   // Sign-propagating Right Shift. Result: 2 (00000010)
+a >>> 1;  // Zero-fill Right Shift. Result: 2 (00000010)`,
+    description: 'Bitwise operators treat their operands as a sequence of 32 bits (zeros and ones) and perform operations on them at the binary level.',
+    tags: ['javascript', 'operators', 'bitwise', 'binary', 'masking', 'shift'],
+  }
 ];

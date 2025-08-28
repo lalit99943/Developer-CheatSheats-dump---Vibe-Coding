@@ -43,6 +43,11 @@ const responseSchema = {
           type: Type.ARRAY,
           items: { type: Type.STRING },
           description: "An array of relevant keywords or tags for searching."
+        },
+        priority: {
+            type: Type.STRING,
+            description: "The priority of the cheat sheet. Can be 'High', 'Medium', or 'Low'. Optional.",
+            enum: ['High', 'Medium', 'Low']
         }
       },
       required: ["id", "category", "subCategory", "title", "snippet", "description", "tags"],
@@ -58,7 +63,7 @@ export async function fetchCheatSheetsFromWeb(query: string): Promise<CheatSheet
     const prompt = `
         You are a helpful assistant for developers. A user is searching for technical cheat sheets related to "${query}".
         Generate a list of 3 to 5 relevant cheat sheet entries based on this query.
-        For each entry, please provide a unique id (can be a random string), a broad category, a specific sub-category for syntax highlighting, a title, the code snippet, a detailed description, and an array of useful tags.
+        For each entry, please provide a unique id (can be a random string), a broad category, a specific sub-category for syntax highlighting, a title, the code snippet, a detailed description, an array of useful tags, and an optional priority ('High', 'Medium', 'Low').
         Ensure the response is a valid JSON array matching the provided schema. If the query is ambiguous, provide common examples.
     `;
 

@@ -7,12 +7,12 @@ export const algorithmsCheatSheets: CheatSheet[] = [
     subCategory: 'text',
     title: 'Big O Notation (Time Complexity)',
     type: 'code',
-    snippet: `O(1) - Constant: Accessing an array element.
-O(log n) - Logarithmic: Binary search.
-O(n) - Linear: Looping through an array.
-O(n log n) - Log-Linear: Efficient sorting algorithms (e.g., Merge Sort).
-O(n^2) - Quadratic: Nested loops (e.g., Bubble Sort).
-O(2^n) - Exponential: Recursive Fibonacci calculation.`,
+    snippet: `- **O(1) - Constant:** Accessing an array element.
+- **O(log n) - Logarithmic:** Binary search.
+- **O(n) - Linear:** Looping through an array.
+- **O(n log n) - Log-Linear:** Efficient sorting algorithms (e.g., Merge Sort).
+- **O(n^2) - Quadratic:** Nested loops (e.g., Bubble Sort).
+- **O(2^n) - Exponential:** Recursive Fibonacci calculation.`,
     description: 'Big O notation is used to describe the performance or complexity of an algorithm. It specifically describes the worst-case scenario, focusing on how the execution time scales with the input size.',
     tags: ['algorithms', 'big o', 'complexity', 'performance', 'data structures'],
   },

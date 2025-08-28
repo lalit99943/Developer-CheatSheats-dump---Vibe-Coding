@@ -9,6 +9,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: 'squares = [x**2 for x in range(10)]',
     description: 'A concise way to create lists. It provides a shorter syntax when you want to create a new list based on the values of an existing iterable.',
     tags: ['python', 'list comprehension', 'data structures'],
+    priority: 'High',
   },
   {
     id: 'python-2',
@@ -18,6 +19,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: "with open('myfile.txt', 'r') as f:\n    content = f.read()",
     description: 'Safely opens, reads the entire content of a file, and automatically closes it. Using `with` ensures the file is closed even if errors occur.',
     tags: ['python', 'file io', 'read file', 'with statement'],
+    priority: 'Medium',
   },
   {
     id: 'python-3',
@@ -27,6 +29,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: 'squares_dict = {x: x**2 for x in range(5)}',
     description: 'A concise way to create dictionaries from iterables, similar to list comprehensions.',
     tags: ['python', 'dictionary comprehension', 'data structures', 'dict'],
+    priority: 'High',
   },
   {
     id: 'python-4',
@@ -54,6 +57,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: 'class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        return f"{self.name} says woof!"',
     description: 'Defines a simple class with a constructor (`__init__`) to initialize its attributes and a method to define its behavior.',
     tags: ['python', 'class', 'oop', 'object', '__init__'],
+    priority: 'Low',
   },
   {
     id: 'python-7',
@@ -63,6 +67,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: 'name = "Alice"\nage = 30\nprint(f"My name is {name} and I am {age} years old.")',
     description: 'Formatted string literals (f-strings) provide a concise and convenient way to embed expressions inside string literals for formatting.',
     tags: ['python', 'string', 'formatting', 'f-string'],
+    priority: 'High',
   },
   {
     id: 'python-8',
@@ -72,6 +77,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: 'try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print("Cannot divide by zero!")\nfinally:\n    print("Execution finished.")',
     description: 'Handles potential errors in your code. The `try` block contains code that might raise an exception, `except` catches it, and `finally` always executes.',
     tags: ['python', 'exception', 'error handling', 'try', 'except', 'finally'],
+    priority: 'High',
   },
   {
     id: 'python-9',
@@ -90,6 +96,7 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: '# Create a virtual environment named "venv"\npython3 -m venv venv\n\n# Activate the virtual environment\nsource venv/bin/activate  # On Linux/macOS\n.\\venv\\Scripts\\activate  # On Windows',
     description: 'Isolates project dependencies. Creating and activating a virtual environment is a best practice for Python development.',
     tags: ['python', 'venv', 'virtual environment', 'dependency management'],
+    priority: 'High',
   },
   {
     id: 'python-11',
@@ -99,15 +106,17 @@ export const pythonCheatSheets: CheatSheet[] = [
     snippet: '# Install a package\npip install requests\n\n# Install from a requirements file\npip install -r requirements.txt\n\n# Freeze dependencies to a file\npip freeze > requirements.txt',
     description: '`pip` is the package installer for Python. You can use it to install packages from the Python Package Index (PyPI) and manage project dependencies.',
     tags: ['python', 'pip', 'package management', 'dependencies', 'requests'],
+    priority: 'High',
   },
   {
     id: 'python-12',
     category: 'Python',
     subCategory: 'python',
     title: 'List Slicing',
-    snippet: 'my_list = [0, 1, 2, 3, 4, 5]\n\nfirst_three = my_list[0:3]  # [0, 1, 2]\nfrom_index_2 = my_list[2:]   # [2, 3, 4, 5]\nlast_two = my_list[-2:]      # [4, 5]',
+    snippet: 'my_list = [0, 1, 2, 3, 4, 5]\n\nfirst_three = my_list[0:3]  // [0, 1, 2]\nfrom_index_2 = my_list[2:]   // [2, 3, 4, 5]\nlast_two = my_list[-2:]      // [4, 5]',
     description: 'Access a range of elements in a list (or other sequence types) using the slice syntax `[start:stop:step]`.',
     tags: ['python', 'list', 'slicing', 'sequence', 'data structures'],
+    priority: 'Medium',
   },
   {
     id: 'python-13',
@@ -141,5 +150,66 @@ my_function(1, 2, 'hello', name='Alice', age=30)
 # Keyword args: {'name': 'Alice', 'age': 30}`,
     description: '`*args` collects all extra positional arguments into a tuple. `**kwargs` collects all extra keyword arguments into a dictionary. This allows a function to accept a variable number of arguments.',
     tags: ['python', 'function', 'arguments', 'args', 'kwargs', 'variadic'],
+    priority: 'Low',
   },
+  {
+    id: 'python-keywords',
+    category: 'Python',
+    subCategory: 'python',
+    title: 'Python Reserved Keywords',
+    type: 'code',
+    snippet: `import keyword
+print(keyword.kwlist)
+
+# Output:
+# False    None    True    and      as       assert
+# async    await   break   class    continue def
+# del      elif    else    except   finally  for
+# from     global  if      import   in       is
+# lambda   nonlocal not    or       pass     raise
+# return   try     while   with     yield`,
+    description: 'A list of reserved keywords in Python. These words are part of the language\'s syntax and cannot be used as variable names, function names, or any other identifiers. You can always get the current list programmatically using the `keyword` module.',
+    tags: ['python', 'keywords', 'reserved words', 'syntax', 'basics'],
+  },
+  {
+    id: 'python-operator-precedence',
+    category: 'Python',
+    subCategory: 'python',
+    title: 'Operator Precedence',
+    type: 'code',
+    snippet: `// Highest precedence at the top, lowest at the bottom.
+()                                # Parentheses
+**                                # Exponentiation
++x, -x, ~x                        # Unary plus, minus, bitwise NOT
+*, /, //, %                       # Multiplication, division, floor division, modulus
++, -                              # Addition, subtraction
+<<, >>                            # Bitwise shifts
+&                                 # Bitwise AND
+^                                 # Bitwise XOR
+|                                 # Bitwise OR
+in, not in, is, is not, <, <=, >... # Comparisons, identity, membership
+not                               # Boolean NOT
+and                               # Boolean AND
+or                                # Boolean OR`,
+    description: 'A summary of Python\'s operator precedence, from highest to lowest. Operators in the same box group left to right (except for exponentiation, which groups from right to left).',
+    tags: ['python', 'operators', 'precedence', 'order of operations', 'syntax'],
+  },
+  {
+    id: 'python-bitwise-operators',
+    category: 'Python',
+    subCategory: 'python',
+    title: 'Bitwise Operators',
+    type: 'code',
+    snippet: `a = 60  # 0011 1100
+b = 13  # 0000 1101
+
+a & b   # Bitwise AND. Result: 12 (0000 1100)
+a | b   # Bitwise OR. Result: 61 (0011 1101)
+a ^ b   # Bitwise XOR. Result: 49 (0011 0001)
+~a      # Bitwise NOT (Invert all bits). Result: -61
+a << 2  # Left Shift. Result: 240 (1111 0000)
+a >> 2  # Right Shift. Result: 15 (0000 1111)`,
+    description: 'Bitwise operators perform operations on integers at the binary level. They are used for tasks like manipulating individual bits, setting flags, or for performance-critical calculations.',
+    tags: ['python', 'operators', 'bitwise', 'binary', 'masking', 'shift'],
+  }
 ];
